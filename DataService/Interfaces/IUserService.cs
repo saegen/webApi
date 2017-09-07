@@ -13,7 +13,7 @@ namespace DataService.Interfaces
     {
         [OperationContract]
         int AddUser(ApiUser user);
-        
+
         [OperationContract]
         ApiSubscription AddUserSubscription(int userId, ApiSubscription subscription);
 

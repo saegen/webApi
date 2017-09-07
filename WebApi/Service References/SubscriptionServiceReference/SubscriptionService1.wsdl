@@ -7,6 +7,12 @@
       <xsd:import schemaLocation="http://localhost:64849/SubscriptionService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataService.Types" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="ISubscriptionService_AddUserSubscription_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserSubscription" />
+  </wsdl:message>
+  <wsdl:message name="ISubscriptionService_AddUserSubscription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserSubscriptionResponse" />
+  </wsdl:message>
   <wsdl:message name="ISubscriptionService_GetSubscriptions_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSubscriptions" />
   </wsdl:message>
@@ -32,6 +38,10 @@
     <wsdl:part name="parameters" element="tns:UpdateSubscriptionResponse" />
   </wsdl:message>
   <wsdl:portType name="ISubscriptionService">
+    <wsdl:operation name="AddUserSubscription">
+      <wsdl:input wsaw:Action="http://dataservice/interfaces/subscription/ISubscriptionService/AddUserSubscription" message="tns:ISubscriptionService_AddUserSubscription_InputMessage" />
+      <wsdl:output wsaw:Action="http://dataservice/interfaces/subscription/ISubscriptionService/AddUserSubscriptionResponse" message="tns:ISubscriptionService_AddUserSubscription_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetSubscriptions">
       <wsdl:input wsaw:Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptions" message="tns:ISubscriptionService_GetSubscriptions_InputMessage" />
       <wsdl:output wsaw:Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptionsResponse" message="tns:ISubscriptionService_GetSubscriptions_OutputMessage" />

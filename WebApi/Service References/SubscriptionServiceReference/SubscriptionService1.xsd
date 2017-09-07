@@ -2,6 +2,21 @@
 <xs:schema xmlns:tns="http://dataservice/interfaces/subscription" elementFormDefault="qualified" targetNamespace="http://dataservice/interfaces/subscription" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:64849/SubscriptionService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataService.Types" />
   <xs:import schemaLocation="http://localhost:64849/SubscriptionService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:element name="AddUserSubscription">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DataService.Types" minOccurs="0" name="subscription" nillable="true" type="q1:ApiSubscription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserSubscriptionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DataService.Types" minOccurs="0" name="AddUserSubscriptionResult" nillable="true" type="q2:ApiSubscription" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetSubscriptions">
     <xs:complexType>
       <xs:sequence />
@@ -10,7 +25,7 @@
   <xs:element name="GetSubscriptionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DataService.Types" minOccurs="0" name="GetSubscriptionsResult" nillable="true" type="q1:ArrayOfApiSubscription" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DataService.Types" minOccurs="0" name="GetSubscriptionsResult" nillable="true" type="q3:ArrayOfApiSubscription" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -24,14 +39,14 @@
   <xs:element name="GetUserSubscriptionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DataService.Types" minOccurs="0" name="GetUserSubscriptionsResult" nillable="true" type="q2:ArrayOfApiSubscription" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DataService.Types" minOccurs="0" name="GetUserSubscriptionsResult" nillable="true" type="q4:ArrayOfApiSubscription" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="DeleteSubscription">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="subscriptionId" type="q3:guid" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="subscriptionId" type="q5:guid" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -43,14 +58,14 @@
   <xs:element name="UpdateSubscription">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DataService.Types" minOccurs="0" name="subValues" nillable="true" type="q4:ApiSubscription" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DataService.Types" minOccurs="0" name="subValues" nillable="true" type="q6:ApiSubscription" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateSubscriptionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DataService.Types" minOccurs="0" name="UpdateSubscriptionResult" nillable="true" type="q5:ApiSubscription" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DataService.Types" minOccurs="0" name="UpdateSubscriptionResult" nillable="true" type="q7:ApiSubscription" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

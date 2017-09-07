@@ -14,6 +14,23 @@ namespace DataService
     // NOTE: In order to launch WCF Test Client for testing this service, please select SubscriptionService.svc or SubscriptionService.svc.cs at the Solution Explorer and start debugging.
     public class SubscriptionService : ISubscriptionService
     {
+        public ApiSubscription AddUserSubscription(int userId, ApiSubscription subscription)
+        {
+            using (serviceEntities container = new serviceEntities())
+            {
+                //Utilities.toUrlFriendlyIndentifier(subscription.Name);
+                var user = container.Users.Find(userId);
+                if (user == null)
+                {
+                    throw new ArgumentNullException("No such user");
+                }
+                subscription.UrlFriendly = Utilities.toUrlFriendlyIndentifier(subscription.Name);
+                user.Subscriptions.Add(subscription.ToEntity());
+                container.SaveChanges();
+                return subscription;
+            }
+        }
+
         public IEnumerable<ApiSubscription> GetSubscriptions()
         {
             using (serviceEntities container = new serviceEntities())

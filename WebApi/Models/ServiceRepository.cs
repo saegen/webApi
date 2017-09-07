@@ -5,30 +5,37 @@ namespace WebApi
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
-    using WebApi.UserServiceReference;
+    //using WebApi.UserServiceReference;
     using WebApi.SubscriptionServiceReference;
+    using WebApi.UserServiceReference;
+
     //todo: gör generisk eller?
-    public class ServiceRepository : IRepository, IDisposable
+    public class ServiceRepository : ISubscriptionRepo, IUserRepo, IDisposable
     {
         private SubscriptionServiceClient _subClient;
-        
-        public ServiceRepository(SubscriptionServiceClient client)
+        private UserServiceClient _userClient;
+
+        public ServiceRepository(SubscriptionServiceClient subClient, UserServiceClient userClient)
         {
-            if (client == null)
+            if (subClient == null)
             {
-                throw new ArgumentNullException("client");
+                throw new ArgumentNullException("SubscriptionServiceClient");
             }
-            _subClient = client;
+            if (userClient == null)
+            {
+                throw new ArgumentNullException("UserServiceClient");
+            }
+            _userClient = userClient;
         }
 
-        public ApiSubscription AddUserSubscription(int userId, ApiSubscription subscription)
+        public SubscriptionServiceReference.ApiSubscription AddUserSubscription(int userId, SubscriptionServiceReference.ApiSubscription subscription)
         {
-            return _client.AddUserSubscription(userId, subscription);
+            return _subClient.AddUserSubscription(userId, subscription);
         }
 
         public int AddUser(ApiUser user)
         {
-            return _client.AddUser(user);
+            return _userClient.AddUser(user);
         }
 
         public ApiUser GetUser(int userId)
@@ -77,6 +84,26 @@ namespace WebApi
         public void Dispose()
         {
             if (_subClient != null) { _subClient.Close; }
+        }
+
+        public SubscriptionServiceReference.ApiSubscription AddUserSubscription(int userId, SubscriptionServiceReference.ApiSubscription subscription)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<SubscriptionServiceReference.ApiSubscription> ISubscriptionRepo.GetUserSubscriptions(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<SubscriptionServiceReference.ApiSubscription> ISubscriptionRepo.GetSubscriptions()
+        {
+            throw new NotImplementedException();
+        }
+
+        public SubscriptionServiceReference.ApiSubscription UpdateSubscription(SubscriptionServiceReference.ApiSubscription sub)
+        {
+            throw new NotImplementedException();
         }
     }
 }

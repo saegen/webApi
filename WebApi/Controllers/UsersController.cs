@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using WebApi.Models;
+using WebApi.UserServiceReference;
 
 namespace WebApi.Controllers
 {
@@ -18,11 +19,11 @@ namespace WebApi.Controllers
 
     public class UsersController : ApiController
     {
-        private IRepository repo;
+        private IUserRepo repo;
         public UsersController()
         {
-            Service1Client client = new Service1Client();
-            repo = new ServiceRepository(client);
+            UserServiceClient client = new UserServiceClient();
+            repo = new UserRepo(client);
         }
         //some-url-friendly-identifier = int 
         //Get current user (GET -> /users/some-url-friendly-identifier)
@@ -64,7 +65,7 @@ namespace WebApi.Controllers
             {
                 if (subdata == null)
                 {
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, new ArgumentNullException("subdata"));
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, new ArgumentNullException("ApiSubscription"));
                 }
                 //get CurrentUser instead
                 var user = repo.GetUser(id);

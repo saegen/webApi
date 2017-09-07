@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WebApi.Models;
-using WebApi.UserServiceReference;
+//using WebApi.UserServiceReference;
 using WebApi.SubscriptionServiceReference;
 //using WebApi.UserServiceReference;
 
@@ -13,11 +13,11 @@ namespace WebApi.Controllers
 {
     public class SubscriptionsController : ApiController
     {
-        private IRepository repo;
+        private ISubscriptionRepo repo;
         public SubscriptionsController()
         {
-            Service1Client client = new Service1Client();
-            repo = new ServiceRepository(client);
+            SubscriptionServiceClient client = new SubscriptionServiceClient();
+            repo = new SubscriptionRepo(client);
         }
         //Get all subscriptions (GET -> /subscriptions)
         public IEnumerable<ApiSubscription> Get()

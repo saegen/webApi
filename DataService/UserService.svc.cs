@@ -56,7 +56,7 @@ namespace DataService
                 return subscription;
             }
         }
-        
+
         public int AddUser(ApiUser user)
         {
             if (user == null)

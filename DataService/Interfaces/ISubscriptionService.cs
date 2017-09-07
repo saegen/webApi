@@ -12,6 +12,9 @@ namespace DataService.Interfaces
     public interface ISubscriptionService
     {
         [OperationContract]
+        ApiSubscription AddUserSubscription(int userId, ApiSubscription subscription);
+
+        [OperationContract]
         IEnumerable<ApiSubscription> GetSubscriptions();
             
         [OperationContract]

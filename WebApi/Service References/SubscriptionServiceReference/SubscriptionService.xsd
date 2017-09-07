@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/DataService.Types" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DataService.Types" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:64849/SubscriptionService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:complexType name="ArrayOfApiSubscription">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ApiSubscription" nillable="true" type="tns:ApiSubscription" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfApiSubscription" nillable="true" type="tns:ArrayOfApiSubscription" />
   <xs:complexType name="ApiSubscription">
     <xs:sequence>
       <xs:element minOccurs="0" name="CallMinutes" type="xs:int" />
@@ -18,4 +12,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ApiSubscription" nillable="true" type="tns:ApiSubscription" />
+  <xs:complexType name="ArrayOfApiSubscription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ApiSubscription" nillable="true" type="tns:ApiSubscription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApiSubscription" nillable="true" type="tns:ArrayOfApiSubscription" />
 </xs:schema>
