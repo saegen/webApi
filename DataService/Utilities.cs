@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using Common;
 
 namespace DataService
 {
@@ -28,6 +29,66 @@ namespace DataService
             // remove trailing dashes
             toFriendly = toFriendly.TrimEnd(new[] { '-' });
             return toFriendly;
+        }
+
+        public static Subscription ToEntitySubscription(ApiSubscription source)
+        {
+            return new Subscription() {
+                Id = source.Id,
+                Name = source.Name,
+                Price = source.Price,
+                PriceIncVatAmount = source.PriceIncVatAmount,
+                CallMinutes = source.CallMinutes,
+                UrlFriendly = source.UrlFriendly
+            };
+        }
+
+        public static ApiSubscription ToApiSubscription(Subscription source)
+        {
+            return new ApiSubscription() {
+                Id = source.Id,
+                Name = source.Name,
+                Price = source.Price,
+                PriceIncVatAmount = source.PriceIncVatAmount,
+                CallMinutes = source.CallMinutes,
+                UrlFriendly = Utilities.toUrlFriendlyIndentifier(source.Name)
+            };
+        }
+
+        public static User ToEntityUser(ApiUser user)
+        {
+            var entityUser = new User() { Id = user.Id, FirstName = user.FirstName, LastName = user.LastName, Email = user.Email };
+            foreach (var ApiSub in user.Subscriptions)
+            {
+                var sub = Utilities.ToEntitySubscription(ApiSub);
+                entityUser.Subscriptions.Add(sub);
+            }
+            return entityUser;
+        }
+
+        public static ApiUser ToApiUser(User entityUser)
+        {
+            var apiUser = new ApiUser()
+            {
+                Id = entityUser.Id,
+                FirstName = entityUser.FirstName,
+                LastName = entityUser.LastName,
+                Subscriptions = new HashSet<ApiSubscription>()
+
+            };
+            foreach (var sub in entityUser.Subscriptions)
+            {
+                apiUser.Subscriptions.Add(new ApiSubscription()
+                {
+                    Id = sub.Id,
+                    Name = sub.Name,
+                    Price = sub.Price,
+                    PriceIncVatAmount = sub.PriceIncVatAmount,
+                    CallMinutes = sub.CallMinutes,
+                    UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name)
+                });
+            }
+            return apiUser;
         }
     }
 }

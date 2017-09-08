@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace DataService.Types
+﻿namespace Common
 {
     using System;
-    using System.Collections.Generic;
     using System.Runtime.Serialization;
 
     [DataContract]
@@ -22,7 +16,7 @@ namespace DataService.Types
             this.CallMinutes = 10;
             this.UrlFriendly = "friendly";
         }
-        
+
         [DataMember]
         public System.Guid Id { get; set; }
         [DataMember]
@@ -34,11 +28,6 @@ namespace DataService.Types
         [DataMember]
         public int CallMinutes { get; set; }
         [DataMember]
-        public string UrlFriendly { get; set; }
-        
-        public Subscription ToEntity()
-        {
-            return new Subscription() { Id = this.Id, Name = this.Name, Price = this.Price, PriceIncVatAmount = this.PriceIncVatAmount, CallMinutes=this.CallMinutes,UrlFriendly = this.UrlFriendly };
-        }
+        public string UrlFriendly { get; set; }        
     }
 }

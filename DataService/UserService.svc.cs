@@ -22,7 +22,9 @@
 //EF, MVC, REST, Web Api and PostMan. Even if you turn me down I would really like to get some constructive feedback and not just a 'no thank you'. 
 //Because I'm very eager to learn and I intend to keep on learning more on the subject(s) I would like to take this opportunity to 
 //get some real feedback from people who does this every day.
-using DataService.Types;
+
+//using DataService.Types;
+using Common;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -40,7 +42,7 @@ namespace DataService
     // NOTE: In order to launch WCF Test Client for testing this service, please select DataService.svc or DataService.svc.cs at the Solution Explorer and start debugging.
     public class UserService : IUserService//, ISubscriptionService
     {
-        public ApiSubscription AddUserSubscription(int userId, ApiSubscription subscription)
+        public ApiSubscription AddUserSubscription(int userId, ApiSubscription sub)
         {
             using (serviceEntities container = new serviceEntities())
             {
@@ -50,10 +52,14 @@ namespace DataService
                 {
                     throw new ArgumentNullException("No such user");
                 }
-                subscription.UrlFriendly = Utilities.toUrlFriendlyIndentifier(subscription.Name);
-                user.Subscriptions.Add(subscription.ToEntity());
+                sub.UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name);
+                user.Subscriptions.Add(new Subscription() { Id = sub.Id,
+                    Name = sub.Name,
+                    Price = sub.Price,
+                    CallMinutes = sub.CallMinutes, PriceIncVatAmount = sub.PriceIncVatAmount, UrlFriendly = sub.UrlFriendly }
+                );
                 container.SaveChanges();
-                return subscription;
+                return sub;
             }
         }
 
@@ -63,7 +69,7 @@ namespace DataService
             {
                 throw new ArgumentNullException("user");
             }
-            var entityUser = user.ToEntity(); 
+            var entityUser = Utilities.ToEntityUser(user); 
             
             using (serviceEntities container = new serviceEntities())
             {
@@ -84,7 +90,7 @@ namespace DataService
             {
                 foreach (var user in container.Users.Include("Subscriptions"))
                 {
-                    yield return new ApiUser(user);
+                    yield return Utilities.ToApiUser(user);
                 }
             }
         }
@@ -98,7 +104,7 @@ namespace DataService
                 {
                     throw new FaultException("No such user");
                 }
-                return new ApiUser(user);
+                return Utilities.ToApiUser(user); 
             }
         }
 
@@ -128,7 +134,15 @@ namespace DataService
                 }
                 foreach (var sub in user.Subscriptions)
                 {
-                    yield return new ApiSubscription(sub);
+                    yield return new ApiSubscription()
+                    {
+                        Id = sub.Id,
+                        Name = sub.Name,
+                        Price = sub.Price,
+                        PriceIncVatAmount = sub.PriceIncVatAmount,
+                        CallMinutes = sub.CallMinutes,
+                        UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name)
+                    };
                 }
             }
         }
@@ -157,7 +171,7 @@ namespace DataService
                 user.LastName = userValues.LastName;
                 user.Email = userValues.Email;
                 container.SaveChanges();
-                return new ApiUser(user);
+                return Utilities.ToApiUser(user);
             }
         }
 
@@ -192,7 +206,15 @@ namespace DataService
                 sub.PriceIncVatAmount = subValues.PriceIncVatAmount;
                 sub.UrlFriendly = Utilities.toUrlFriendlyIndentifier(subValues.Name);
                 container.SaveChanges();
-                return new ApiSubscription(sub);
+                return new ApiSubscription()
+                {
+                    Id = sub.Id,
+                    Name = sub.Name,
+                    Price = sub.Price,
+                    PriceIncVatAmount = sub.PriceIncVatAmount,
+                    CallMinutes = sub.CallMinutes,
+                    UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name)
+                };
             }
         }
 

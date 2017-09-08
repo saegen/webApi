@@ -1,4 +1,10 @@
-﻿namespace DataService.Types
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Common
 {
     using System;
     using System.Collections.Generic;
@@ -10,26 +16,6 @@
     [DataContract]
     public class ApiUser
     {
-        public ApiUser(User entityUser)
-        {
-            this.Id = entityUser.Id;
-            this.FirstName = entityUser.FirstName;
-            this.LastName = entityUser.LastName;
-            this.Subscriptions = new HashSet<ApiSubscription>();
-            foreach (var sub in entityUser.Subscriptions)
-            {
-                this.Subscriptions.Add(new ApiSubscription()
-                {
-                    Id = sub.Id,
-                    Name = sub.Name,
-                    Price = sub.Price,
-                    PriceIncVatAmount = sub.PriceIncVatAmount,
-                    CallMinutes = sub.CallMinutes,
-                    UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name)
-                });
-            }
-        }//konverterar till ApiUser med ApiSubs
-
         public ApiUser()
         {
             Id = 0;
@@ -70,16 +56,7 @@
             }
         }
 
-        public User ToEntity()
-        {
-            var entity = new User() { Id = this.Id, FirstName = this.FirstName, LastName = this.LastName, Email = this.Email };
-            foreach (var ApiSub in this.Subscriptions)
-            {
-                Utilities.ToEntitySubscription(ApiSub);
-                entity.Subscriptions.Add(ApiSub.ToEntity());
-            }
-            return entity;
-        }
+        
 
     }
 }

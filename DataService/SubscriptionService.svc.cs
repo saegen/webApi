@@ -37,7 +37,15 @@ namespace DataService
             {
                 foreach (var sub in container.Subscriptions)
                 {
-                    yield return new ApiSubscription(sub);
+                    yield return new ApiSubscription()
+                    {
+                        Id = sub.Id,
+                        Name = sub.Name,
+                        Price = sub.Price,
+                        PriceIncVatAmount = sub.PriceIncVatAmount,
+                        CallMinutes = sub.CallMinutes,
+                        UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name)
+                    };
                 }
             }
         }
@@ -53,7 +61,15 @@ namespace DataService
                 }
                 foreach (var sub in user.Subscriptions)
                 {
-                    yield return new ApiSubscription(sub);
+                    yield return new ApiSubscription()
+                    {
+                        Id = sub.Id,
+                        Name = sub.Name,
+                        Price = sub.Price,
+                        PriceIncVatAmount = sub.PriceIncVatAmount,
+                        CallMinutes = sub.CallMinutes,
+                        UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name)
+                    };
                 }
             }
         }
@@ -89,7 +105,15 @@ namespace DataService
                 sub.PriceIncVatAmount = subValues.PriceIncVatAmount;
                 sub.UrlFriendly = Utilities.toUrlFriendlyIndentifier(subValues.Name);
                 container.SaveChanges();
-                return new ApiSubscription(sub);
+                return new ApiSubscription()
+                {
+                    Id = sub.Id,
+                    Name = sub.Name,
+                    Price = sub.Price,
+                    PriceIncVatAmount = sub.PriceIncVatAmount,
+                    CallMinutes = sub.CallMinutes,
+                    UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name)
+                };
             }
         }
     }
