@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/04/2015 10:42:35
--- Generated from EDMX file: C:\Tomas\rebtelService1\rebtelService1\rebModel.edmx
+-- Date Created: 09/12/2017 10:19:37
+-- Generated from EDMX file: C:\Gitrepos\WebAPI\DataService\rebModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -41,12 +41,12 @@ CREATE TABLE [dbo].[Subscriptions] (
     [Id] uniqueidentifier  NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [UserId] int  NOT NULL,
-    [Price] decimal(18,2) NOT NULL,
-    [PriceIncVatAmount] decimal(18,2) NOT NULL,
-    [CallMinutes] int NOT NULL,
-    [UrlFriendly] nvarchar(max) NULL
+    [Price] decimal(18,2)  NOT NULL,
+    [PriceIncVatAmount] decimal(18,2)  NOT NULL,
+    [CallMinutes] int  NOT NULL,
+    [UrlFriendly] nvarchar(max)  NULL
 );
-GO 
+GO
 
 -- Creating table 'Users'
 CREATE TABLE [dbo].[Users] (

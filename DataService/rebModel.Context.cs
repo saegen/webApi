@@ -12,7 +12,7 @@ namespace DataService
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    //todo: rename 
+    
     public partial class serviceEntities : DbContext
     {
         public serviceEntities()

@@ -149,7 +149,7 @@ namespace DataService
 
         //public IEnumerable<ApiSubscription> GetSubscriptions()
         //{
-        //    using (rebtelEntities container = new rebtelEntities())
+        //    using (serviceEntities container = new serviceEntities())
         //    {
         //        foreach (var sub in container.Subscriptions)
         //        {
