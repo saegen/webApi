@@ -18,27 +18,27 @@ namespace WebApi.Models
 
         public ApiSubscription AddUserSubscription(int userId, ApiSubscription subscription)
         {
-            throw new NotImplementedException();
+            return _client.AddUserSubscription(userId, subscription);
         }
 
         public void DeleteSubscription(Guid subscriptionId)
         {
-            throw new NotImplementedException();
+            _client.DeleteSubscription(subscriptionId);
         }
 
         public IEnumerable<ApiSubscription> GetSubscriptions()
         {
-            throw new NotImplementedException();
+            return _client.GetSubscriptions();
         }
 
         public IEnumerable<ApiSubscription> GetUserSubscriptions(int userId)
         {
-            throw new NotImplementedException();
+            return _client.GetUserSubscriptions(userId);
         }
 
         public ApiSubscription UpdateSubscription(ApiSubscription sub)
         {
-            throw new NotImplementedException();
+            return _client.UpdateSubscription(sub);
         }
     }
 }
