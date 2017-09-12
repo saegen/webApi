@@ -13,18 +13,13 @@ namespace WebApi
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-
+            //Hittar routes allmänt, dvs User och Subscription
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
-            config.Routes.MapHttpRoute(
-               name: "user",
-               routeTemplate: "{controller}/{id}",
-               defaults: new { id = RouteParameter.Optional }
-           );
+            
         }
     }
 }
