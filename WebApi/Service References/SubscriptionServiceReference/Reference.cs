@@ -9,134 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace WebApi.SubscriptionServiceReference {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ApiSubscription", Namespace="http://schemas.datacontract.org/2004/07/DataService.Types")]
-    [System.SerializableAttribute()]
-    public partial class ApiSubscription : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CallMinutesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal PriceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal PriceIncVatAmountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UrlFriendlyField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CallMinutes {
-            get {
-                return this.CallMinutesField;
-            }
-            set {
-                if ((this.CallMinutesField.Equals(value) != true)) {
-                    this.CallMinutesField = value;
-                    this.RaisePropertyChanged("CallMinutes");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal Price {
-            get {
-                return this.PriceField;
-            }
-            set {
-                if ((this.PriceField.Equals(value) != true)) {
-                    this.PriceField = value;
-                    this.RaisePropertyChanged("Price");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal PriceIncVatAmount {
-            get {
-                return this.PriceIncVatAmountField;
-            }
-            set {
-                if ((this.PriceIncVatAmountField.Equals(value) != true)) {
-                    this.PriceIncVatAmountField = value;
-                    this.RaisePropertyChanged("PriceIncVatAmount");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UrlFriendly {
-            get {
-                return this.UrlFriendlyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UrlFriendlyField, value) != true)) {
-                    this.UrlFriendlyField = value;
-                    this.RaisePropertyChanged("UrlFriendly");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://dataservice/interfaces/subscription", ConfigurationName="SubscriptionServiceReference.ISubscriptionService")]
@@ -145,30 +18,30 @@ namespace WebApi.SubscriptionServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/AddUserSubscripti" +
             "on", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/AddUserSubscripti" +
             "onResponse")]
-        WebApi.SubscriptionServiceReference.ApiSubscription AddUserSubscription(int userId, WebApi.SubscriptionServiceReference.ApiSubscription subscription);
+        Common.ApiSubscription AddUserSubscription(int userId, Common.ApiSubscription subscription);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/AddUserSubscripti" +
             "on", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/AddUserSubscripti" +
             "onResponse")]
-        System.Threading.Tasks.Task<WebApi.SubscriptionServiceReference.ApiSubscription> AddUserSubscriptionAsync(int userId, WebApi.SubscriptionServiceReference.ApiSubscription subscription);
+        System.Threading.Tasks.Task<Common.ApiSubscription> AddUserSubscriptionAsync(int userId, Common.ApiSubscription subscription);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptions", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptionsR" +
             "esponse")]
-        WebApi.SubscriptionServiceReference.ApiSubscription[] GetSubscriptions();
+        Common.ApiSubscription[] GetSubscriptions();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptions", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptionsR" +
             "esponse")]
-        System.Threading.Tasks.Task<WebApi.SubscriptionServiceReference.ApiSubscription[]> GetSubscriptionsAsync();
+        System.Threading.Tasks.Task<Common.ApiSubscription[]> GetSubscriptionsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetUserSubscripti" +
             "ons", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/GetUserSubscripti" +
             "onsResponse")]
-        WebApi.SubscriptionServiceReference.ApiSubscription[] GetUserSubscriptions(int userId);
+        Common.ApiSubscription[] GetUserSubscriptions(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetUserSubscripti" +
             "ons", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/GetUserSubscripti" +
             "onsResponse")]
-        System.Threading.Tasks.Task<WebApi.SubscriptionServiceReference.ApiSubscription[]> GetUserSubscriptionsAsync(int userId);
+        System.Threading.Tasks.Task<Common.ApiSubscription[]> GetUserSubscriptionsAsync(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/DeleteSubscriptio" +
             "n", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/DeleteSubscriptio" +
@@ -183,12 +56,12 @@ namespace WebApi.SubscriptionServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/UpdateSubscriptio" +
             "n", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/UpdateSubscriptio" +
             "nResponse")]
-        WebApi.SubscriptionServiceReference.ApiSubscription UpdateSubscription(WebApi.SubscriptionServiceReference.ApiSubscription subValues);
+        Common.ApiSubscription UpdateSubscription(Common.ApiSubscription subValues);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/UpdateSubscriptio" +
             "n", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/UpdateSubscriptio" +
             "nResponse")]
-        System.Threading.Tasks.Task<WebApi.SubscriptionServiceReference.ApiSubscription> UpdateSubscriptionAsync(WebApi.SubscriptionServiceReference.ApiSubscription subValues);
+        System.Threading.Tasks.Task<Common.ApiSubscription> UpdateSubscriptionAsync(Common.ApiSubscription subValues);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -218,27 +91,27 @@ namespace WebApi.SubscriptionServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public WebApi.SubscriptionServiceReference.ApiSubscription AddUserSubscription(int userId, WebApi.SubscriptionServiceReference.ApiSubscription subscription) {
+        public Common.ApiSubscription AddUserSubscription(int userId, Common.ApiSubscription subscription) {
             return base.Channel.AddUserSubscription(userId, subscription);
         }
         
-        public System.Threading.Tasks.Task<WebApi.SubscriptionServiceReference.ApiSubscription> AddUserSubscriptionAsync(int userId, WebApi.SubscriptionServiceReference.ApiSubscription subscription) {
+        public System.Threading.Tasks.Task<Common.ApiSubscription> AddUserSubscriptionAsync(int userId, Common.ApiSubscription subscription) {
             return base.Channel.AddUserSubscriptionAsync(userId, subscription);
         }
         
-        public WebApi.SubscriptionServiceReference.ApiSubscription[] GetSubscriptions() {
+        public Common.ApiSubscription[] GetSubscriptions() {
             return base.Channel.GetSubscriptions();
         }
         
-        public System.Threading.Tasks.Task<WebApi.SubscriptionServiceReference.ApiSubscription[]> GetSubscriptionsAsync() {
+        public System.Threading.Tasks.Task<Common.ApiSubscription[]> GetSubscriptionsAsync() {
             return base.Channel.GetSubscriptionsAsync();
         }
         
-        public WebApi.SubscriptionServiceReference.ApiSubscription[] GetUserSubscriptions(int userId) {
+        public Common.ApiSubscription[] GetUserSubscriptions(int userId) {
             return base.Channel.GetUserSubscriptions(userId);
         }
         
-        public System.Threading.Tasks.Task<WebApi.SubscriptionServiceReference.ApiSubscription[]> GetUserSubscriptionsAsync(int userId) {
+        public System.Threading.Tasks.Task<Common.ApiSubscription[]> GetUserSubscriptionsAsync(int userId) {
             return base.Channel.GetUserSubscriptionsAsync(userId);
         }
         
@@ -250,11 +123,11 @@ namespace WebApi.SubscriptionServiceReference {
             return base.Channel.DeleteSubscriptionAsync(subscriptionId);
         }
         
-        public WebApi.SubscriptionServiceReference.ApiSubscription UpdateSubscription(WebApi.SubscriptionServiceReference.ApiSubscription subValues) {
+        public Common.ApiSubscription UpdateSubscription(Common.ApiSubscription subValues) {
             return base.Channel.UpdateSubscription(subValues);
         }
         
-        public System.Threading.Tasks.Task<WebApi.SubscriptionServiceReference.ApiSubscription> UpdateSubscriptionAsync(WebApi.SubscriptionServiceReference.ApiSubscription subValues) {
+        public System.Threading.Tasks.Task<Common.ApiSubscription> UpdateSubscriptionAsync(Common.ApiSubscription subValues) {
             return base.Channel.UpdateSubscriptionAsync(subValues);
         }
     }

@@ -5,8 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using DataService.Interfaces;
-using DataService.Types;
-
+using Common;
 
 namespace DataService
 {
@@ -25,7 +24,7 @@ namespace DataService
                     throw new ArgumentNullException("No such user");
                 }
                 subscription.UrlFriendly = Utilities.toUrlFriendlyIndentifier(subscription.Name);
-                user.Subscriptions.Add(subscription.ToEntity());
+                user.Subscriptions.Add(Utilities.ToEntitySubscription(subscription));
                 container.SaveChanges();
                 return subscription;
             }

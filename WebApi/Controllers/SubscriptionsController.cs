@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WebApi.Models;
+using Common;
 //using WebApi.UserServiceReference;
 using WebApi.SubscriptionServiceReference;
 //using WebApi.UserServiceReference;

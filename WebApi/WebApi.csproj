@@ -222,6 +222,8 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Properties\DataSources\Common.ApiSubscription.datasource" />
+    <Content Include="Properties\DataSources\Common.ApiUser.datasource" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -271,9 +273,6 @@
     <None Include="Service References\SubscriptionServiceReference\SubscriptionService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\SubscriptionServiceReference\WebApi.SubscriptionServiceReference.ApiSubscription.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service References\UserServiceReference\UserService.wsdl" />
     <None Include="Service References\UserServiceReference\UserService.xsd">
       <SubType>Designer</SubType>
@@ -286,12 +285,6 @@
     <None Include="Service References\UserServiceReference\UserService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\UserServiceReference\WebApi.UserServiceReference.ApiSubscription.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\UserServiceReference\WebApi.UserServiceReference.ApiUser.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

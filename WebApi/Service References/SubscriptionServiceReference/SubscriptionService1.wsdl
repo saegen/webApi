@@ -4,7 +4,7 @@
     <xsd:schema targetNamespace="http://dataservice/interfaces/subscription/Imports">
       <xsd:import schemaLocation="http://localhost:64849/SubscriptionService.svc?xsd=xsd0" namespace="http://dataservice/interfaces/subscription" />
       <xsd:import schemaLocation="http://localhost:64849/SubscriptionService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:64849/SubscriptionService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataService.Types" />
+      <xsd:import schemaLocation="http://localhost:64849/SubscriptionService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ISubscriptionService_AddUserSubscription_InputMessage">

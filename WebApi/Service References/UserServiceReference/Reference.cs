@@ -9,291 +9,23 @@
 //------------------------------------------------------------------------------
 
 namespace WebApi.UserServiceReference {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ApiUser", Namespace="http://schemas.datacontract.org/2004/07/DataService.Types")]
-    [System.SerializableAttribute()]
-    public partial class ApiUser : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WebApi.UserServiceReference.ApiSubscription[] SubscriptionsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TotalCallMinutesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal TotalPriceIncVatAmountField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email {
-            get {
-                return this.EmailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
-                    this.EmailField = value;
-                    this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public WebApi.UserServiceReference.ApiSubscription[] Subscriptions {
-            get {
-                return this.SubscriptionsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SubscriptionsField, value) != true)) {
-                    this.SubscriptionsField = value;
-                    this.RaisePropertyChanged("Subscriptions");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TotalCallMinutes {
-            get {
-                return this.TotalCallMinutesField;
-            }
-            set {
-                if ((this.TotalCallMinutesField.Equals(value) != true)) {
-                    this.TotalCallMinutesField = value;
-                    this.RaisePropertyChanged("TotalCallMinutes");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal TotalPriceIncVatAmount {
-            get {
-                return this.TotalPriceIncVatAmountField;
-            }
-            set {
-                if ((this.TotalPriceIncVatAmountField.Equals(value) != true)) {
-                    this.TotalPriceIncVatAmountField = value;
-                    this.RaisePropertyChanged("TotalPriceIncVatAmount");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ApiSubscription", Namespace="http://schemas.datacontract.org/2004/07/DataService.Types")]
-    [System.SerializableAttribute()]
-    public partial class ApiSubscription : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CallMinutesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal PriceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal PriceIncVatAmountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UrlFriendlyField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CallMinutes {
-            get {
-                return this.CallMinutesField;
-            }
-            set {
-                if ((this.CallMinutesField.Equals(value) != true)) {
-                    this.CallMinutesField = value;
-                    this.RaisePropertyChanged("CallMinutes");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal Price {
-            get {
-                return this.PriceField;
-            }
-            set {
-                if ((this.PriceField.Equals(value) != true)) {
-                    this.PriceField = value;
-                    this.RaisePropertyChanged("Price");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal PriceIncVatAmount {
-            get {
-                return this.PriceIncVatAmountField;
-            }
-            set {
-                if ((this.PriceIncVatAmountField.Equals(value) != true)) {
-                    this.PriceIncVatAmountField = value;
-                    this.RaisePropertyChanged("PriceIncVatAmount");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UrlFriendly {
-            get {
-                return this.UrlFriendlyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UrlFriendlyField, value) != true)) {
-                    this.UrlFriendlyField = value;
-                    this.RaisePropertyChanged("UrlFriendly");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://dataservice/interfaces/user", ConfigurationName="UserServiceReference.IUserService")]
     public interface IUserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/AddUser", ReplyAction="http://dataservice/interfaces/user/IUserService/AddUserResponse")]
-        int AddUser(WebApi.UserServiceReference.ApiUser user);
+        int AddUser(Common.ApiUser user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/AddUser", ReplyAction="http://dataservice/interfaces/user/IUserService/AddUserResponse")]
-        System.Threading.Tasks.Task<int> AddUserAsync(WebApi.UserServiceReference.ApiUser user);
+        System.Threading.Tasks.Task<int> AddUserAsync(Common.ApiUser user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/AddUserSubscription", ReplyAction="http://dataservice/interfaces/user/IUserService/AddUserSubscriptionResponse")]
-        WebApi.UserServiceReference.ApiSubscription AddUserSubscription(int userId, WebApi.UserServiceReference.ApiSubscription subscription);
+        Common.ApiSubscription AddUserSubscription(int userId, Common.ApiSubscription subscription);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/AddUserSubscription", ReplyAction="http://dataservice/interfaces/user/IUserService/AddUserSubscriptionResponse")]
-        System.Threading.Tasks.Task<WebApi.UserServiceReference.ApiSubscription> AddUserSubscriptionAsync(int userId, WebApi.UserServiceReference.ApiSubscription subscription);
+        System.Threading.Tasks.Task<Common.ApiSubscription> AddUserSubscriptionAsync(int userId, Common.ApiSubscription subscription);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/DeleteUser", ReplyAction="http://dataservice/interfaces/user/IUserService/DeleteUserResponse")]
         void DeleteUser(int userId);
@@ -302,22 +34,22 @@ namespace WebApi.UserServiceReference {
         System.Threading.Tasks.Task DeleteUserAsync(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/GetUser", ReplyAction="http://dataservice/interfaces/user/IUserService/GetUserResponse")]
-        WebApi.UserServiceReference.ApiUser GetUser(int userId);
+        Common.ApiUser GetUser(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/GetUser", ReplyAction="http://dataservice/interfaces/user/IUserService/GetUserResponse")]
-        System.Threading.Tasks.Task<WebApi.UserServiceReference.ApiUser> GetUserAsync(int userId);
+        System.Threading.Tasks.Task<Common.ApiUser> GetUserAsync(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/GetUsers", ReplyAction="http://dataservice/interfaces/user/IUserService/GetUsersResponse")]
-        WebApi.UserServiceReference.ApiUser[] GetUsers();
+        Common.ApiUser[] GetUsers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/GetUsers", ReplyAction="http://dataservice/interfaces/user/IUserService/GetUsersResponse")]
-        System.Threading.Tasks.Task<WebApi.UserServiceReference.ApiUser[]> GetUsersAsync();
+        System.Threading.Tasks.Task<Common.ApiUser[]> GetUsersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/UpdateUser", ReplyAction="http://dataservice/interfaces/user/IUserService/UpdateUserResponse")]
-        WebApi.UserServiceReference.ApiUser UpdateUser(WebApi.UserServiceReference.ApiUser user);
+        Common.ApiUser UpdateUser(Common.ApiUser user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/UpdateUser", ReplyAction="http://dataservice/interfaces/user/IUserService/UpdateUserResponse")]
-        System.Threading.Tasks.Task<WebApi.UserServiceReference.ApiUser> UpdateUserAsync(WebApi.UserServiceReference.ApiUser user);
+        System.Threading.Tasks.Task<Common.ApiUser> UpdateUserAsync(Common.ApiUser user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -347,19 +79,19 @@ namespace WebApi.UserServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public int AddUser(WebApi.UserServiceReference.ApiUser user) {
+        public int AddUser(Common.ApiUser user) {
             return base.Channel.AddUser(user);
         }
         
-        public System.Threading.Tasks.Task<int> AddUserAsync(WebApi.UserServiceReference.ApiUser user) {
+        public System.Threading.Tasks.Task<int> AddUserAsync(Common.ApiUser user) {
             return base.Channel.AddUserAsync(user);
         }
         
-        public WebApi.UserServiceReference.ApiSubscription AddUserSubscription(int userId, WebApi.UserServiceReference.ApiSubscription subscription) {
+        public Common.ApiSubscription AddUserSubscription(int userId, Common.ApiSubscription subscription) {
             return base.Channel.AddUserSubscription(userId, subscription);
         }
         
-        public System.Threading.Tasks.Task<WebApi.UserServiceReference.ApiSubscription> AddUserSubscriptionAsync(int userId, WebApi.UserServiceReference.ApiSubscription subscription) {
+        public System.Threading.Tasks.Task<Common.ApiSubscription> AddUserSubscriptionAsync(int userId, Common.ApiSubscription subscription) {
             return base.Channel.AddUserSubscriptionAsync(userId, subscription);
         }
         
@@ -371,27 +103,27 @@ namespace WebApi.UserServiceReference {
             return base.Channel.DeleteUserAsync(userId);
         }
         
-        public WebApi.UserServiceReference.ApiUser GetUser(int userId) {
+        public Common.ApiUser GetUser(int userId) {
             return base.Channel.GetUser(userId);
         }
         
-        public System.Threading.Tasks.Task<WebApi.UserServiceReference.ApiUser> GetUserAsync(int userId) {
+        public System.Threading.Tasks.Task<Common.ApiUser> GetUserAsync(int userId) {
             return base.Channel.GetUserAsync(userId);
         }
         
-        public WebApi.UserServiceReference.ApiUser[] GetUsers() {
+        public Common.ApiUser[] GetUsers() {
             return base.Channel.GetUsers();
         }
         
-        public System.Threading.Tasks.Task<WebApi.UserServiceReference.ApiUser[]> GetUsersAsync() {
+        public System.Threading.Tasks.Task<Common.ApiUser[]> GetUsersAsync() {
             return base.Channel.GetUsersAsync();
         }
         
-        public WebApi.UserServiceReference.ApiUser UpdateUser(WebApi.UserServiceReference.ApiUser user) {
+        public Common.ApiUser UpdateUser(Common.ApiUser user) {
             return base.Channel.UpdateUser(user);
         }
         
-        public System.Threading.Tasks.Task<WebApi.UserServiceReference.ApiUser> UpdateUserAsync(WebApi.UserServiceReference.ApiUser user) {
+        public System.Threading.Tasks.Task<Common.ApiUser> UpdateUserAsync(Common.ApiUser user) {
             return base.Channel.UpdateUserAsync(user);
         }
     }

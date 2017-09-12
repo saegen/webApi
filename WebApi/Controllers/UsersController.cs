@@ -8,6 +8,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using WebApi.Models;
 using WebApi.UserServiceReference;
+using Common;
 
 namespace WebApi.Controllers
 {

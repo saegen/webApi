@@ -109,7 +109,6 @@
     <Compile Include="SubscriptionService.svc.cs">
       <DependentUpon>SubscriptionService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Types\ApiSubscription.cs" />
     <Compile Include="User.cs">
       <DependentUpon>rebModel.tt</DependentUpon>
     </Compile>
@@ -117,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Types\" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="rebModel.edmx">

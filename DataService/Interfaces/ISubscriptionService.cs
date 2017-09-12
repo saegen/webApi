@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataService.Types;
+//using DataService.Types;
+using Common;
 using System.ServiceModel;
 
 namespace DataService.Interfaces
