@@ -14,5 +14,10 @@ namespace WebApi.Controllers
 
             return View();
         }
+
+        public ActionResult Swagger()
+        {
+            return new RedirectResult("~/swagger/ui/index");
+        }
     }
 }
