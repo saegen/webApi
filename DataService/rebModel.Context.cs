@@ -13,10 +13,10 @@ namespace DataService
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class serviceEntities : DbContext
+    public partial class rebtelEntities : DbContext
     {
-        public serviceEntities()
-            : base("name=serviceEntities")
+        public rebtelEntities()
+            : base("name=rebtelEntities")
         {
         }
     

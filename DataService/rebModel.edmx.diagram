@@ -7,7 +7,7 @@
       <Diagram DiagramId="3f037590530849e5b26bda2b7e62551a" Name="Diagram1">
         <EntityTypeShape EntityType="rebtelModel.Subscription" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="rebtelModel.User" Width="1.5" PointX="0.75" PointY="1.25" />
-        <AssociationConnector Association="rebtelModel.FK_UsersSubscriptions" />
+        <AssociationConnector Association="rebtelModel.user_subscription" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

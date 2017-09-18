@@ -97,20 +97,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rebModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Subscription.cs">
+      <DependentUpon>rebModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>rebModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserService.svc.cs">
       <DependentUpon>UserService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\ISubscriptionService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
-    <Compile Include="Subscription.cs">
-      <DependentUpon>rebModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SubscriptionService.svc.cs">
       <DependentUpon>SubscriptionService.svc</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>rebModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilities.cs" />
   </ItemGroup>

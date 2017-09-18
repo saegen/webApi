@@ -44,7 +44,7 @@ namespace DataService
     {
         public ApiSubscription AddUserSubscription(int userId, ApiSubscription sub)
         {
-            using (serviceEntities container = new serviceEntities())
+            using (rebtelEntities container = new rebtelEntities())
             {
                 //Utilities.toUrlFriendlyIndentifier(subscription.Name);
                 var user = container.Users.Find(userId);
@@ -71,7 +71,7 @@ namespace DataService
             }
             var entityUser = Utilities.ToEntityUser(user); 
             
-            using (serviceEntities container = new serviceEntities())
+            using (rebtelEntities container = new rebtelEntities())
             {
              
                 //If I where to use url-friendly-name I would have done this or maybe have a unique contstraint on the colmn and then add the count in the catch:
@@ -86,7 +86,7 @@ namespace DataService
       
         public IEnumerable<ApiUser> GetUsers()
         {
-            using (serviceEntities container = new serviceEntities())
+            using (rebtelEntities container = new rebtelEntities())
             {
                 foreach (var user in container.Users.Include("Subscriptions"))
                 {
@@ -97,7 +97,7 @@ namespace DataService
 
         public ApiUser GetUser(int userId)
         {
-            using (serviceEntities container = new serviceEntities())
+            using (rebtelEntities container = new rebtelEntities())
             {
                 var user = container.Users.Find(userId);
                 if (user == null)
@@ -110,7 +110,7 @@ namespace DataService
 
         public void DeleteUser(int userId)
         {
-            using (serviceEntities container = new serviceEntities())
+            using (rebtelEntities container = new rebtelEntities())
             {
                 User user = container.Users.Find(userId);  //Where(u => u.urlFriendly == urlFriendlyname).FirstOrDefault();
                 if (user != null)
@@ -125,7 +125,7 @@ namespace DataService
         {
 
             //throw new NotImplementedException();
-            using (serviceEntities container = new serviceEntities())
+            using (rebtelEntities container = new rebtelEntities())
             {
                 var user = container.Users.Find(userId);
                 if (user == null)
@@ -149,7 +149,7 @@ namespace DataService
 
         //public IEnumerable<ApiSubscription> GetSubscriptions()
         //{
-        //    using (serviceEntities container = new serviceEntities())
+        //    using (rebtelEntities container = new rebtelEntities())
         //    {
         //        foreach (var sub in container.Subscriptions)
         //        {
@@ -160,7 +160,7 @@ namespace DataService
 
         public ApiUser UpdateUser(ApiUser userValues)
         {
-            using (serviceEntities container = new serviceEntities())
+            using (rebtelEntities container = new rebtelEntities())
             {
                 var user = container.Users.Find(userValues.Id);
                 if (user == null)
@@ -177,7 +177,7 @@ namespace DataService
 
         public void DeleteSubscription(Guid subscriptionId)
         {
-            using (serviceEntities container = new serviceEntities())
+            using (rebtelEntities container = new rebtelEntities())
             {
                 try
                 {
@@ -194,7 +194,7 @@ namespace DataService
 
         public ApiSubscription UpdateSubscription(ApiSubscription subValues)
         {
-            using (serviceEntities container = new serviceEntities())
+            using (rebtelEntities container = new rebtelEntities())
             {
                 var sub = container.Subscriptions.Find(subValues.Id);
                 if (sub == null)

@@ -14,14 +14,18 @@ namespace DataService
     
     public partial class Subscription
     {
+        public Subscription()
+        {
+            this.Users = new HashSet<User>();
+        }
+    
         public System.Guid Id { get; set; }
         public string Name { get; set; }
-        public int UserId { get; set; }
         public decimal Price { get; set; }
         public decimal PriceIncVatAmount { get; set; }
         public int CallMinutes { get; set; }
         public string UrlFriendly { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }
