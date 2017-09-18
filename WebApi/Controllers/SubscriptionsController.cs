@@ -53,7 +53,7 @@ namespace WebApi.Controllers
 
         //Create subscription (POST -> /subscriptions) -> Deprecated ;)
         //Create subscription (POST -> /subscriptions/userId)
-        public HttpResponseMessage Post(int id, ApiSubscription subdata)
+        public HttpResponseMessage Post(int userId, ApiSubscription subdata)
         {
             if (subdata == null)
             {
@@ -61,7 +61,7 @@ namespace WebApi.Controllers
             }
             try
             {
-                var saved = repo.AddUserSubscription(id, subdata);
+                var saved = repo.AddUserSubscription(userId, subdata);
                 var response = Request.CreateResponse<ApiSubscription>(HttpStatusCode.Created, saved);
                 return response;
             }
