@@ -9,7 +9,7 @@ Softish parts: Architecture i.e. design, refactoring, REST(ful), IDE and tooling
 Todo:
 - [ ] Change User and Subscriptions relation from 1->* to \*->\* i.e. many to many relationship
    - [x] Change database model
-      - [ ] Get database under version control, i.e .mdf file
+      - [ ] Get database under version control, i.e .mdf file, Use DACPAC instead
       - [ ] Experiment with dacpac
    - [x] Create and redesign of API calls
       - [ ] Change DataService according to new design
@@ -19,5 +19,6 @@ Todo:
    - [ ] Add admin controller for new subscribe/unsubscribe functionality
 - [ ] Put everything in Docker
 - [ ] Make Controllers Async and clock
+- [ ] Hide internal id's from WebApi
 - [ ] Make Angular >= 4 front
     
