@@ -7,6 +7,15 @@ Hard parts: Web API, WCF, Entity Frame work, Swagger, SQL, Git
 Softish parts: Architecture i.e. design, refactoring, REST(ful), IDE and tooling, GitHub
 
 Todo:
-Make API reflect new many to many relationship
-  Refactor User and Sub controllers top pure CRUD
-  Add admin controller for subscribe, unsubscribe
+- [ ] Change User and Subscriptions relation from 1->* to \*->\* i.e. many to many relationship
+   - [x] Change database model
+   - [x] Create and redesign of API calls
+      - [ ] Change DataService according to new design
+          - [ ] Implement new methods to Subscribe, Unsubscribe, GetSubscriptionUsers
+          - [ ] Implement and refactor Subscription and User methods to pure CRUD
+      - [ ] Refactor User and Sub controllers to use new Repo methods
+   - [ ] Add admin controller for new subscribe/unsubscribe functionality
+- [ ] Put everything in Docker
+- [ ] Make Controllers Async and clock
+- [ ] Make Angular >= 4 front
+    
