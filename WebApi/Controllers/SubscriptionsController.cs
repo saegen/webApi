@@ -74,7 +74,7 @@ namespace WebApi.Controllers
 
         //Update subscription data such  (PUT -> /subscriptions/some-url-friendly-identifier)
         //id is redundant because I update the subscription directly from subdata
-        public HttpResponseMessage Put(int id, ApiSubscription subdata)
+        public HttpResponseMessage Put(ApiSubscription subdata)
         {
             if (subdata == null)
             {
