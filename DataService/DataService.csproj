@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DataService</RootNamespace>
     <AssemblyName>DataService</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -42,11 +42,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -86,7 +86,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IAdminService.cs" />
     <Compile Include="Interfaces\IAdminService.cs" />
     <Compile Include="rebModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -122,14 +121,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Types\" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="rebModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>rebModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="packages.config" />
     <Content Include="rebModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>rebModel.edmx</DependentUpon>
@@ -143,6 +140,7 @@
       <DependentUpon>rebModel.edmx</DependentUpon>
       <LastGenOutput>rebModel.cs</LastGenOutput>
     </Content>
+    <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

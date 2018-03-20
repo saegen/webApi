@@ -73,6 +73,7 @@ namespace DataService
                 Id = entityUser.Id,
                 FirstName = entityUser.FirstName,
                 LastName = entityUser.LastName,
+                Email = entityUser.Email,
                 Subscriptions = new HashSet<ApiSubscription>()
 
             };
