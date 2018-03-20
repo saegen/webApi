@@ -14,8 +14,8 @@ namespace DataService.Interfaces
         [OperationContract]
         void Subscribe(int userId, IEnumerable<ApiSubscription> subscriptions);
 
-        [OperationContract]
-        void Unsubscribe(int userId, Guid subscriptionId);
+        //[OperationContract]
+        //void Unsubscribe(int userId, Guid subscriptionId);
 
         [OperationContract]
         void Unsubscribe(int userId, IEnumerable<ApiSubscription> subscriptions);

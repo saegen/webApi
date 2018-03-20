@@ -15,17 +15,49 @@ namespace DataService
     {
         public void Subscribe(int userId, IEnumerable<ApiSubscription> subscriptions)
         {
-            throw new NotImplementedException();
+            using (rebtelEntities container = new rebtelEntities())
+            {
+                var user = container.Users.Find(userId);
+                if (user == null)
+                {
+                    throw new ArgumentNullException("No such user");
+                }
+                foreach (var sub in subscriptions)
+                {
+                    if (container.Subscriptions.Find(sub.Id) != null)
+                    {
+                        user.Subscriptions.Add(Utilities.ToEntitySubscription(sub));
+                    }
+                }
+            }
         }
 
-        public void Unsubscribe(int userId, Guid subscriptionId)
-        {
-            throw new NotImplementedException();
-        }
+        //public void Unsubscribe(int userId, Guid subscriptionId)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public void Unsubscribe(int userId, IEnumerable<ApiSubscription> subscriptions)
         {
-            throw new NotImplementedException();
+            if (subscriptions.Count() < 1)
+            {
+                throw new ArgumentNullException("No such user");
+            }
+            using (rebtelEntities container = new rebtelEntities())
+            {
+                var user = container.Users.Find(userId);
+                if (user == null)
+                {
+                    throw new ArgumentNullException("No such user");
+                }
+                foreach (var sub in subscriptions)
+                {
+                    if (container.Subscriptions.Find(sub.Id) != null)
+                    {
+                        user.Subscriptions.Add(Utilities.ToEntitySubscription(sub));
+                    }
+                }
+            }
         }
 
         public void UnsubscribeAll(int userId)
