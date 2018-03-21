@@ -42,7 +42,15 @@ namespace Common
             private set { }
             get
             {
-                return Subscriptions.Sum(s => s.PriceIncVatAmount);
+                try
+                {
+                    return Subscriptions.Sum(s => s.PriceIncVatAmount);
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
+                
             }
         }
 
@@ -52,7 +60,14 @@ namespace Common
             private set { }
             get
             {
-                return Subscriptions.Sum(s => s.CallMinutes);
+                try
+                {
+                    return Subscriptions.Sum(s => s.CallMinutes);
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
             }
         }
 
