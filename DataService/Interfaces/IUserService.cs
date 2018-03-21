@@ -15,7 +15,7 @@ namespace DataService.Interfaces
         int AddUser(ApiUser user);
 
         [OperationContract]
-        ApiSubscription AddUserSubscription(int userId, ApiSubscription subscription);
+        ApiSubscription AddSubscriptions(int userId, IEnumerable<ApiSubscription> subscriptions);
 
         [OperationContract]
         void DeleteUser(int userId);
