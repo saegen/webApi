@@ -4,7 +4,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-
+using System.Data;
+using System.Data.Entity;
 namespace DataService
 {
     using DataService.Interfaces;
@@ -15,6 +16,11 @@ namespace DataService
     {
         public void Subscribe(int userId, IEnumerable<ApiSubscription> subscriptions)
         {
+            if (!subscriptions.Any())
+            {
+                throw new ArgumentNullException("No subscriptions");
+            }
+
             using (rebtelEntities container = new rebtelEntities())
             {
                 var user = container.Users.Find(userId);
@@ -39,9 +45,9 @@ namespace DataService
 
         public void Unsubscribe(int userId, IEnumerable<ApiSubscription> subscriptions)
         {
-            if (subscriptions.Count() < 1)
+            if (!subscriptions.Any())
             {
-                throw new ArgumentNullException("No such user");
+                throw new ArgumentNullException("No subscriptions");
             }
             using (rebtelEntities container = new rebtelEntities())
             {
@@ -50,19 +56,30 @@ namespace DataService
                 {
                     throw new ArgumentNullException("No such user");
                 }
+
                 foreach (var sub in subscriptions)
                 {
-                    if (container.Subscriptions.Find(sub.Id) != null)
+                    var entitySub = Utilities.ToEntitySubscription(sub);
+                    if (user.Subscriptions.Contains(entitySub))
                     {
-                        user.Subscriptions.Add(Utilities.ToEntitySubscription(sub));
+                        user.Subscriptions.Remove(entitySub);
                     }
                 }
+                container.SaveChanges();
             }
         }
 
         public void UnsubscribeAll(int userId)
         {
-            throw new NotImplementedException();
+            using (rebtelEntities container = new rebtelEntities())
+            {
+                var user = container.Users.Find(userId);
+                foreach (var sub in user.Subscriptions)
+                {
+                    user.Subscriptions.Remove(sub);
+                }
+                container.SaveChanges();
+            }
         }
     }
 

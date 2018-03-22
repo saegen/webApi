@@ -42,24 +42,29 @@ namespace DataService
     // NOTE: In order to launch WCF Test Client for testing this service, please select DataService.svc or DataService.svc.cs at the Solution Explorer and start debugging.
     public class UserService : IUserService//, ISubscriptionService
     {
-        public ApiSubscription AddSubscriptions(int userId, ApiSubscription sub)
+        public ApiSubscription AddSubscriptions(int userId, IEnumerable<ApiSubscription> subs)
         {
+            if (subs == null || !subs.Any())
+            {
+                throw new ArgumentNullException("subs", "No subscriptions to add");
+            }
             using (rebtelEntities container = new rebtelEntities())
             {
-                //Utilities.toUrlFriendlyIndentifier(subscription.Name);
+                //Utilities.ToUrlFriendlyIndentifier(subscription.Name);
                 var user = container.Users.Find(userId);
+
                 if (user == null)
                 {
-                    throw new ArgumentNullException("No such user");
+                    throw new ArgumentNullException("userId", "No such user");
                 }
-                    sub.UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name);
-                    user.Subscriptions.Add(new Subscription() { Id = sub.Id,
-                    Name = sub.Name,
-                    Price = sub.Price,
-                    CallMinutes = sub.CallMinutes, PriceIncVatAmount = sub.PriceIncVatAmount, UrlFriendly = sub.UrlFriendly }
-                );
+                foreach (var sub in subs)
+                {
+                    sub.UrlFriendly = Utilities.ToUrlFriendlyIndentifier(sub.Name);
+                    Utilities.ToEntitySubscription(sub);
+                    user.Subscriptions.Add(Utilities.ToEntitySubscription(sub));
+                }                    
                 container.SaveChanges();
-                return sub;
+                return subs.First();
             }
         }
 
@@ -76,7 +81,7 @@ namespace DataService
              
                 //If I where to use url-friendly-name I would have done this or maybe have a unique contstraint on the colmn and then add the count in the catch:
                     //int count = container.Users.Where(u => u.FirstName == entityUser.FirstName && u.LastName == entityUser.LastName).Count();
-                    //entityUser.urlFriendly = Utilities.toUrlFriendlyIndentifier(entityUser.FirstName + "-" + entityUser.LastName);
+                    //entityUser.urlFriendly = Utilities.ToUrlFriendlyIndentifier(entityUser.FirstName + "-" + entityUser.LastName);
                     //entityUser.urlFriendly += count > 0 ? count.ToString() : "";
                     container.Users.Add(entityUser);
                     container.SaveChanges();
@@ -141,7 +146,7 @@ namespace DataService
                         Price = sub.Price,
                         PriceIncVatAmount = sub.PriceIncVatAmount,
                         CallMinutes = sub.CallMinutes,
-                        UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name)
+                        UrlFriendly = Utilities.ToUrlFriendlyIndentifier(sub.Name)
                     };
                 }
             }
@@ -204,7 +209,7 @@ namespace DataService
                 sub.Name = subValues.Name;
                 sub.Price = subValues.Price;
                 sub.PriceIncVatAmount = subValues.PriceIncVatAmount;
-                sub.UrlFriendly = Utilities.toUrlFriendlyIndentifier(subValues.Name);
+                sub.UrlFriendly = Utilities.ToUrlFriendlyIndentifier(subValues.Name);
                 container.SaveChanges();
                 return new ApiSubscription()
                 {
@@ -213,7 +218,7 @@ namespace DataService
                     Price = sub.Price,
                     PriceIncVatAmount = sub.PriceIncVatAmount,
                     CallMinutes = sub.CallMinutes,
-                    UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name)
+                    UrlFriendly = Utilities.ToUrlFriendlyIndentifier(sub.Name)
                 };
             }
         }

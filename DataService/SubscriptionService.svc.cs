@@ -17,13 +17,13 @@ namespace DataService
         {
             using (rebtelEntities container = new rebtelEntities())
             {
-                //Utilities.toUrlFriendlyIndentifier(subscription.Name);
+                //Utilities.ToUrlFriendlyIndentifier(subscription.Name);
                 var user = container.Users.Find(userId);
                 if (user == null)
                 {
                     throw new ArgumentNullException("No such user");
                 }
-                subscription.UrlFriendly = Utilities.toUrlFriendlyIndentifier(subscription.Name);
+                subscription.UrlFriendly = Utilities.ToUrlFriendlyIndentifier(subscription.Name);
                 user.Subscriptions.Add(Utilities.ToEntitySubscription(subscription));
                 container.SaveChanges();
                 return subscription;
@@ -43,7 +43,7 @@ namespace DataService
                         Price = sub.Price,
                         PriceIncVatAmount = sub.PriceIncVatAmount,
                         CallMinutes = sub.CallMinutes,
-                        UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name)
+                        UrlFriendly = Utilities.ToUrlFriendlyIndentifier(sub.Name)
                     };
                 }
             }
@@ -60,15 +60,7 @@ namespace DataService
                 }
                 foreach (var sub in user.Subscriptions)
                 {
-                    yield return new ApiSubscription()
-                    {
-                        Id = sub.Id,
-                        Name = sub.Name,
-                        Price = sub.Price,
-                        PriceIncVatAmount = sub.PriceIncVatAmount,
-                        CallMinutes = sub.CallMinutes,
-                        UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name)
-                    };
+                    yield return Utilities.ToApiSubscription(sub);
                 }
             }
         }
@@ -92,6 +84,10 @@ namespace DataService
 
         public ApiSubscription UpdateSubscription(ApiSubscription subValues)
         {
+            if (subValues == null)
+            {
+                throw new ArgumentNullException("subValues", "Subscription missing");
+            }
             using (rebtelEntities container = new rebtelEntities())
             {
                 var sub = container.Subscriptions.Find(subValues.Id);
@@ -102,17 +98,9 @@ namespace DataService
                 sub.Name = subValues.Name;
                 sub.Price = subValues.Price;
                 sub.PriceIncVatAmount = subValues.PriceIncVatAmount;
-                sub.UrlFriendly = Utilities.toUrlFriendlyIndentifier(subValues.Name);
+                sub.UrlFriendly = Utilities.ToUrlFriendlyIndentifier(subValues.Name);
                 container.SaveChanges();
-                return new ApiSubscription()
-                {
-                    Id = sub.Id,
-                    Name = sub.Name,
-                    Price = sub.Price,
-                    PriceIncVatAmount = sub.PriceIncVatAmount,
-                    CallMinutes = sub.CallMinutes,
-                    UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name)
-                };
+                return Utilities.ToApiSubscription(sub);                    
             }
         }
     }

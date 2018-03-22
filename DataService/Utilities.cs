@@ -9,7 +9,7 @@ namespace DataService
 {
     public static class Utilities
     {
-        public static string toUrlFriendlyIndentifier(string toFriendly)
+        public static string ToUrlFriendlyIndentifier(string toFriendly)
         {
             // make it all lower case
             toFriendly = toFriendly.ToLower();
@@ -51,7 +51,7 @@ namespace DataService
                 Price = source.Price,
                 PriceIncVatAmount = source.PriceIncVatAmount,
                 CallMinutes = source.CallMinutes,
-                UrlFriendly = Utilities.toUrlFriendlyIndentifier(source.Name)
+                UrlFriendly = Utilities.ToUrlFriendlyIndentifier(source.Name)
             };
         }
 
@@ -86,7 +86,7 @@ namespace DataService
                     Price = sub.Price,
                     PriceIncVatAmount = sub.PriceIncVatAmount,
                     CallMinutes = sub.CallMinutes,
-                    UrlFriendly = Utilities.toUrlFriendlyIndentifier(sub.Name)
+                    UrlFriendly = Utilities.ToUrlFriendlyIndentifier(sub.Name)
                 });
             }
             return apiUser;
