@@ -12,7 +12,7 @@ namespace DataService.Interfaces
     public interface IUserService
     {
         [OperationContract]
-        int AddUser(ApiUser user);
+        int CreateUser(ApiUser user);
 
         [OperationContract]
         ApiSubscription AddSubscriptions(int userId, IEnumerable<ApiSubscription> subscriptions);

@@ -68,7 +68,7 @@ namespace DataService
             }
         }
 
-        public int AddUser(ApiUser user)
+        public int CreateUser(ApiUser user)
         {
             if (user == null)
             {

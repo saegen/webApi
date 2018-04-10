@@ -13,22 +13,7 @@ namespace DataService
     // NOTE: In order to launch WCF Test Client for testing this service, please select SubscriptionService.svc or SubscriptionService.svc.cs at the Solution Explorer and start debugging.
     public class SubscriptionService : ISubscriptionService
     {
-        public ApiSubscription AddUserSubscription(int userId, ApiSubscription subscription)
-        {
-            using (rebtelEntities container = new rebtelEntities())
-            {
-                //Utilities.ToUrlFriendlyIndentifier(subscription.Name);
-                var user = container.Users.Find(userId);
-                if (user == null)
-                {
-                    throw new ArgumentNullException("No such user");
-                }
-                subscription.UrlFriendly = Utilities.ToUrlFriendlyIndentifier(subscription.Name);
-                user.Subscriptions.Add(Utilities.ToEntitySubscription(subscription));
-                container.SaveChanges();
-                return subscription;
-            }
-        }
+        
 
         public IEnumerable<ApiSubscription> GetSubscriptions()
         {
@@ -48,7 +33,7 @@ namespace DataService
                 }
             }
         }
-
+        //Ska denna vara på User eller båda eller inte alls? Den får vara kvar
         public IEnumerable<ApiSubscription> GetUserSubscriptions(int userId)
         {
             using (rebtelEntities container = new rebtelEntities())
@@ -102,6 +87,11 @@ namespace DataService
                 container.SaveChanges();
                 return Utilities.ToApiSubscription(sub);                    
             }
+        }
+
+        public int CreateSubscription(ApiSubscription subValues)
+        {
+            throw new NotImplementedException();
         }
     }
 }

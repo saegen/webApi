@@ -14,6 +14,22 @@ namespace DataService
     // NOTE: In order to launch WCF Test Client for testing this service, please select AdminService.svc or AdminService.svc.cs at the Solution Explorer and start debugging.
     public class AdminService : IAdminService
     {
+        public ApiSubscription AddUserSubscription(int userId, ApiSubscription subscription)
+        {
+            using (rebtelEntities container = new rebtelEntities())
+            {
+                //Utilities.ToUrlFriendlyIndentifier(subscription.Name);
+                var user = container.Users.Find(userId);
+                if (user == null)
+                {
+                    throw new ArgumentNullException("No such user");
+                }
+                subscription.UrlFriendly = Utilities.ToUrlFriendlyIndentifier(subscription.Name);
+                user.Subscriptions.Add(Utilities.ToEntitySubscription(subscription));
+                container.SaveChanges();
+                return subscription;
+            }
+        }
         public void Subscribe(int userId, IEnumerable<ApiSubscription> subscriptions)
         {
             if (!subscriptions.Any())
