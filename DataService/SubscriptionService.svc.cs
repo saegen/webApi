@@ -45,7 +45,7 @@ namespace DataService
                 }
                 foreach (var sub in user.Subscriptions)
                 {
-                    yield return Utilities.ToApiSubscription(sub);
+                    yield return sub.ExToApiSubscription(); //Utilities.ToApiSubscription(sub);
                 }
             }
         }
@@ -85,7 +85,7 @@ namespace DataService
                 sub.PriceIncVatAmount = subValues.PriceIncVatAmount;
                 sub.UrlFriendly = Utilities.ToUrlFriendlyIndentifier(subValues.Name);
                 container.SaveChanges();
-                return Utilities.ToApiSubscription(sub);                    
+                return sub.ExToApiSubscription(); //Utilities.ToApiSubscription(sub);                    
             }
         }
 

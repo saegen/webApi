@@ -43,9 +43,34 @@ namespace DataService
             };
         }
 
+        public static Subscription ExToEntitySubscription(this ApiSubscription source)
+        {
+            return new Subscription()
+            {
+                Id = source.Id,
+                Name = source.Name,
+                Price = source.Price,
+                PriceIncVatAmount = source.PriceIncVatAmount,
+                CallMinutes = source.CallMinutes,
+                UrlFriendly = source.UrlFriendly
+            };
+        }
         public static ApiSubscription ToApiSubscription(Subscription source)
         {
             return new ApiSubscription() {
+                Id = source.Id,
+                Name = source.Name,
+                Price = source.Price,
+                PriceIncVatAmount = source.PriceIncVatAmount,
+                CallMinutes = source.CallMinutes,
+                UrlFriendly = Utilities.ToUrlFriendlyIndentifier(source.Name)
+            };
+        }
+
+        public static ApiSubscription ExToApiSubscription(this Subscription source)
+        {
+            return new ApiSubscription()
+            {
                 Id = source.Id,
                 Name = source.Name,
                 Price = source.Price,
