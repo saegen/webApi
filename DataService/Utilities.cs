@@ -66,7 +66,11 @@ namespace DataService
                 UrlFriendly = Utilities.ToUrlFriendlyIndentifier(source.Name)
             };
         }
-
+        /// <summary>
+        /// Todo
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static ApiSubscription ExToApiSubscription(this Subscription source)
         {
             return new ApiSubscription()

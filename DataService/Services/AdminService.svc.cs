@@ -14,27 +14,11 @@ namespace DataService
     // NOTE: In order to launch WCF Test Client for testing this service, please select AdminService.svc or AdminService.svc.cs at the Solution Explorer and start debugging.
     public class AdminService : IAdminService
     {
-        public ApiSubscription AddUserSubscription(int userId, ApiSubscription subscription)
-        {
-            using (rebtelEntities container = new rebtelEntities())
-            {
-                //Utilities.ToUrlFriendlyIndentifier(subscription.Name);
-                var user = container.Users.Find(userId);
-                if (user == null)
-                {
-                    throw new ArgumentNullException("No such user");
-                }
-                subscription.UrlFriendly = Utilities.ToUrlFriendlyIndentifier(subscription.Name);
-                user.Subscriptions.Add(Utilities.ToEntitySubscription(subscription));
-                container.SaveChanges();
-                return subscription;
-            }
-        }
         public void Subscribe(int userId, IEnumerable<ApiSubscription> subscriptions)
         {
             if (!subscriptions.Any())
             {
-                throw new ArgumentNullException("No subscriptions");
+                throw new ArgumentNullException("No subscriptions to add");
             }
 
             using (rebtelEntities container = new rebtelEntities())
@@ -51,17 +35,13 @@ namespace DataService
                         user.Subscriptions.Add(Utilities.ToEntitySubscription(sub));
                     }
                 }
+                container.SaveChanges();
             }
         }
 
-        //public void Unsubscribe(int userId, Guid subscriptionId)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        public void Unsubscribe(int userId, IEnumerable<ApiSubscription> subscriptions)
+        public void Unsubscribe(int userId, Guid subscriptionId)
         {
-            if (!subscriptions.Any())
+            if (subscriptionId == null || subscriptionId == Guid.Empty)
             {
                 throw new ArgumentNullException("No subscriptions");
             }
@@ -72,15 +52,12 @@ namespace DataService
                 {
                     throw new ArgumentNullException("No such user");
                 }
-
-                foreach (var sub in subscriptions)
+                var sub = user.Subscriptions.Single(x => x.Id == subscriptionId);
+                if (sub == null)
                 {
-                    var entitySub = Utilities.ToEntitySubscription(sub);
-                    if (user.Subscriptions.Contains(entitySub))
-                    {
-                        user.Subscriptions.Remove(entitySub);
-                    }
+                    throw new FaultException("No such subscription");
                 }
+                user.Subscriptions.Remove(sub);
                 container.SaveChanges();
             }
         }
@@ -90,10 +67,7 @@ namespace DataService
             using (rebtelEntities container = new rebtelEntities())
             {
                 var user = container.Users.Find(userId);
-                foreach (var sub in user.Subscriptions)
-                {
-                    user.Subscriptions.Remove(sub);
-                }
+                user.Subscriptions.Clear();
                 container.SaveChanges();
             }
         }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/12/2017 10:19:37
+-- Date Created: 04/10/2018 11:53:26
 -- Generated from EDMX file: C:\Gitrepos\WebAPI\DataService\rebModel.edmx
 -- --------------------------------------------------
 
@@ -17,8 +17,11 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_UsersSubscriptions]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Subscriptions] DROP CONSTRAINT [FK_UsersSubscriptions];
+IF OBJECT_ID(N'[dbo].[FK_user]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[user_subscription] DROP CONSTRAINT [FK_user];
+GO
+IF OBJECT_ID(N'[dbo].[FK_user_subscription_Subscriptions]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[user_subscription] DROP CONSTRAINT [FK_user_subscription_Subscriptions];
 GO
 
 -- --------------------------------------------------
@@ -27,6 +30,9 @@ GO
 
 IF OBJECT_ID(N'[dbo].[Subscriptions]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Subscriptions];
+GO
+IF OBJECT_ID(N'[dbo].[user_subscription]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[user_subscription];
 GO
 IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users];
@@ -40,7 +46,6 @@ GO
 CREATE TABLE [dbo].[Subscriptions] (
     [Id] uniqueidentifier  NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [UserId] int  NOT NULL,
     [Price] decimal(18,2)  NOT NULL,
     [PriceIncVatAmount] decimal(18,2)  NOT NULL,
     [CallMinutes] int  NOT NULL,
@@ -54,6 +59,13 @@ CREATE TABLE [dbo].[Users] (
     [FirstName] nvarchar(max)  NOT NULL,
     [LastName] nvarchar(max)  NOT NULL,
     [Email] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'user_subscription'
+CREATE TABLE [dbo].[user_subscription] (
+    [Users_Id] int  NOT NULL,
+    [Subscriptions_Id] uniqueidentifier  NOT NULL
 );
 GO
 
@@ -73,23 +85,38 @@ ADD CONSTRAINT [PK_Users]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+-- Creating primary key on [Users_Id], [Subscriptions_Id] in table 'user_subscription'
+ALTER TABLE [dbo].[user_subscription]
+ADD CONSTRAINT [PK_user_subscription]
+    PRIMARY KEY CLUSTERED ([Users_Id], [Subscriptions_Id] ASC);
+GO
+
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [UserId] in table 'Subscriptions'
-ALTER TABLE [dbo].[Subscriptions]
-ADD CONSTRAINT [FK_UsersSubscriptions]
-    FOREIGN KEY ([UserId])
+-- Creating foreign key on [Users_Id] in table 'user_subscription'
+ALTER TABLE [dbo].[user_subscription]
+ADD CONSTRAINT [FK_user_subscription_User]
+    FOREIGN KEY ([Users_Id])
     REFERENCES [dbo].[Users]
         ([Id])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_UsersSubscriptions'
-CREATE INDEX [IX_FK_UsersSubscriptions]
-ON [dbo].[Subscriptions]
-    ([UserId]);
+-- Creating foreign key on [Subscriptions_Id] in table 'user_subscription'
+ALTER TABLE [dbo].[user_subscription]
+ADD CONSTRAINT [FK_user_subscription_Subscription]
+    FOREIGN KEY ([Subscriptions_Id])
+    REFERENCES [dbo].[Subscriptions]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_user_subscription_Subscription'
+CREATE INDEX [IX_FK_user_subscription_Subscription]
+ON [dbo].[user_subscription]
+    ([Subscriptions_Id]);
 GO
 
 -- --------------------------------------------------

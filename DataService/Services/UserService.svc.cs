@@ -79,7 +79,7 @@ namespace DataService
             using (rebtelEntities container = new rebtelEntities())
             {
              
-                //If I where to use url-friendly-name I would have done this or maybe have a unique contstraint on the colmn and then add the count in the catch:
+                    //If I where to use url-friendly-name I would have done this or maybe have a unique contstraint on the colmn and then add the count in the catch:
                     //int count = container.Users.Where(u => u.FirstName == entityUser.FirstName && u.LastName == entityUser.LastName).Count();
                     //entityUser.urlFriendly = Utilities.ToUrlFriendlyIndentifier(entityUser.FirstName + "-" + entityUser.LastName);
                     //entityUser.urlFriendly += count > 0 ? count.ToString() : "";
@@ -192,7 +192,7 @@ namespace DataService
                 }
                 catch (Exception) { 
                   //todo add logging  
-                }//if its there its already deleted 
+                }
 
             }
         }

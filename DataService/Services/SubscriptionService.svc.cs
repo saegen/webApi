@@ -33,6 +33,7 @@ namespace DataService
                 }
             }
         }
+    
         //Ska denna vara på User eller båda eller inte alls? Den får vara kvar
         public IEnumerable<ApiSubscription> GetUserSubscriptions(int userId)
         {
@@ -91,7 +92,12 @@ namespace DataService
 
         public int CreateSubscription(ApiSubscription subValues)
         {
-            throw new NotImplementedException();
+            using (rebtelEntities container = new rebtelEntities())
+            {
+                container.Subscriptions.Add(subValues.ExToEntitySubscription());
+                container.SaveChanges();
+            }
+            return 1;
         }
     }
 }
