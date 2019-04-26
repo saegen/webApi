@@ -12,11 +12,17 @@ Todo:
       - [ ] ~~Get database under version control, i.e .mdf file, Use DACPAC instead~~
       - [ ] ~~Experiment with dacpac~~
    - [x] Create and redesign of API calls
-      - [ ] Change DataService according to new design
+   - [ ] Introduce error handling per level.
+         - [ ] Design error handling mechanism
+         - [ ] Implement logging with Log4Net at DataService Level
+         - [ ] Implement http at WebApi Level
+    - [ ] Change DataService according to new design
           - [ ] Implement new methods to Subscribe, Unsubscribe, GetSubscriptionUsers
-          - [ ] Implement and refactor Subscription and User methods to pure CRUD
-      - [ ] Refactor User and Sub controllers to use new Repo methods
-   - [ ] Add admin controller for new subscribe/unsubscribe functionality
+          - [x] Implement and refactor Subscription and User methods to pure CRUD
+    - [ ] Refactor User and Sub controllers to use new Repo methods
+    - [ ] Add AdminServcie for new subscribe/unsubscribe functionality
+    - [ ] Add admin controller for new subscribe/unsubscribe functionality
+   - [ ] Add AdminRepo for new subscribe/unsubscribe functionality
 - [ ] Put everything in Docker
 - [ ] Make Controllers Async and clock
 - [ ] Hide internal id's from WebApi
