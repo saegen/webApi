@@ -16,7 +16,7 @@ namespace DataService
     {
         public void Subscribe(int userId, IEnumerable<ApiSubscription> subscriptions)
         {
-            if (!subscriptions.Any())
+            if (subscriptions == null || !subscriptions.Any())
             {
                 throw new ArgumentNullException("No subscriptions to add");
             }
@@ -33,7 +33,7 @@ namespace DataService
                     if (container.Subscriptions.Find(sub.Id) != null)
                     {
                         user.Subscriptions.Add(Utilities.ToEntitySubscription(sub));
-                    }
+                    }//skulle kunna ha en continue om det skulle finnas en felaktig prenumeration, alternativt så ska det loggas att man skickar in felaktig data
                 }
                 container.SaveChanges();
             }
@@ -71,6 +71,59 @@ namespace DataService
                 container.SaveChanges();
             }
         }
+
+        public IEnumerable<ApiSubscription> GetUserSubscriptions(int userId)
+        {
+            using (rebtelEntities container = new rebtelEntities())
+            {
+                var user = container.Users.Find(userId);
+                if (user == null)
+                {
+                    throw new FaultException("No such user");
+                }
+                foreach (var sub in user.Subscriptions)
+                {
+                    yield return sub.ExToApiSubscription(); //Utilities.ToApiSubscription(sub);
+                }
+            }
+        }
+
+        public IEnumerable<ApiUser> GetSubscriptionUsers(Guid subscriptionId)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+        /*
+        public ApiSubscription AddSubscriptions(int userId, IEnumerable<ApiSubscription> subs)
+        {
+            if (subs == null || !subs.Any())
+            {
+                throw new ArgumentNullException("subs", "No subscriptions to add");
+            }
+            using (rebtelEntities container = new rebtelEntities())
+            {
+                //Utilities.ToUrlFriendlyIndentifier(subscription.Name);
+                var user = container.Users.Find(userId);
+
+                if (user == null)
+                {
+                    throw new ArgumentNullException("userId", "No such user");
+                }
+                foreach (var sub in subs)
+                {
+                    sub.UrlFriendly = Utilities.ToUrlFriendlyIndentifier(sub.Name);
+                    Utilities.ToEntitySubscription(sub);
+                    user.Subscriptions.Add(Utilities.ToEntitySubscription(sub));
+                }
+                container.SaveChanges();
+                return subs.First();
+            }
+        }
+
+        */
+
     }
 
 }

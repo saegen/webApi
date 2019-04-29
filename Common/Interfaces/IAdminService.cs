@@ -19,6 +19,10 @@ namespace DataService.Interfaces
 
         [OperationContract]
         void UnsubscribeAll(int userId);
+        [OperationContract]
+        IEnumerable<ApiSubscription> GetUserSubscriptions(int userId);
+        [OperationContract]
+        IEnumerable<ApiUser> GetSubscriptionUsers(Guid subscriptionId);
 
     }
 }

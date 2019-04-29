@@ -18,4 +18,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ApiSubscription" nillable="true" type="tns:ApiSubscription" />
+  <xs:complexType name="ArrayOfApiUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ApiUser" nillable="true" type="tns:ApiUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApiUser" nillable="true" type="tns:ArrayOfApiUser" />
+  <xs:complexType name="ApiUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Subscriptions" nillable="true" type="tns:ArrayOfApiSubscription" />
+      <xs:element minOccurs="0" name="TotalCallMinutes" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalPriceIncVatAmount" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ApiUser" nillable="true" type="tns:ApiUser" />
 </xs:schema>

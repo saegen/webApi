@@ -16,10 +16,10 @@ namespace WebApi.UserService {
     public interface IUserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/CreateUser", ReplyAction="http://dataservice/interfaces/user/IUserService/CreateUserResponse")]
-        int CreateUser(Common.ApiUser user);
+        Common.ApiUser CreateUser(Common.ApiUser user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/CreateUser", ReplyAction="http://dataservice/interfaces/user/IUserService/CreateUserResponse")]
-        System.Threading.Tasks.Task<int> CreateUserAsync(Common.ApiUser user);
+        System.Threading.Tasks.Task<Common.ApiUser> CreateUserAsync(Common.ApiUser user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/DeleteUser", ReplyAction="http://dataservice/interfaces/user/IUserService/DeleteUserResponse")]
         void DeleteUser(int userId);
@@ -73,11 +73,11 @@ namespace WebApi.UserService {
                 base(binding, remoteAddress) {
         }
         
-        public int CreateUser(Common.ApiUser user) {
+        public Common.ApiUser CreateUser(Common.ApiUser user) {
             return base.Channel.CreateUser(user);
         }
         
-        public System.Threading.Tasks.Task<int> CreateUserAsync(Common.ApiUser user) {
+        public System.Threading.Tasks.Task<Common.ApiUser> CreateUserAsync(Common.ApiUser user) {
             return base.Channel.CreateUserAsync(user);
         }
         

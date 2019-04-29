@@ -9,8 +9,7 @@ namespace WebApi.Models
 {
     interface IUserRepo
     {
-        ApiSubscription AddUserSubscription(int userId, ApiSubscription subscription);
-        int AddUser(ApiUser user);
+        ApiUser CreateUser(ApiUser user);
         ApiUser GetUser(int userId);
         IEnumerable<ApiUser> GetUsers();
         void DeleteUser(int userId);

@@ -32,6 +32,18 @@ namespace WebApi.AdminService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/UnsubscribeAll", ReplyAction="http://dataservice/interfaces/admin/IAdminService/UnsubscribeAllResponse")]
         System.Threading.Tasks.Task UnsubscribeAllAsync(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/GetUserSubscriptions", ReplyAction="http://dataservice/interfaces/admin/IAdminService/GetUserSubscriptionsResponse")]
+        Common.ApiSubscription[] GetUserSubscriptions(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/GetUserSubscriptions", ReplyAction="http://dataservice/interfaces/admin/IAdminService/GetUserSubscriptionsResponse")]
+        System.Threading.Tasks.Task<Common.ApiSubscription[]> GetUserSubscriptionsAsync(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/GetSubscriptionUsers", ReplyAction="http://dataservice/interfaces/admin/IAdminService/GetSubscriptionUsersResponse")]
+        Common.ApiUser[] GetSubscriptionUsers(System.Guid subscriptionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/GetSubscriptionUsers", ReplyAction="http://dataservice/interfaces/admin/IAdminService/GetSubscriptionUsersResponse")]
+        System.Threading.Tasks.Task<Common.ApiUser[]> GetSubscriptionUsersAsync(System.Guid subscriptionId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +95,22 @@ namespace WebApi.AdminService {
         
         public System.Threading.Tasks.Task UnsubscribeAllAsync(int userId) {
             return base.Channel.UnsubscribeAllAsync(userId);
+        }
+        
+        public Common.ApiSubscription[] GetUserSubscriptions(int userId) {
+            return base.Channel.GetUserSubscriptions(userId);
+        }
+        
+        public System.Threading.Tasks.Task<Common.ApiSubscription[]> GetUserSubscriptionsAsync(int userId) {
+            return base.Channel.GetUserSubscriptionsAsync(userId);
+        }
+        
+        public Common.ApiUser[] GetSubscriptionUsers(System.Guid subscriptionId) {
+            return base.Channel.GetSubscriptionUsers(subscriptionId);
+        }
+        
+        public System.Threading.Tasks.Task<Common.ApiUser[]> GetSubscriptionUsersAsync(System.Guid subscriptionId) {
+            return base.Channel.GetSubscriptionUsersAsync(subscriptionId);
         }
     }
 }
