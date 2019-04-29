@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="36e1e4c8-fdc5-4df2-9b52-233426fdc0b7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/DataService/Services/SubscriptionService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SubscriptionService3.xsd" MetadataType="Schema" ID="a029f3e6-4154-4709-93b0-d89897d62c77" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/SubscriptionService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SubscriptionService1.disco" MetadataType="Disco" ID="59f5919f-3eee-4f07-9921-f23764a54470" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/SubscriptionService.svc?disco" />
+    <MetadataFile FileName="SubscriptionService2.wsdl" MetadataType="Wsdl" ID="bbb35bca-5c33-4ea2-8bfc-cb5058dbf546" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/SubscriptionService.svc?wsdl" />
+    <MetadataFile FileName="SubscriptionService21.wsdl" MetadataType="Wsdl" ID="f936d003-0b25-4cf8-a62b-117db3e6c813" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/SubscriptionService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="SubscriptionService31.xsd" MetadataType="Schema" ID="d3644c49-06a5-4bc7-8576-c8da9ba14157" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/SubscriptionService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SubscriptionService32.xsd" MetadataType="Schema" ID="e378697b-2e51-4390-a7cf-c2c167268f61" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/SubscriptionService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

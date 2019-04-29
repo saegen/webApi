@@ -8,24 +8,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApi.UserServiceReference {
+namespace WebApi.UserService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://dataservice/interfaces/user", ConfigurationName="UserServiceReference.IUserService")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://dataservice/interfaces/user", ConfigurationName="UserService.IUserService")]
     public interface IUserService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/AddUser", ReplyAction="http://dataservice/interfaces/user/IUserService/AddUserResponse")]
-        int AddUser(Common.ApiUser user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/CreateUser", ReplyAction="http://dataservice/interfaces/user/IUserService/CreateUserResponse")]
+        int CreateUser(Common.ApiUser user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/AddUser", ReplyAction="http://dataservice/interfaces/user/IUserService/AddUserResponse")]
-        System.Threading.Tasks.Task<int> AddUserAsync(Common.ApiUser user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/AddUserSubscription", ReplyAction="http://dataservice/interfaces/user/IUserService/AddUserSubscriptionResponse")]
-        Common.ApiSubscription AddUserSubscription(int userId, Common.ApiSubscription subscription);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/AddUserSubscription", ReplyAction="http://dataservice/interfaces/user/IUserService/AddUserSubscriptionResponse")]
-        System.Threading.Tasks.Task<Common.ApiSubscription> AddUserSubscriptionAsync(int userId, Common.ApiSubscription subscription);
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/CreateUser", ReplyAction="http://dataservice/interfaces/user/IUserService/CreateUserResponse")]
+        System.Threading.Tasks.Task<int> CreateUserAsync(Common.ApiUser user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/DeleteUser", ReplyAction="http://dataservice/interfaces/user/IUserService/DeleteUserResponse")]
         void DeleteUser(int userId);
@@ -53,12 +47,12 @@ namespace WebApi.UserServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IUserServiceChannel : WebApi.UserServiceReference.IUserService, System.ServiceModel.IClientChannel {
+    public interface IUserServiceChannel : WebApi.UserService.IUserService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UserServiceClient : System.ServiceModel.ClientBase<WebApi.UserServiceReference.IUserService>, WebApi.UserServiceReference.IUserService {
+    public partial class UserServiceClient : System.ServiceModel.ClientBase<WebApi.UserService.IUserService>, WebApi.UserService.IUserService {
         
         public UserServiceClient() {
         }
@@ -79,20 +73,12 @@ namespace WebApi.UserServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public int AddUser(Common.ApiUser user) {
-            return base.Channel.AddUser(user);
+        public int CreateUser(Common.ApiUser user) {
+            return base.Channel.CreateUser(user);
         }
         
-        public System.Threading.Tasks.Task<int> AddUserAsync(Common.ApiUser user) {
-            return base.Channel.AddUserAsync(user);
-        }
-        
-        public Common.ApiSubscription AddUserSubscription(int userId, Common.ApiSubscription subscription) {
-            return base.Channel.AddUserSubscription(userId, subscription);
-        }
-        
-        public System.Threading.Tasks.Task<Common.ApiSubscription> AddUserSubscriptionAsync(int userId, Common.ApiSubscription subscription) {
-            return base.Channel.AddUserSubscriptionAsync(userId, subscription);
+        public System.Threading.Tasks.Task<int> CreateUserAsync(Common.ApiUser user) {
+            return base.Channel.CreateUserAsync(user);
         }
         
         public void DeleteUser(int userId) {

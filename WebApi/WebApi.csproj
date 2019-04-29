@@ -171,23 +171,31 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SubscriptionsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminRepo.cs" />
+    <Compile Include="Models\IAdminRepo.cs" />
     <Compile Include="Models\ISubscriptionRepo.cs" />
     <Compile Include="Models\IUserRepo.cs" />
     <Compile Include="Models\SubscriptionRepo.cs" />
     <Compile Include="Models\UserRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\SubscriptionServiceReference\Reference.cs">
+    <Compile Include="Service References\AdminService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\UserServiceReference\Reference.cs">
+    <Compile Include="Service References\SubscriptionService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UserService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -230,20 +238,49 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <None Include="Service References\SubscriptionServiceReference\SubscriptionService.disco" />
-    <None Include="Service References\SubscriptionServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\SubscriptionServiceReference\configuration.svcinfo" />
-    <None Include="Service References\SubscriptionServiceReference\Reference.svcmap">
+    <None Include="Service References\AdminService\AdminService.wsdl" />
+    <None Include="Service References\AdminService\AdminService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminService\AdminService1.wsdl" />
+    <None Include="Service References\AdminService\AdminService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminService\AdminService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SubscriptionService\configuration91.svcinfo" />
+    <None Include="Service References\SubscriptionService\configuration.svcinfo" />
+    <None Include="Service References\SubscriptionService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\UserServiceReference\UserService.disco" />
-    <None Include="Service References\UserServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\UserServiceReference\configuration.svcinfo" />
-    <None Include="Service References\UserServiceReference\Reference.svcmap">
+    <None Include="Service References\SubscriptionService\SubscriptionService2.wsdl" />
+    <None Include="Service References\SubscriptionService\SubscriptionService21.wsdl" />
+    <None Include="Service References\SubscriptionService\SubscriptionService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SubscriptionService\SubscriptionService31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SubscriptionService\SubscriptionService32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserService\configuration91.svcinfo" />
+    <None Include="Service References\UserService\configuration.svcinfo" />
+    <None Include="Service References\UserService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\AdminService\AdminService.disco" />
+    <None Include="Service References\AdminService\configuration91.svcinfo" />
+    <None Include="Service References\AdminService\configuration.svcinfo" />
+    <None Include="Service References\AdminService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\SubscriptionService\SubscriptionService1.disco" />
+    <None Include="Service References\UserService\UserService1.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -262,27 +299,16 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <None Include="Service References\SubscriptionServiceReference\SubscriptionService.wsdl" />
-    <None Include="Service References\SubscriptionServiceReference\SubscriptionService.xsd">
+    <None Include="Service References\UserService\UserService3.wsdl" />
+    <None Include="Service References\UserService\UserService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SubscriptionServiceReference\SubscriptionService1.wsdl" />
-    <None Include="Service References\SubscriptionServiceReference\SubscriptionService1.xsd">
+    <None Include="Service References\UserService\UserService31.wsdl" />
+    <None Include="Service References\UserService\UserService31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\SubscriptionServiceReference\SubscriptionService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UserServiceReference\UserService.wsdl" />
-    <None Include="Service References\UserServiceReference\UserService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UserServiceReference\UserService1.wsdl" />
-    <None Include="Service References\UserServiceReference\UserService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\UserServiceReference\UserService2.wsdl" />
-    <None Include="Service References\UserServiceReference\UserService2.xsd">
+    <None Include="Service References\UserService\UserService32.wsdl" />
+    <None Include="Service References\UserService\UserService32.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -297,8 +323,9 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\SubscriptionServiceReference\" />
-    <WCFMetadataStorage Include="Service References\UserServiceReference\" />
+    <WCFMetadataStorage Include="Service References\AdminService\" />
+    <WCFMetadataStorage Include="Service References\SubscriptionService\" />
+    <WCFMetadataStorage Include="Service References\UserService\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
