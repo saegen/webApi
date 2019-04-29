@@ -27,7 +27,7 @@ Todo:
          - [ ] Design error handling mechanism
          - [ ] Implement logging with Log4Net at DataService Level
          - [ ] Implement logging at WebApi Level
-- [ ] Hide internal id's from WebApi
+- [ ] Hide internal id's from WebApi. i.e Refactor ResultDTOs 
 - [ ] Make Angular 2+ front
     
 
