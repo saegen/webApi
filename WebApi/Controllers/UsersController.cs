@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using WebApi.Models;
-using WebApi.UserServiceReference;
+using WebApi.UserService;
 using Common;
 
 namespace WebApi.Controllers
@@ -15,7 +15,7 @@ namespace WebApi.Controllers
 // Get all users (GET -> /users)
 //Get current user (GET -> /users/some-url-friendly-identifier)
 //Create user (POST -> /users)
-//Add subscription to user (PUT -> /users/subscriptionId)
+//Add subscriptions to user (PUT -> /users/subscriptionId)
 //Delete user (DELETE -> /users/some-url-friendly-identifier)
 
     public class UsersController : ApiController
@@ -49,8 +49,8 @@ namespace WebApi.Controllers
         {
             try
             {
-                int userId = repo.AddUser(user);
-                return Request.CreateResponse(HttpStatusCode.Created, "User id: " + userId.ToString());
+                var newApiUser = repo.CreateUser(user);
+                return Request.CreateResponse<ApiUser>(HttpStatusCode.Created,newApiUser);
             }
             catch (Exception ex)
             {
@@ -58,25 +58,19 @@ namespace WebApi.Controllers
             }
         }
 
-        //Add subscription to user (PUT -> /users/subscriptionId) spec changed to:
-        //Add subscription to user (PUT -> /users/userId) (major violation of spec)
-        public HttpResponseMessage Put(int id, ApiSubscription subdata)
+        //Add subscriptions to user (PUT -> /users/subscriptionId) spec changed to:
+        //Add subscriptions to user (PUT -> /users/userId) (major violation of spec)
+        public HttpResponseMessage Put(ApiUser user)
         {
             try
             {
-                if (subdata == null)
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, new ArgumentNullException("ApiSubscription"));
-                }
-                //get CurrentUser instead
-                var user = repo.GetUser(id);
                 if (user == null)
                 {
-                    return Request.CreateErrorResponse(HttpStatusCode.NoContent,"No user with id: " +  id.ToString());
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, new ArgumentNullException("ApiUser"));
                 }
-
-                var replySub = repo.AddUserSubscription(id, subdata);
-                return Request.CreateResponse<ApiSubscription>(HttpStatusCode.OK, replySub);
+                //get CurrentUser instead
+                user = repo.UpdateUser(user);
+                return Request.CreateResponse<ApiUser>(HttpStatusCode.OK, user);
             }
             catch (Exception ex)
             {
@@ -86,7 +80,7 @@ namespace WebApi.Controllers
         }
 
         //Delete user (DELETE -> /users/some-url-friendly-identifier)
-        //Foreign Key with cascade on delete also deletes all of the users subscriptions
+        //Foreign Key with cascade on delete also deletes all of the users subscriptions.  ServiceBus ska till för detta
         public HttpResponseMessage Delete(int id)
         {
             try
