@@ -9,9 +9,10 @@ namespace WebApi.Models
 {
     interface ISubscriptionRepo
     {
-        ApiSubscription AddUserSubscription(int userId, ApiSubscription subscription);
-        IEnumerable<ApiSubscription> GetUserSubscriptions(int userId);
+        //Hämta 1
+        ApiSubscription GetSubscription(Guid subscriptionId);
         IEnumerable<ApiSubscription> GetSubscriptions();
+        ApiSubscription CreateSubscription(ApiSubscription subscription);
         void DeleteSubscription(Guid subscriptionId);
         ApiSubscription UpdateSubscription(ApiSubscription sub);
     }

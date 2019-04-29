@@ -15,6 +15,14 @@ namespace WebApi.SubscriptionService {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://dataservice/interfaces/subscription", ConfigurationName="SubscriptionService.ISubscriptionService")]
     public interface ISubscriptionService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscription", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptionRe" +
+            "sponse")]
+        Common.ApiSubscription GetSubscription(System.Guid subscriptionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscription", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptionRe" +
+            "sponse")]
+        System.Threading.Tasks.Task<Common.ApiSubscription> GetSubscriptionAsync(System.Guid subscriptionId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptions", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptionsR" +
             "esponse")]
         Common.ApiSubscription[] GetSubscriptions();
@@ -22,16 +30,6 @@ namespace WebApi.SubscriptionService {
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptions", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptionsR" +
             "esponse")]
         System.Threading.Tasks.Task<Common.ApiSubscription[]> GetSubscriptionsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetUserSubscripti" +
-            "ons", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/GetUserSubscripti" +
-            "onsResponse")]
-        Common.ApiSubscription[] GetUserSubscriptions(int userId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetUserSubscripti" +
-            "ons", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/GetUserSubscripti" +
-            "onsResponse")]
-        System.Threading.Tasks.Task<Common.ApiSubscription[]> GetUserSubscriptionsAsync(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/DeleteSubscriptio" +
             "n", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/DeleteSubscriptio" +
@@ -56,12 +54,12 @@ namespace WebApi.SubscriptionService {
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/CreateSubscriptio" +
             "n", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/CreateSubscriptio" +
             "nResponse")]
-        int CreateSubscription(Common.ApiSubscription subValues);
+        Common.ApiSubscription CreateSubscription(Common.ApiSubscription subValues);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/CreateSubscriptio" +
             "n", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/CreateSubscriptio" +
             "nResponse")]
-        System.Threading.Tasks.Task<int> CreateSubscriptionAsync(Common.ApiSubscription subValues);
+        System.Threading.Tasks.Task<Common.ApiSubscription> CreateSubscriptionAsync(Common.ApiSubscription subValues);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -91,20 +89,20 @@ namespace WebApi.SubscriptionService {
                 base(binding, remoteAddress) {
         }
         
+        public Common.ApiSubscription GetSubscription(System.Guid subscriptionId) {
+            return base.Channel.GetSubscription(subscriptionId);
+        }
+        
+        public System.Threading.Tasks.Task<Common.ApiSubscription> GetSubscriptionAsync(System.Guid subscriptionId) {
+            return base.Channel.GetSubscriptionAsync(subscriptionId);
+        }
+        
         public Common.ApiSubscription[] GetSubscriptions() {
             return base.Channel.GetSubscriptions();
         }
         
         public System.Threading.Tasks.Task<Common.ApiSubscription[]> GetSubscriptionsAsync() {
             return base.Channel.GetSubscriptionsAsync();
-        }
-        
-        public Common.ApiSubscription[] GetUserSubscriptions(int userId) {
-            return base.Channel.GetUserSubscriptions(userId);
-        }
-        
-        public System.Threading.Tasks.Task<Common.ApiSubscription[]> GetUserSubscriptionsAsync(int userId) {
-            return base.Channel.GetUserSubscriptionsAsync(userId);
         }
         
         public void DeleteSubscription(System.Guid subscriptionId) {
@@ -123,11 +121,11 @@ namespace WebApi.SubscriptionService {
             return base.Channel.UpdateSubscriptionAsync(subValues);
         }
         
-        public int CreateSubscription(Common.ApiSubscription subValues) {
+        public Common.ApiSubscription CreateSubscription(Common.ApiSubscription subValues) {
             return base.Channel.CreateSubscription(subValues);
         }
         
-        public System.Threading.Tasks.Task<int> CreateSubscriptionAsync(Common.ApiSubscription subValues) {
+        public System.Threading.Tasks.Task<Common.ApiSubscription> CreateSubscriptionAsync(Common.ApiSubscription subValues) {
             return base.Channel.CreateSubscriptionAsync(subValues);
         }
     }

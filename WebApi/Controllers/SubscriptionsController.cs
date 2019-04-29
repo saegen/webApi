@@ -7,7 +7,7 @@ using System.Web.Http;
 using WebApi.Models;
 using Common;
 //using WebApi.UserServiceReference;
-using WebApi.SubscriptionServiceReference;
+using WebApi.SubscriptionService;
 //using WebApi.UserServiceReference;
 
 namespace WebApi.Controllers
@@ -21,6 +21,7 @@ namespace WebApi.Controllers
             repo = new SubscriptionRepo(client);
         }
         //Get all subscriptions (GET -> /subscriptions)
+        //todo: Gör om till Ayncron och Fixa den globala IExceptionHandler istället för try/catch
         public IEnumerable<ApiSubscription> Get()
         {
             try
@@ -33,12 +34,12 @@ namespace WebApi.Controllers
             }      
         }
 
-        //Get current subscription (GET -> /subscriptions/some-url-friendly-identifier)ie userId
-        public IEnumerable<ApiSubscription> Get(int id)
+        //Get current subscription (GET -> /subscriptions/some-url-friendly-identifier)ie userId, borde vara Name, tex spiderman
+        public ApiSubscription Get(Guid subscriptionId)
         {
             try
             {
-                var sub = repo.GetUserSubscriptions(id);
+                var sub = repo.GetSubscription(subscriptionId);
                 if (sub == null)
                 {
                     throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -52,8 +53,8 @@ namespace WebApi.Controllers
         }
 
         //Create subscription (POST -> /subscriptions) -> Deprecated ;)
-        //Create subscription (POST -> /subscriptions/userId)
-        public HttpResponseMessage Post(int userId, ApiSubscription subdata)
+        //Create subscription (POST -> /subscriptions)
+        public HttpResponseMessage Post(ApiSubscription subdata)
         {
             if (subdata == null)
             {
@@ -61,8 +62,9 @@ namespace WebApi.Controllers
             }
             try
             {
-                var saved = repo.AddUserSubscription(userId, subdata);
-                var response = Request.CreateResponse<ApiSubscription>(HttpStatusCode.Created, saved);
+
+                var saved = repo.CreateSubscription(subdata);
+                var response = Request.CreateResponse<ApiSubscription>(HttpStatusCode.OK, saved);
                 return response;
             }
             catch (Exception ex)

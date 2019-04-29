@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApi.SubscriptionServiceReference;
 using Common;
+using WebApi.SubscriptionService;
 
 namespace WebApi.Models
 {
@@ -16,9 +16,11 @@ namespace WebApi.Models
             _client = client;
         }
 
-        public ApiSubscription AddUserSubscription(int userId, ApiSubscription subscription)
+      
+        public ApiSubscription CreateSubscription(ApiSubscription subscription)
         {
-            return _client.AddUserSubscription(userId, subscription);
+
+            return _client.CreateSubscription(subscription);
         }
 
         public void DeleteSubscription(Guid subscriptionId)
@@ -26,14 +28,25 @@ namespace WebApi.Models
             _client.DeleteSubscription(subscriptionId);
         }
 
-        public IEnumerable<ApiSubscription> GetSubscriptions()
+        public ApiSubscription GetSubscription(Guid subscriptionId)
+        {
+            return _client.GetSubscription(subscriptionId); 
+        }
+
+        public IEnumerable<ApiSubscription> GetSubscriptions(int id)
         {
             return _client.GetSubscriptions();
         }
 
-        public IEnumerable<ApiSubscription> GetUserSubscriptions(int userId)
+        public IEnumerable<ApiSubscription> GetSubscriptions()
         {
-            return _client.GetUserSubscriptions(userId);
+            throw new NotImplementedException();
+        }
+
+        
+        public IEnumerable<ApiSubscription> GetUserSubscriptions(Guid subscriptionId)
+        {
+            throw new NotImplementedException();
         }
 
         public ApiSubscription UpdateSubscription(ApiSubscription sub)

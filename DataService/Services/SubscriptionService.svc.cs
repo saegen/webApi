@@ -13,8 +13,15 @@ namespace DataService
     // NOTE: In order to launch WCF Test Client for testing this service, please select SubscriptionService.svc or SubscriptionService.svc.cs at the Solution Explorer and start debugging.
     public class SubscriptionService : ISubscriptionService
     {
-        
-
+        //Valde att köra på 2 GetSubscription istället för en Guid? subId. Det är för att det var lättare ur ett förvaltningsperspektiv. Blev kluddig kod pga cast och iterators.
+        public ApiSubscription GetSubscription(Guid subscriptionId)
+        {
+            using (rebtelEntities container = new rebtelEntities())
+            {
+                var entitySub = container.Subscriptions.FirstOrDefault(s => s.Id == subscriptionId);
+                return Utilities.ToApiSubscription(entitySub);
+            }
+        }
         public IEnumerable<ApiSubscription> GetSubscriptions()
         {
             using (rebtelEntities container = new rebtelEntities())
@@ -35,21 +42,7 @@ namespace DataService
         }
     
         //Ska denna vara på User eller båda eller inte alls? Den får vara kvar
-        public IEnumerable<ApiSubscription> GetUserSubscriptions(int userId)
-        {
-            using (rebtelEntities container = new rebtelEntities())
-            {
-                var user = container.Users.Find(userId);
-                if (user == null)
-                {
-                    throw new FaultException("No such user");
-                }
-                foreach (var sub in user.Subscriptions)
-                {
-                    yield return sub.ExToApiSubscription(); //Utilities.ToApiSubscription(sub);
-                }
-            }
-        }
+        
 
         public void DeleteSubscription(Guid subscriptionId)
         {
@@ -90,14 +83,14 @@ namespace DataService
             }
         }
 
-        public int CreateSubscription(ApiSubscription subValues)
+        public ApiSubscription CreateSubscription(ApiSubscription subValues)
         {
             using (rebtelEntities container = new rebtelEntities())
             {
                 container.Subscriptions.Add(subValues.ExToEntitySubscription());
                 container.SaveChanges();
             }
-            return 1;
+            return subValues;
         }
     }
 }
