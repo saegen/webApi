@@ -33,7 +33,7 @@ Todo:
 
 Short descpription of the architecture. Currently 3 layers, (with front-end clients it will be 4). 
 Layer: 
-   1 Back-end is SqlServer, 3 tables User <- UserSub -> Subs
-   2 WCF dataservice,EF: code-first. Is hosted on IIS to keep it running. 3 services Users,Subs,Admin
-   3 WebApi controller.  3 controlers Users,Subs,Admin
-   (4 Todo Angular and maybe a Core.Net clients)
+  - 1 Back-end is SqlServer, 3 tables User <- UserSub -> Subs
+  - 2 WCF dataservice,EF: code-first. Is hosted on IIS to keep it running. 3 services Users,Subs,Admin
+  - 3 WebApi controller.  3 controlers Users,Subs,Admin
+  - (4 Todo Angular and maybe a Core.Net clients)
