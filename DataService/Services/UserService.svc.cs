@@ -42,33 +42,9 @@ namespace DataService
     // NOTE: In order to launch WCF Test Client for testing this service, please select DataService.svc or DataService.svc.cs at the Solution Explorer and start debugging.
     public class UserService : IUserService//, ISubscriptionService
     {
-        public ApiSubscription AddSubscriptions(int userId, IEnumerable<ApiSubscription> subs)
-        {
-            if (subs == null || !subs.Any())
-            {
-                throw new ArgumentNullException("subs", "No subscriptions to add");
-            }
-            using (rebtelEntities container = new rebtelEntities())
-            {
-                //Utilities.ToUrlFriendlyIndentifier(subscription.Name);
-                var user = container.Users.Find(userId);
+        
 
-                if (user == null)
-                {
-                    throw new ArgumentNullException("userId", "No such user");
-                }
-                foreach (var sub in subs)
-                {
-                    sub.UrlFriendly = Utilities.ToUrlFriendlyIndentifier(sub.Name);
-                    Utilities.ToEntitySubscription(sub);
-                    user.Subscriptions.Add(Utilities.ToEntitySubscription(sub));
-                }                    
-                container.SaveChanges();
-                return subs.First();
-            }
-        }
-
-        public int CreateUser(ApiUser user)
+        public ApiUser CreateUser(ApiUser user)
         {
             if (user == null)
             {
@@ -85,7 +61,7 @@ namespace DataService
                     //entityUser.urlFriendly += count > 0 ? count.ToString() : "";
                     container.Users.Add(entityUser);
                     container.SaveChanges();
-                    return entityUser.Id;
+                    return user;
             }
         }
       

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApi.UserServiceReference;
+using WebApi.UserService;
 using Common;
 
 namespace WebApi.Models
@@ -11,19 +11,14 @@ namespace WebApi.Models
     {
         private UserServiceClient _userClient;
 
-        public ApiSubscription AddUserSubscription(int userId, ApiSubscription subscription)
-        {
-            throw new NotImplementedException();
-        }
-
         public UserRepo(UserServiceClient userServiceClient)
         {
             _userClient = userServiceClient;
         }
 
-        public int AddUser(ApiUser user)
+        public ApiUser CreateUser(ApiUser user)
         {
-            return _userClient.AddUser(user);
+            return _userClient.CreateUser(user);
         }
 
         public void DeleteUser(int userId)

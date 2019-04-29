@@ -12,7 +12,7 @@ namespace DataService.Interfaces
     public interface IUserService
     {
         [OperationContract]
-        int CreateUser(ApiUser user);
+        ApiUser CreateUser(ApiUser user);
 
         [OperationContract]
         void DeleteUser(int userId);
