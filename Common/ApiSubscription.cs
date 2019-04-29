@@ -1,6 +1,7 @@
 ﻿namespace Common
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
     using System.Runtime.Serialization;
 
     [DataContract]
@@ -17,11 +18,14 @@
             this.UrlFriendly = "friendly";
         }
 
+        //[DataMember(IsRequired = true)] denna plockades inte upp i SoapUI men wsdl:en har tagit bort minOcurrs
         [DataMember]
         public System.Guid Id { get; set; }
         [DataMember]
+        [Required]
         public string Name { get; set; }
         [DataMember]
+        [Required]
         public decimal Price { get; set; }
         [DataMember]
         public decimal PriceIncVatAmount { get; set; }
