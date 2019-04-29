@@ -12,10 +12,6 @@ Todo:
       - [ ] ~~Get database under version control, i.e .mdf file, Use DACPAC instead~~
       - [ ] ~~Experiment with dacpac~~
    - [x] Create and redesign of API calls
-   - [ ] Introduce error handling per level.
-         - [ ] Design error handling mechanism
-         - [ ] Implement logging with Log4Net at DataService Level
-         - [ ] Implement http at WebApi Level
     - [ ] Change DataService according to new design
           - [ ] Implement new methods to Subscribe, Unsubscribe, GetSubscriptionUsers
           - [x] Implement and refactor Subscription and User methods to pure CRUD
@@ -24,7 +20,13 @@ Todo:
     - [ ] Add admin controller for new subscribe/unsubscribe functionality
    - [ ] Add AdminRepo for new subscribe/unsubscribe functionality
 - [ ] Put everything in Docker
-- [ ] Make Controllers Async and clock
+- [ ] Put everything in Azure
+- [ ] Make Controllers Async
+- [ ] Look at service bus. "Needed" after many to many change when bypassing Admin 
+- [ ] Introduce error handling per level.
+         - [ ] Design error handling mechanism
+         - [ ] Implement logging with Log4Net at DataService Level
+         - [ ] Implement logging at WebApi Level
 - [ ] Hide internal id's from WebApi
-- [ ] Make Angular >= 4 front
+- [ ] Make Angular 2+ front
     
