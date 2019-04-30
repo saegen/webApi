@@ -23,11 +23,31 @@ namespace IISDataServiceCLient
         {
             listBox1.Items.Clear();
             label2.Text = "Errors :";
-            var client = new UserService.UserServiceClient();
-            IEnumerable<ApiUser> users;
-            users = client.GetUsers();
-            //client.CloseOrAbort();
-            
+            List<ApiUser> users = new List<ApiUser>();
+            UserServiceClient client = null;
+            try
+            {
+                client = new UserService.UserServiceClient();
+                if (userId.Value > 0)
+                {
+                    users.Add(client.GetUser(Decimal.ToInt32(userId.Value)));
+                }
+                else
+                {
+                    users = client.GetUsers().ToList();
+                }
+                client.Close();
+            }
+            catch(Exception err)
+            {
+                label2.Text += " " + err.Message; //i.e log error
+                throw err;
+            }
+            finally
+            {
+                ClientExtensions.DisposeService(client);
+            }
+                        
             if (users == null)
             {
                 label2.Text += " Hittade inga, users = null";
@@ -37,7 +57,7 @@ namespace IISDataServiceCLient
                 label2.Text += " Inga fel";
                 foreach (var user in users)
                 {
-                    listBox1.Items.Add(user.FirstName + " " + user.FirstName);
+                    listBox1.Items.Add("Id : " + user.Id + " " + user.FirstName + " " + user.FirstName);
                 }
             }
             client.Close();

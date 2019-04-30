@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using IISDataServiceCLient.UserService;
@@ -14,18 +15,26 @@ namespace IISDataServiceCLient
             {
                 try
                 {
-                    if (client.State == System.ServiceModel.CommunicationState.Opened)
-                    {
-                        client.Close();
-                    }
-                    else
-                    {
-                        client.Abort();
-                    }                    
+                    client.Close();                    
                 }
                 catch (Exception)
                 {
                     client.Abort();
+                }
+            }
+        }
+        public static void DisposeService(ICommunicationObject service)
+        {
+
+            if (service != null)
+            {
+                try
+                {
+                    service.Close();
+                }
+                catch
+                {
+                    service.Abort();
                 }
             }
         }
