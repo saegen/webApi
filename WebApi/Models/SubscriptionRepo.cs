@@ -15,8 +15,15 @@ namespace WebApi.Models
         {
             _client = client;
         }
+        ~SubscriptionRepo()
+        {
+            if (_client != null && _client.State == System.ServiceModel.CommunicationState.Opened)
+            {
+                _client.Close();
+            }
+        }
 
-      
+
         public ApiSubscription CreateSubscription(ApiSubscription subscription)
         {
 

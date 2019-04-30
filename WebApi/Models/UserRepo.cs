@@ -11,11 +11,24 @@ namespace WebApi.Models
     {
         private UserServiceClient _userClient;
 
-        public UserRepo(UserServiceClient userServiceClient)
+        public UserRepo(IUserService userServiceClient)
         {
-            _userClient = userServiceClient;
+            _userClient = userServiceClient as UserServiceClient;
         }
-
+        ~UserRepo()
+        {
+            if (_userClient != null)
+            {
+                try
+                {
+                    _userClient.Close();
+                }
+                catch (Exception)
+                {
+                    _userClient.Abort();
+                }                
+            }
+        }
         public ApiUser CreateUser(ApiUser user)
         {
             return _userClient.CreateUser(user);

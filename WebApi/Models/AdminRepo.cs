@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using WebApi.AdminService;
 using Common;
+using System.ServiceModel;
 
 namespace WebApi.Models
 {
@@ -15,6 +16,14 @@ namespace WebApi.Models
         {
             _adminClient = adminClient;
         }
+        ~AdminRepo()
+        {
+            if (_adminClient != null && _adminClient.State == CommunicationState.Opened)
+            {
+                _adminClient.Close();
+            }
+        }
+
         public void Subscribe(int userId, ApiSubscription[] subscriptions)
         {
             foreach (var sub in subscriptions)
