@@ -19,12 +19,13 @@ namespace IISDataServiceCLient
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
             label2.Text = "Errors :";
-            var client = new UserServiceClient();
+            var client = new UserService.UserServiceClient();
             var users = client.GetUsers();
+            
             if (users == null)
             {
                 label2.Text += " Hittade inga, users = null";
