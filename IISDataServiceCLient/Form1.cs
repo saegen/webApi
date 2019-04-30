@@ -24,12 +24,14 @@ namespace IISDataServiceCLient
             listBox1.Items.Clear();
             label2.Text = "Errors :";
             var client = new UserService.UserServiceClient();
-            var users = client.GetUsers();
+            IEnumerable<ApiUser> users;
+            users = client.GetUsers();
+            //client.CloseOrAbort();
             
             if (users == null)
             {
                 label2.Text += " Hittade inga, users = null";
-            }
+            }            
             else
             {
                 label2.Text += " Inga fel";
@@ -38,6 +40,7 @@ namespace IISDataServiceCLient
                     listBox1.Items.Add(user.FirstName + " " + user.FirstName);
                 }
             }
+            client.Close();
         }
     }
 }

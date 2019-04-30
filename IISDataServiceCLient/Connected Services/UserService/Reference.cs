@@ -280,37 +280,37 @@ namespace IISDataServiceCLient.UserService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserService.IUserService")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://dataservice/interfaces/user", ConfigurationName="UserService.IUserService")]
     public interface IUserService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/CreateUser", ReplyAction="http://tempuri.org/IUserService/CreateUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/CreateUser", ReplyAction="http://dataservice/interfaces/user/IUserService/CreateUserResponse")]
         IISDataServiceCLient.UserService.ApiUser CreateUser(IISDataServiceCLient.UserService.ApiUser user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/CreateUser", ReplyAction="http://tempuri.org/IUserService/CreateUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/CreateUser", ReplyAction="http://dataservice/interfaces/user/IUserService/CreateUserResponse")]
         System.Threading.Tasks.Task<IISDataServiceCLient.UserService.ApiUser> CreateUserAsync(IISDataServiceCLient.UserService.ApiUser user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/DeleteUser", ReplyAction="http://dataservice/interfaces/user/IUserService/DeleteUserResponse")]
         void DeleteUser(int userId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/DeleteUser", ReplyAction="http://tempuri.org/IUserService/DeleteUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/DeleteUser", ReplyAction="http://dataservice/interfaces/user/IUserService/DeleteUserResponse")]
         System.Threading.Tasks.Task DeleteUserAsync(int userId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/GetUser", ReplyAction="http://dataservice/interfaces/user/IUserService/GetUserResponse")]
         IISDataServiceCLient.UserService.ApiUser GetUser(int userId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUser", ReplyAction="http://tempuri.org/IUserService/GetUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/GetUser", ReplyAction="http://dataservice/interfaces/user/IUserService/GetUserResponse")]
         System.Threading.Tasks.Task<IISDataServiceCLient.UserService.ApiUser> GetUserAsync(int userId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers", ReplyAction="http://tempuri.org/IUserService/GetUsersResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/GetUsers", ReplyAction="http://dataservice/interfaces/user/IUserService/GetUsersResponse")]
         IISDataServiceCLient.UserService.ApiUser[] GetUsers();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/GetUsers", ReplyAction="http://tempuri.org/IUserService/GetUsersResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/GetUsers", ReplyAction="http://dataservice/interfaces/user/IUserService/GetUsersResponse")]
         System.Threading.Tasks.Task<IISDataServiceCLient.UserService.ApiUser[]> GetUsersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/UpdateUser", ReplyAction="http://dataservice/interfaces/user/IUserService/UpdateUserResponse")]
         IISDataServiceCLient.UserService.ApiUser UpdateUser(IISDataServiceCLient.UserService.ApiUser user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserService/UpdateUser", ReplyAction="http://tempuri.org/IUserService/UpdateUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/UpdateUser", ReplyAction="http://dataservice/interfaces/user/IUserService/UpdateUserResponse")]
         System.Threading.Tasks.Task<IISDataServiceCLient.UserService.ApiUser> UpdateUserAsync(IISDataServiceCLient.UserService.ApiUser user);
     }
     

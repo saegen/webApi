@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientExtensions.cs" />
     <Compile Include="Connected Services\UserService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,6 +86,7 @@
     <None Include="Connected Services\UserService\UserService1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\UserService\UserService2.wsdl" />
     <None Include="Connected Services\UserService\UserService2.xsd">
       <SubType>Designer</SubType>
     </None>
