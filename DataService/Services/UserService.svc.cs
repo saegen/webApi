@@ -153,10 +153,9 @@ namespace DataService
                 {
                     throw new FaultException("No such user to update");
                 }
-                user.FirstName = userValues.FirstName;
-                user.LastName = userValues.LastName;
-                user.Email = userValues.Email;
-                
+                user.FirstName = string.IsNullOrWhiteSpace(userValues.FirstName) ? user.FirstName : userValues.FirstName;
+                user.LastName = string.IsNullOrWhiteSpace(userValues.LastName) ? user.LastName : userValues.LastName;
+                user.Email = string.IsNullOrWhiteSpace(userValues.Email) ? user.Email : userValues.Email;
                 container.SaveChanges();
                 return Utilities.ToApiUser(user);
             }

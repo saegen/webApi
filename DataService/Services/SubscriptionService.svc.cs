@@ -42,8 +42,6 @@ namespace DataService
         }
     
         //Ska denna vara på User eller båda eller inte alls? Den får vara kvar
-        
-
         public void DeleteSubscription(Guid subscriptionId)
         {
             using (rebtelEntities container = new rebtelEntities())
@@ -74,12 +72,12 @@ namespace DataService
                 {
                     throw new FaultException("No such subscription");
                 }
-                sub.Name = subValues.Name;
-                sub.Price = subValues.Price;
-                sub.PriceIncVatAmount = subValues.PriceIncVatAmount;
-                sub.UrlFriendly = Utilities.ToUrlFriendlyIndentifier(subValues.Name);
+                sub.Name = string.IsNullOrWhiteSpace(subValues.Name) ? sub.Name : subValues.Name;
+                sub.Price = subValues.Price > 0 ? subValues.Price : sub.Price;
+                sub.PriceIncVatAmount = sub.Price * 1.25m;
+                sub.UrlFriendly = string.IsNullOrWhiteSpace(subValues.Name) ? sub.UrlFriendly : Utilities.ToUrlFriendlyIndentifier(subValues.Name);
                 container.SaveChanges();
-                return sub.ExToApiSubscription(); //Utilities.ToApiSubscription(sub);                    
+                return sub.ExToApiSubscription();
             }
         }
 
