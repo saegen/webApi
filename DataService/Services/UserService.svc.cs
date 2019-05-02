@@ -74,8 +74,8 @@ namespace DataService
             {
                 foreach (var user in container.Users.Include("Subscriptions"))
                 {
-                    var apiUser = Utilities.ToApiUser(user);
-                    log.Debug("User: {user}", apiUser);
+                    ApiUser apiUser = Utilities.ToApiUser(user);
+                    log.Debug("User: {@user}", apiUser);
                     yield return apiUser;
                 }
             }
