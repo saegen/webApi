@@ -41,7 +41,7 @@ namespace DataService
  
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "DataService" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select DataService.svc or DataService.svc.cs at the Solution Explorer and start debugging.
-    public class UserService : IUserService//, ISubscriptionService
+    public class UserService : IUserService
     {
         
         private Logger log = LogManager.GetCurrentClassLogger();
@@ -144,7 +144,7 @@ namespace DataService
         //    }
         //}
 
-        public ApiUser UpdateUser(ApiUser userValues)
+        public ApiUser UpdateUser(UpdateUserDTO userValues)
         {
             using (rebtelEntities container = new rebtelEntities())
             {
@@ -156,6 +156,7 @@ namespace DataService
                 user.FirstName = userValues.FirstName;
                 user.LastName = userValues.LastName;
                 user.Email = userValues.Email;
+                
                 container.SaveChanges();
                 return Utilities.ToApiUser(user);
             }

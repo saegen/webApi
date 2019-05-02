@@ -24,7 +24,7 @@ namespace DataService.Interfaces
         IEnumerable<ApiUser> GetUsers();
 
         [OperationContract]
-        ApiUser UpdateUser(ApiUser user);
+        ApiUser UpdateUser(UpdateUserDTO user);
 
     }
 }
