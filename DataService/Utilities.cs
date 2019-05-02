@@ -11,6 +11,9 @@ namespace DataService
     {
         public static string ToUrlFriendlyIndentifier(string toFriendly)
         {
+            toFriendly = toFriendly.Trim();
+            //byter till unicode binary så apostrofer mm försvinner.
+            toFriendly = toFriendly.Normalize(); 
             // make it all lower case
             toFriendly = toFriendly.ToLower();
             // remove entities
