@@ -33,6 +33,10 @@ namespace DataService
 
         public static Subscription ToEntitySubscription(ApiSubscription source)
         {
+            if (source == null)
+            {
+                throw new ArgumentNullException("source", "ApiSubscription must not be null");
+            }
             return new Subscription() {
                 Id = source.Id,
                 Name = source.Name,
@@ -45,6 +49,10 @@ namespace DataService
 
         public static Subscription ExToEntitySubscription(this ApiSubscription source)
         {
+            if (source == null)
+            {
+                throw new ArgumentNullException("this", "ApiSubscription must not be null");
+            }
             return new Subscription()
             {
                 Id = source.Id,
@@ -57,6 +65,10 @@ namespace DataService
         }
         public static ApiSubscription ToApiSubscription(Subscription source)
         {
+            if (source == null)
+            {
+                return null;
+            }
             return new ApiSubscription() {
                 Id = source.Id,
                 Name = source.Name,
@@ -73,6 +85,10 @@ namespace DataService
         /// <returns></returns>
         public static ApiSubscription ExToApiSubscription(this Subscription source)
         {
+            if (source == null)
+            {
+                throw new ArgumentNullException("this", "Subscription must not be null");
+            }
             return new ApiSubscription()
             {
                 Id = source.Id,
@@ -86,6 +102,10 @@ namespace DataService
 
         public static User ToEntityUser(ApiUser user)
         {
+            if (user == null)
+            {
+                throw new ArgumentNullException("user", "ApiUser must not be null");
+            }
             var entityUser = new User() { Id = user.Id, FirstName = user.FirstName, LastName = user.LastName, Email = user.Email };
             foreach (var ApiSub in user.Subscriptions)
             {
@@ -97,6 +117,10 @@ namespace DataService
 
         public static ApiUser ToApiUser(User entityUser)
         {
+            if (entityUser == null)
+            {
+                return null;
+            }
             var apiUser = new ApiUser()
             {
                 Id = entityUser.Id,
