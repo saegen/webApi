@@ -34,6 +34,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using DataService.Interfaces;
+using NLog;
 
 namespace DataService
 {
@@ -43,7 +44,7 @@ namespace DataService
     public class UserService : IUserService//, ISubscriptionService
     {
         
-
+        private Logger log = LogManager.GetCurrentClassLogger();
         public ApiUser CreateUser(ApiUser user)
         {
             if (user == null)
@@ -67,6 +68,8 @@ namespace DataService
       
         public IEnumerable<ApiUser> GetUsers()
         {
+            log.Debug("GetUsers() från NLog");
+
             using (rebtelEntities container = new rebtelEntities())
             {
                 foreach (var user in container.Users.Include("Subscriptions"))

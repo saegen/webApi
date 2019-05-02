@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,6 +16,7 @@ namespace DataService
             //Registrera GlobalExceptionHandler this.event += new Except nåt nåt
             //app domain exceptionhandler
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            LogManager.LoadConfiguration("nlog.config");
         }
 
         void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
