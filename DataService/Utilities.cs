@@ -100,6 +100,19 @@ namespace DataService
             };
         }
 
+        public static User ToEntityUser(this CreateUserDTO user)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException("this", "User must not be null");
+            }
+            return new User()
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
+            };
+        }
         public static User ToEntityUser(ApiUser user)
         {
             if (user == null)

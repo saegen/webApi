@@ -45,24 +45,24 @@ namespace DataService
     {
         
         private Logger log = LogManager.GetCurrentClassLogger();
-        public ApiUser CreateUser(ApiUser user)
+        public ApiUser CreateUser(CreateUserDTO user)
         {
             if (user == null)
             {
                 throw new ArgumentNullException("user");
             }
-            var entityUser = Utilities.ToEntityUser(user); 
+            var entityUser = user.ToEntityUser(); 
             
             using (rebtelEntities container = new rebtelEntities())
             {
-             
-                    //If I where to use url-friendly-name I would have done this or maybe have a unique contstraint on the colmn and then add the count in the catch:
-                    //int count = container.Users.Where(u => u.FirstName == entityUser.FirstName && u.LastName == entityUser.LastName).Count();
-                    //entityUser.urlFriendly = Utilities.ToUrlFriendlyIndentifier(entityUser.FirstName + "-" + entityUser.LastName);
-                    //entityUser.urlFriendly += count > 0 ? count.ToString() : "";
-                    container.Users.Add(entityUser);
+
+                //If I where to use url-friendly-name I would have done this or maybe have a unique contstraint on the colmn and then add the count in the catch:
+                //int count = container.Users.Where(u => u.FirstName == entityUser.FirstName && u.LastName == entityUser.LastName).Count();
+                //entityUser.urlFriendly = Utilities.ToUrlFriendlyIndentifier(entityUser.FirstName + "-" + entityUser.LastName);
+                //entityUser.urlFriendly += count > 0 ? count.ToString() : "";
+                    entityUser = container.Users.Add(entityUser);
                     container.SaveChanges();
-                    return user;
+                    return Utilities.ToApiUser(entityUser);
             }
         }
       
