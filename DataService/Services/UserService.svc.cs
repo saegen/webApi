@@ -68,13 +68,15 @@ namespace DataService
       
         public IEnumerable<ApiUser> GetUsers()
         {
-            log.Debug("GetUsers() från NLog");
+            log.Debug("GetUsers()");
 
             using (rebtelEntities container = new rebtelEntities())
             {
                 foreach (var user in container.Users.Include("Subscriptions"))
                 {
-                    yield return Utilities.ToApiUser(user);
+                    var apiUser = Utilities.ToApiUser(user);
+                    log.Debug("User: {user}", apiUser);
+                    yield return apiUser;
                 }
             }
         }
