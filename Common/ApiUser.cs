@@ -74,4 +74,27 @@ namespace Common
         
 
     }
+
+    [DataContract]
+    public class CreateUserDTO
+    {
+        [DataMember]
+        public string FirstName { get; set; }
+        [DataMember]
+        public string LastName { get; set; }
+        [DataMember]
+        public string Email { get; set; }
+    }
+    [DataContract]
+    public class UpdateUserDTO
+    {
+        [DataMember]
+        public int Id { get; set; }
+        [DataMember]
+        public string FirstName { get; set; }
+        [DataMember]
+        public string LastName { get; set; }
+        [DataMember]
+        public string Email { get; set; }
+    }
 }

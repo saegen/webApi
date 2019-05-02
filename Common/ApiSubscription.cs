@@ -5,7 +5,7 @@
     using System.Runtime.Serialization;
 
     [DataContract]
-    public partial class ApiSubscription
+    public class ApiSubscription
     {
         //Test subscription - denna ska inte vara med alls!!! Använd Moq eller nåt
         public ApiSubscription()
@@ -34,4 +34,20 @@
         [DataMember]
         public string UrlFriendly { get; set; }        
     }
+
+
+    [DataContract]
+    public class UpdateSubscriptionDTO
+    {
+        [DataMember]
+        public string Name { get; set; }
+        [DataMember]
+        public decimal Price { get; set; }
+
+        [DataMember]
+        public int CallMinutes { get; set; }
+        [DataMember]
+        public string UrlFriendly { get; set; }
+    }
+
 }
