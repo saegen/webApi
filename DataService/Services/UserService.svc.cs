@@ -88,7 +88,7 @@ namespace DataService
                 var user = container.Users.Find(userId);
                 if (user == null)
                 {
-                    throw new FaultException("No such user");
+                    log.Info("Could not find user with Id: {id}", userId);
                 }
                 return Utilities.ToApiUser(user); 
             }
