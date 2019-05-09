@@ -33,6 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.userId = new System.Windows.Forms.NumericUpDown();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.EF = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userId)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,11 +81,22 @@
             this.listBox1.Size = new System.Drawing.Size(303, 196);
             this.listBox1.TabIndex = 6;
             // 
+            // EF
+            // 
+            this.EF.Location = new System.Drawing.Point(385, 44);
+            this.EF.Name = "EF";
+            this.EF.Size = new System.Drawing.Size(75, 23);
+            this.EF.TabIndex = 7;
+            this.EF.Text = "EF GetUsers";
+            this.EF.UseVisualStyleBackColor = true;
+            this.EF.Click += new System.EventHandler(this.EF_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.EF);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.userId);
             this.Controls.Add(this.label2);
@@ -105,6 +117,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown userId;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button EF;
     }
 }
 

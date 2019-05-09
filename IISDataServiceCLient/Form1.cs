@@ -66,5 +66,17 @@ namespace IISDataServiceCLient
             }
             client.Close();
         }
+
+        private void EF_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            using (Rebtel db = new Rebtel())
+            {
+                foreach (var user in db.Users.Include("Subscriptions"))
+                {
+                    listBox1.Items.Add("Id : " + user.Id + " " + user.FirstName + " " + user.FirstName);
+                }
+            }
+        }
     }
 }
