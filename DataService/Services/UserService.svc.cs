@@ -27,32 +27,28 @@
 using Common;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Validation;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
 using DataService.Interfaces;
 using NLog;
 
 namespace DataService
 {
- 
+
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "DataService" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select DataService.svc or DataService.svc.cs at the Solution Explorer and start debugging.
     public class UserService : IUserService
     {
-        
+
         private Logger log = LogManager.GetCurrentClassLogger();
         public ApiUser CreateUser(CreateUserDTO user)
         {
+            log.Debug("CreateUser(CreateUserDTO={@userDTO})", user);
             if (user == null)
             {
                 throw new ArgumentNullException("user");
             }
-            var entityUser = user.ToEntityUser(); 
-            
+            var entityUser = user.ToEntityUser();
+
             using (rebtelEntities container = new rebtelEntities())
             {
 
@@ -60,12 +56,12 @@ namespace DataService
                 //int count = container.Users.Where(u => u.FirstName == entityUser.FirstName && u.LastName == entityUser.LastName).Count();
                 //entityUser.urlFriendly = Utilities.ToUrlFriendlyIndentifier(entityUser.FirstName + "-" + entityUser.LastName);
                 //entityUser.urlFriendly += count > 0 ? count.ToString() : "";
-                    entityUser = container.Users.Add(entityUser);
-                    container.SaveChanges();
-                    return Utilities.ToApiUser(entityUser);
+                entityUser = container.Users.Add(entityUser);
+                container.SaveChanges();
+                return Utilities.ToApiUser(entityUser);
             }
         }
-      
+
         public IEnumerable<ApiUser> GetUsers()
         {
             log.Debug("GetUsers()");
@@ -83,19 +79,22 @@ namespace DataService
 
         public ApiUser GetUser(int userId)
         {
+            log.Debug("GetUser(userId = {id})", userId);
             using (rebtelEntities container = new rebtelEntities())
             {
                 var user = container.Users.Find(userId);
                 if (user == null)
                 {
                     log.Info("Could not find user with Id: {id}", userId);
+                    return null;
                 }
-                return Utilities.ToApiUser(user); 
+                return Utilities.ToApiUser(user);
             }
         }
 
         public void DeleteUser(int userId)
         {
+            log.Debug("DeleteUser(userId = {id})", userId);
             using (rebtelEntities container = new rebtelEntities())
             {
                 User user = container.Users.Find(userId);  //Where(u => u.urlFriendly == urlFriendlyname).FirstOrDefault();
@@ -146,6 +145,7 @@ namespace DataService
 
         public ApiUser UpdateUser(UpdateUserDTO userValues)
         {
+            log.Debug("UpdateUser(UpdateUserDTO={@userDTO})", userValues);
             using (rebtelEntities container = new rebtelEntities())
             {
                 var user = container.Users.Find(userValues.Id);
@@ -160,49 +160,5 @@ namespace DataService
                 return Utilities.ToApiUser(user);
             }
         }
-
-        public void DeleteSubscription(Guid subscriptionId)
-        {
-            using (rebtelEntities container = new rebtelEntities())
-            {
-                try
-                {
-                    var sub = container.Subscriptions.Find(subscriptionId);
-                    container.Subscriptions.Remove(sub);
-                    container.SaveChanges();
-                }
-                catch (Exception) { 
-                  //todo add logging  
-                }
-
-            }
-        }
-
-        public ApiSubscription UpdateSubscription(ApiSubscription subValues)
-        {
-            using (rebtelEntities container = new rebtelEntities())
-            {
-                var sub = container.Subscriptions.Find(subValues.Id);
-                if (sub == null)
-                {
-                    throw new FaultException("No such subscription");
-                }
-                sub.Name = subValues.Name;
-                sub.Price = subValues.Price;
-                sub.PriceIncVatAmount = subValues.PriceIncVatAmount;
-                sub.UrlFriendly = Utilities.ToUrlFriendlyIndentifier(subValues.Name);
-                container.SaveChanges();
-                return new ApiSubscription()
-                {
-                    Id = sub.Id,
-                    Name = sub.Name,
-                    Price = sub.Price,
-                    PriceIncVatAmount = sub.PriceIncVatAmount,
-                    CallMinutes = sub.CallMinutes,
-                    UrlFriendly = Utilities.ToUrlFriendlyIndentifier(sub.Name)
-                };
-            }
-        }
-
     }
 }
