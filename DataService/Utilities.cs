@@ -50,6 +50,23 @@ namespace DataService
             };
         }
 
+        public static Subscription ToEntitySubscription(this CreateSubscriptionDTO sub)
+        {
+            if (sub == null)
+            {
+                throw new ArgumentNullException("this", "CreateSubscriptionDTO must not be null");
+            }
+            Subscription suben = new Subscription()
+            {
+                Name = sub.Name,
+                Price = sub.Price,
+                PriceIncVatAmount = sub.Price * 1.25m,
+                CallMinutes = sub.CallMinutes,
+                UrlFriendly = ToUrlFriendlyIndentifier(sub.Name)
+            };
+            return suben;
+        }
+
         public static Subscription ExToEntitySubscription(this ApiSubscription source)
         {
             if (source == null)
