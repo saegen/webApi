@@ -30,7 +30,11 @@ namespace IISDataServiceCLient
                 client = new UserService.UserServiceClient();
                 if (userId.Value > 0)
                 {
-                    users.Add(client.GetUser(Decimal.ToInt32(userId.Value)));
+                    var foundUser = client.GetUser(Decimal.ToInt32(userId.Value));
+                    if (foundUser != null)
+                    {
+                        users.Add(foundUser);
+                    }
                 }
                 else
                 {
