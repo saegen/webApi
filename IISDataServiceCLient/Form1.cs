@@ -21,7 +21,7 @@ namespace IISDataServiceCLient
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            listBoxUsers.Items.Clear();
             label2.Text = "Errors :";
             List<ApiUser> users = new List<ApiUser>();
             UserServiceClient client = null;
@@ -61,7 +61,7 @@ namespace IISDataServiceCLient
                 label2.Text += " Inga fel";
                 foreach (var user in users)
                 {
-                    listBox1.Items.Add("Id : " + user.Id + " " + user.FirstName + " " + user.FirstName);
+                    listBoxUsers.Items.Add(user.Id + ":Id, " + user.FirstName + ", " + user.LastName);
                 }
             }
             client.Close();
@@ -69,12 +69,36 @@ namespace IISDataServiceCLient
 
         private void EF_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            listBoxUsers.Items.Clear();
             using (Rebtel db = new Rebtel())
             {
                 foreach (var user in db.Users.Include("Subscriptions"))
                 {
-                    listBox1.Items.Add("Id : " + user.Id + " " + user.FirstName + " " + user.FirstName);
+                    listBoxUsers.Items.Add(user.Id + ":Id, " + user.FirstName + ", " + user.LastName);
+                }
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+                var userId = listBoxUsers.Items[listBoxUsers.SelectedIndex].ToString().Split(':')[0];
+                MessageBox.Show(userId.ToString());
+        }
+
+        private void listBoxSubs_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            string userId = listBoxSubs.Items[listBoxSubs.SelectedIndex].ToString().Split(':')[0];
+            MessageBox.Show(userId.ToString());
+        }
+
+        private void getSubs_Click(object sender, EventArgs e)
+        {
+            listBoxSubs.Items.Clear();
+            using (Rebtel db = new Rebtel())
+            {
+                foreach (var sub in db.Subscriptions)
+                {
+                    listBoxSubs.Items.Add(sub.Id + ":Id, " + sub.Name);
                 }
             }
         }

@@ -32,8 +32,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.userId = new System.Windows.Forms.NumericUpDown();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxUsers = new System.Windows.Forms.ListBox();
             this.EF = new System.Windows.Forms.Button();
+            this.listBoxSubs = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.getSubs = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userId)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +53,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 158);
+            this.label1.Location = new System.Drawing.Point(12, 158);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 17);
             this.label1.TabIndex = 2;
@@ -59,7 +62,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(417, 198);
+            this.label2.Location = new System.Drawing.Point(65, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 17);
             this.label2.TabIndex = 3;
@@ -72,14 +75,15 @@
             this.userId.Size = new System.Drawing.Size(120, 22);
             this.userId.TabIndex = 5;
             // 
-            // listBox1
+            // listBoxUsers
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(68, 188);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(303, 196);
-            this.listBox1.TabIndex = 6;
+            this.listBoxUsers.FormattingEnabled = true;
+            this.listBoxUsers.ItemHeight = 16;
+            this.listBoxUsers.Location = new System.Drawing.Point(15, 188);
+            this.listBoxUsers.Name = "listBoxUsers";
+            this.listBoxUsers.Size = new System.Drawing.Size(303, 196);
+            this.listBoxUsers.TabIndex = 6;
+            this.listBoxUsers.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // EF
             // 
@@ -91,13 +95,45 @@
             this.EF.UseVisualStyleBackColor = true;
             this.EF.Click += new System.EventHandler(this.EF_Click);
             // 
+            // listBoxSubs
+            // 
+            this.listBoxSubs.FormattingEnabled = true;
+            this.listBoxSubs.ItemHeight = 16;
+            this.listBoxSubs.Location = new System.Drawing.Point(344, 188);
+            this.listBoxSubs.Name = "listBoxSubs";
+            this.listBoxSubs.Size = new System.Drawing.Size(546, 196);
+            this.listBoxSubs.TabIndex = 8;
+            this.listBoxSubs.SelectedIndexChanged += new System.EventHandler(this.listBoxSubs_SelectedIndexChanged_1);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(416, 158);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 17);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Subscriptions";
+            // 
+            // getSubs
+            // 
+            this.getSubs.Location = new System.Drawing.Point(495, 46);
+            this.getSubs.Name = "getSubs";
+            this.getSubs.Size = new System.Drawing.Size(105, 38);
+            this.getSubs.TabIndex = 10;
+            this.getSubs.Text = "getSubs";
+            this.getSubs.UseVisualStyleBackColor = true;
+            this.getSubs.Click += new System.EventHandler(this.getSubs_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(923, 457);
+            this.Controls.Add(this.getSubs);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.listBoxSubs);
             this.Controls.Add(this.EF);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBoxUsers);
             this.Controls.Add(this.userId);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -116,8 +152,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown userId;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxUsers;
         private System.Windows.Forms.Button EF;
+        private System.Windows.Forms.ListBox listBoxSubs;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button getSubs;
     }
 }
 
