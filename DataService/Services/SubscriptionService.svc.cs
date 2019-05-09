@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using DataService.Interfaces;
 using Common;
+using NLog;
 
 namespace DataService
 {
@@ -13,9 +14,11 @@ namespace DataService
     // NOTE: In order to launch WCF Test Client for testing this service, please select SubscriptionService.svc or SubscriptionService.svc.cs at the Solution Explorer and start debugging.
     public class SubscriptionService : ISubscriptionService
     {
+        private Logger log = LogManager.GetCurrentClassLogger();
         //Valde att köra på 2 GetSubscription istället för en Guid? subId. Det är för att det var lättare ur ett förvaltningsperspektiv. Blev kluddig kod pga cast och iterators.
         public ApiSubscription GetSubscription(Guid subscriptionId)
         {
+            log.Debug("GetSubscription(subscriptionId={id}))", subscriptionId);
             using (rebtelEntities container = new rebtelEntities())
             {
                 var entitySub = container.Subscriptions.FirstOrDefault(s => s.Id == subscriptionId);
@@ -24,6 +27,7 @@ namespace DataService
         }
         public IEnumerable<ApiSubscription> GetSubscriptions()
         {
+            log.Debug("GetSubscriptions()");
             using (rebtelEntities container = new rebtelEntities())
             {
                 foreach (var sub in container.Subscriptions)
@@ -44,6 +48,7 @@ namespace DataService
         //Ska denna vara på User eller båda eller inte alls? Den får vara kvar
         public void DeleteSubscription(Guid subscriptionId)
         {
+            log.Debug("DeleteSubscription(subscriptionId={id} )", subscriptionId);
             using (rebtelEntities container = new rebtelEntities())
             {
                 try
@@ -52,15 +57,16 @@ namespace DataService
                     container.Subscriptions.Remove(sub);
                     container.SaveChanges();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    //todo add logging  
+                    log.Error("DeleteSubscription(subscriptionId={id}) kastade: {@ex}", subscriptionId,ex);
                 }//if its there its already deleted 
             }
         }
 
         public ApiSubscription UpdateSubscription(ApiSubscription subValues)
         {
+            log.Debug("UpdateSubscription(ApiSubscription={@val})", subValues);
             if (subValues == null)
             {
                 throw new ArgumentNullException("subValues", "Subscription missing");
@@ -81,14 +87,24 @@ namespace DataService
             }
         }
 
-        public ApiSubscription CreateSubscription(ApiSubscription subValues)
+        public ApiSubscription CreateSubscription(CreateSubscriptionDTO subValues)
         {
+            log.Debug("CreateSubscription(CreateSubscriptionDTO={@val} )", subValues);
+            Subscription sub = null;
             using (rebtelEntities container = new rebtelEntities())
             {
-                container.Subscriptions.Add(subValues.ExToEntitySubscription());
-                container.SaveChanges();
+                try
+                {
+                    sub = container.Subscriptions.Add(subValues.ToEntitySubscription());
+                    container.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    log.Error("CreateSubscription(CreateSubscriptionDTO={@val} ) kastade: {@ex}", subValues, ex);
+                }
+                
             }
-            return subValues;
+            return Utilities.ToApiSubscription(sub);
         }
     }
 }

@@ -25,6 +25,6 @@ namespace DataService.Interfaces
         ApiSubscription UpdateSubscription(ApiSubscription subValues);
 
         [OperationContract]
-        ApiSubscription CreateSubscription(ApiSubscription subValues);
+        ApiSubscription CreateSubscription(CreateSubscriptionDTO subValues);
     }
 }
