@@ -35,6 +35,15 @@
         public string UrlFriendly { get; set; }        
     }
 
+    public class CreateSubscriptionDTO
+    {
+        [DataMember]
+        public string Name { get; set; }
+        [DataMember]
+        public decimal Price { get; set; }
+        [DataMember]
+        public int CallMinutes { get; set; }
+    }
 
     [DataContract]
     public class UpdateSubscriptionDTO
