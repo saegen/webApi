@@ -19,7 +19,7 @@ namespace IISDataServiceCLient
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void GetUsers(object sender, EventArgs e)
         {
             listBoxUsers.Items.Clear();
             label2.Text = "Errors :";
@@ -82,13 +82,13 @@ namespace IISDataServiceCLient
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
                 var userId = listBoxUsers.Items[listBoxUsers.SelectedIndex].ToString().Split(':')[0];
-                MessageBox.Show(userId.ToString());
+                selectedUser.Text = userId.ToString();
         }
 
         private void listBoxSubs_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            string userId = listBoxSubs.Items[listBoxSubs.SelectedIndex].ToString().Split(':')[0];
-            MessageBox.Show(userId.ToString());
+            string subId = listBoxSubs.Items[listBoxSubs.SelectedIndex].ToString().Split(':')[0];
+            selectedSub.Text = subId.ToString();
         }
 
         private void getSubs_Click(object sender, EventArgs e)
@@ -101,6 +101,37 @@ namespace IISDataServiceCLient
                     listBoxSubs.Items.Add(sub.Id + ":Id, " + sub.Name);
                 }
             }
+        }
+
+        private void subscribe_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(selectedUser.Text) || string.IsNullOrEmpty(selectedSub.Text))
+            {
+                MessageBox.Show("Välj både en user och sub!");
+                return;
+            }
+            using (Rebtel db = new Rebtel())
+            {
+                var sub = db.Subscriptions.FirstOrDefault(s => s.Id.ToString() == selectedSub.Text);
+                var user = db.Users.FirstOrDefault(s => s.Id.ToString() == selectedUser.Text);
+                if (user == null)
+                {
+                    throw new NullReferenceException("User med id = " + selectedUser.Text + " kunde hittas");
+                }
+                if (user == null)
+                {
+                    throw new NullReferenceException("Subscription med id = " + selectedSub.Text + " kunde hittas");
+                }
+                user.Subscriptions.Add(sub);
+                db.SaveChanges();
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            GetUsers(this as object,null);
+            getSubs_Click(this as object, null);
+
         }
     }
 }

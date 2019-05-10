@@ -37,6 +37,9 @@
             this.listBoxSubs = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.getSubs = new System.Windows.Forms.Button();
+            this.selectedUser = new System.Windows.Forms.Label();
+            this.selectedSub = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.userId)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +51,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "GetUser";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.button1.Click += new System.EventHandler(this.GetUsers);
             // 
             // label1
             // 
@@ -77,11 +80,14 @@
             // 
             // listBoxUsers
             // 
+            this.listBoxUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxUsers.FormattingEnabled = true;
             this.listBoxUsers.ItemHeight = 16;
             this.listBoxUsers.Location = new System.Drawing.Point(15, 188);
             this.listBoxUsers.Name = "listBoxUsers";
-            this.listBoxUsers.Size = new System.Drawing.Size(303, 196);
+            this.listBoxUsers.Size = new System.Drawing.Size(332, 180);
             this.listBoxUsers.TabIndex = 6;
             this.listBoxUsers.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -97,11 +103,14 @@
             // 
             // listBoxSubs
             // 
+            this.listBoxSubs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxSubs.FormattingEnabled = true;
             this.listBoxSubs.ItemHeight = 16;
-            this.listBoxSubs.Location = new System.Drawing.Point(344, 188);
+            this.listBoxSubs.Location = new System.Drawing.Point(443, 188);
             this.listBoxSubs.Name = "listBoxSubs";
-            this.listBoxSubs.Size = new System.Drawing.Size(546, 196);
+            this.listBoxSubs.Size = new System.Drawing.Size(476, 180);
             this.listBoxSubs.TabIndex = 8;
             this.listBoxSubs.SelectedIndexChanged += new System.EventHandler(this.listBoxSubs_SelectedIndexChanged_1);
             // 
@@ -124,11 +133,42 @@
             this.getSubs.UseVisualStyleBackColor = true;
             this.getSubs.Click += new System.EventHandler(this.getSubs_Click);
             // 
+            // selectedUser
+            // 
+            this.selectedUser.AutoSize = true;
+            this.selectedUser.Location = new System.Drawing.Point(62, 157);
+            this.selectedUser.Name = "selectedUser";
+            this.selectedUser.Size = new System.Drawing.Size(47, 17);
+            this.selectedUser.TabIndex = 11;
+            this.selectedUser.Text = "userId";
+            // 
+            // selectedSub
+            // 
+            this.selectedSub.AutoSize = true;
+            this.selectedSub.Location = new System.Drawing.Point(529, 157);
+            this.selectedSub.Name = "selectedSub";
+            this.selectedSub.Size = new System.Drawing.Size(42, 17);
+            this.selectedSub.TabIndex = 12;
+            this.selectedSub.Text = "subId";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(611, 397);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 23);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Subscribe";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.subscribe_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 457);
+            this.ClientSize = new System.Drawing.Size(952, 450);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.selectedSub);
+            this.Controls.Add(this.selectedUser);
             this.Controls.Add(this.getSubs);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.listBoxSubs);
@@ -140,6 +180,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.userId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -157,6 +198,9 @@
         private System.Windows.Forms.ListBox listBoxSubs;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button getSubs;
+        private System.Windows.Forms.Label selectedUser;
+        private System.Windows.Forms.Label selectedSub;
+        private System.Windows.Forms.Button button2;
     }
 }
 
