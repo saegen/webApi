@@ -11,6 +11,7 @@ namespace DataService
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class Subscription
@@ -18,9 +19,9 @@ namespace DataService
         public Subscription()
         {
             this.Users = new HashSet<User>();
+            this.Id = Guid.NewGuid();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public System.Guid Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }

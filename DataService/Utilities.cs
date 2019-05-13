@@ -58,7 +58,6 @@ namespace DataService
             }
             Subscription suben = new Subscription()
             {
-                Id = Guid.NewGuid(),
                 Name = sub.Name,
                 Price = sub.Price,
                 PriceIncVatAmount = sub.Price * 1.25m,
