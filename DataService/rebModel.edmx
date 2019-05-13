@@ -4,73 +4,77 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="rebtelModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="rebtelModelStoreContainer">
-    <EntitySet Name="Subscriptions" EntityType="rebtelModel.Store.Subscriptions" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Users" EntityType="rebtelModel.Store.Users" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="user_subscription" EntityType="rebtelModel.Store.user_subscription" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_user_subscription_User" Association="rebtelModel.Store.FK_user_subscription_User">
-      <End Role="User" EntitySet="Users" />
-      <End Role="user_subscription" EntitySet="user_subscription" />
-    </AssociationSet>
-    <AssociationSet Name="FK_user_subscription_Subscription" Association="rebtelModel.Store.FK_user_subscription_Subscription">
-      <End Role="Subscription" EntitySet="Subscriptions" />
-      <End Role="user_subscription" EntitySet="user_subscription" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Subscriptions">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Price" Type="decimal" Nullable="false" Precision="18" Scale="2" />
-    <Property Name="PriceIncVatAmount" Type="decimal" Nullable="false" Precision="18" Scale="2" />
-    <Property Name="CallMinutes" Type="int" Nullable="false" />
-    <Property Name="UrlFriendly" Type="nvarchar(max)" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Users">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="user_subscription">
-    <Key>
-      <PropertyRef Name="Users_Id" />
-      <PropertyRef Name="Subscriptions_Id" />
-    </Key>
-    <Property Name="Users_Id" Type="int" Nullable="false" />
-    <Property Name="Subscriptions_Id" Type="uniqueidentifier" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_user_subscription_User">
-    <End Role="User" Type="rebtelModel.Store.Users" Multiplicity="1" />
-    <End Role="user_subscription" Type="rebtelModel.Store.user_subscription" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="user_subscription">
-        <PropertyRef Name="Users_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_user_subscription_Subscription">
-    <End Role="user_subscription" Type="rebtelModel.Store.user_subscription" Multiplicity="*" />
-    <End Role="Subscription" Type="rebtelModel.Store.Subscriptions" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Subscription">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="user_subscription">
-        <PropertyRef Name="Subscriptions_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="rebtelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Subscriptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PriceIncVatAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CallMinutes" Type="int" Nullable="false" />
+          <Property Name="UrlFriendly" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="user_subscription">
+          <Key>
+            <PropertyRef Name="Users_Id" />
+            <PropertyRef Name="Subscriptions_Id" />
+          </Key>
+          <Property Name="Users_Id" Type="int" Nullable="false" />
+          <Property Name="Subscriptions_Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_user_subscription_Subscription">
+          <End Role="Subscriptions" Type="Self.Subscriptions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_subscription" Type="Self.user_subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscriptions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user_subscription">
+              <PropertyRef Name="Subscriptions_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_subscription_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="user_subscription" Type="Self.user_subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user_subscription">
+              <PropertyRef Name="Users_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="rebtelModelStoreContainer">
+          <EntitySet Name="Subscriptions" EntityType="Self.Subscriptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_subscription" EntityType="Self.user_subscription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_user_subscription_Subscription" Association="Self.FK_user_subscription_Subscription">
+            <End Role="Subscriptions" EntitySet="Subscriptions" />
+            <End Role="user_subscription" EntitySet="user_subscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_subscription_User" Association="Self.FK_user_subscription_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="user_subscription" EntitySet="user_subscription" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="rebtelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

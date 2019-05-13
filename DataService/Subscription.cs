@@ -11,14 +11,16 @@ namespace DataService
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Subscription
     {
         public Subscription()
         {
             this.Users = new HashSet<User>();
         }
-    
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public System.Guid Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
