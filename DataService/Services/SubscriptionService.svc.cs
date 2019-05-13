@@ -7,6 +7,7 @@ using System.Text;
 using DataService.Interfaces;
 using Common;
 using NLog;
+using System.Data.Entity.Validation;
 
 namespace DataService
 {
@@ -97,7 +98,22 @@ namespace DataService
                 {
 
                     sub = container.Subscriptions.Add(subValues.ToEntitySubscription());
+                    
                     container.SaveChanges();
+                }
+                catch (DbEntityValidationException e)
+                {
+                    foreach (var eve in e.EntityValidationErrors)
+                    {
+                        log.Info("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            log.Error("- Property: \"{0}\", Error: \"{1}\"",
+                                ve.PropertyName, ve.ErrorMessage);
+                        }
+                    }
+                    throw;
                 }
                 catch (Exception ex)
                 {
