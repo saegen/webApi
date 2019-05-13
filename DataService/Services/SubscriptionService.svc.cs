@@ -89,18 +89,26 @@ namespace DataService
 
         public ApiSubscription CreateSubscription(CreateSubscriptionDTO subValues)
         {
-            log.Debug("CreateSubscription(CreateSubscriptionDTO={@val} )", subValues);
+            log.Debug("CreateSubscription(CreateSubscriptionDTO={@subValues} )",subValues);
             Subscription sub = null;
             using (rebtelEntities container = new rebtelEntities())
             {
                 try
                 {
+
                     sub = container.Subscriptions.Add(subValues.ToEntitySubscription());
                     container.SaveChanges();
                 }
                 catch (Exception ex)
                 {
-                    log.Error("CreateSubscription(CreateSubscriptionDTO={@val} ) kastade: {@ex}", subValues, ex);
+                    log.Error("CreateSubscription() kastade: {@ex}", ex.GetType());
+                    log.Error("Message: {@ex}", ex.Message);
+                    while (ex.InnerException != null)
+                    {
+                        log.Error("InnerExceptionMessage: {@ex}", ex.InnerException.Message);
+                        ex = ex.InnerException;
+                    }
+                    
                 }
                 
             }
