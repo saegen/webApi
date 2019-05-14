@@ -23,6 +23,11 @@ namespace DataService
             using (rebtelEntities container = new rebtelEntities())
             {
                 var entitySub = container.Subscriptions.FirstOrDefault(s => s.Id == subscriptionId);
+                if (entitySub == null)
+                {
+                    log.Info("Could not find subscription with Id: {id}", subscriptionId);
+                    return null;
+                }
                 return entitySub.ToApiSubscription();
             }
         }

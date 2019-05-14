@@ -67,6 +67,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="IntegrationsTester\SubscriptionServiceTest.cs" />
     <Compile Include="IntegrationsTester\UserServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities.cs" />
