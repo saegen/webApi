@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://dataservice/interfaces/subscription" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dataservice/interfaces/subscription" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://dataservice/interfaces/subscription/Imports">
+      <xsd:import schemaLocation="http://desktop-ecrdoum/DataService/Services/SubscriptionService.svc?xsd=xsd0" namespace="http://dataservice/interfaces/subscription" />
+      <xsd:import schemaLocation="http://desktop-ecrdoum/DataService/Services/SubscriptionService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://desktop-ecrdoum/DataService/Services/SubscriptionService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISubscriptionService_GetSubscription_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscription" />
+  </wsdl:message>
+  <wsdl:message name="ISubscriptionService_GetSubscription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubscriptionService_GetSubscriptions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscriptions" />
+  </wsdl:message>
+  <wsdl:message name="ISubscriptionService_GetSubscriptions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubscriptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubscriptionService_DeleteSubscription_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSubscription" />
+  </wsdl:message>
+  <wsdl:message name="ISubscriptionService_DeleteSubscription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubscriptionService_UpdateSubscription_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSubscription" />
+  </wsdl:message>
+  <wsdl:message name="ISubscriptionService_UpdateSubscription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISubscriptionService_CreateSubscription_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSubscription" />
+  </wsdl:message>
+  <wsdl:message name="ISubscriptionService_CreateSubscription_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSubscriptionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISubscriptionService">
+    <wsdl:operation name="GetSubscription">
+      <wsdl:input wsaw:Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscription" message="tns:ISubscriptionService_GetSubscription_InputMessage" />
+      <wsdl:output wsaw:Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptionResponse" message="tns:ISubscriptionService_GetSubscription_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubscriptions">
+      <wsdl:input wsaw:Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptions" message="tns:ISubscriptionService_GetSubscriptions_InputMessage" />
+      <wsdl:output wsaw:Action="http://dataservice/interfaces/subscription/ISubscriptionService/GetSubscriptionsResponse" message="tns:ISubscriptionService_GetSubscriptions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubscription">
+      <wsdl:input wsaw:Action="http://dataservice/interfaces/subscription/ISubscriptionService/DeleteSubscription" message="tns:ISubscriptionService_DeleteSubscription_InputMessage" />
+      <wsdl:output wsaw:Action="http://dataservice/interfaces/subscription/ISubscriptionService/DeleteSubscriptionResponse" message="tns:ISubscriptionService_DeleteSubscription_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSubscription">
+      <wsdl:input wsaw:Action="http://dataservice/interfaces/subscription/ISubscriptionService/UpdateSubscription" message="tns:ISubscriptionService_UpdateSubscription_InputMessage" />
+      <wsdl:output wsaw:Action="http://dataservice/interfaces/subscription/ISubscriptionService/UpdateSubscriptionResponse" message="tns:ISubscriptionService_UpdateSubscription_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateSubscription">
+      <wsdl:input wsaw:Action="http://dataservice/interfaces/subscription/ISubscriptionService/CreateSubscription" message="tns:ISubscriptionService_CreateSubscription_InputMessage" />
+      <wsdl:output wsaw:Action="http://dataservice/interfaces/subscription/ISubscriptionService/CreateSubscriptionResponse" message="tns:ISubscriptionService_CreateSubscription_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
