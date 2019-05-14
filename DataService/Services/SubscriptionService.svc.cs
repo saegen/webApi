@@ -23,7 +23,7 @@ namespace DataService
             using (rebtelEntities container = new rebtelEntities())
             {
                 var entitySub = container.Subscriptions.FirstOrDefault(s => s.Id == subscriptionId);
-                return Utilities.ToApiSubscription(entitySub);
+                return entitySub.ToApiSubscription();
             }
         }
         public IEnumerable<ApiSubscription> GetSubscriptions()
@@ -84,7 +84,7 @@ namespace DataService
                 sub.PriceIncVatAmount = sub.Price * 1.25m;
                 sub.UrlFriendly = string.IsNullOrWhiteSpace(subValues.Name) ? sub.UrlFriendly : Utilities.ToUrlFriendlyIndentifier(subValues.Name);
                 container.SaveChanges();
-                return sub.ExToApiSubscription();
+                return sub.ToApiSubscription();
             }
         }
 
@@ -113,7 +113,6 @@ namespace DataService
                                 ve.PropertyName, ve.ErrorMessage);
                         }
                     }
-                    throw;
                 }
                 catch (Exception ex)
                 {
@@ -128,7 +127,7 @@ namespace DataService
                 }
                 
             }
-            return Utilities.ToApiSubscription(sub);
+            return sub.ToApiSubscription();
         }
     }
 }

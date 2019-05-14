@@ -33,22 +33,7 @@ namespace DataService
             toFriendly = toFriendly.TrimEnd(new[] { '-' });
             return toFriendly;
         }
-
-        public static Subscription ToEntitySubscription(ApiSubscription source)
-        {
-            if (source == null)
-            {
-                throw new ArgumentNullException("source", "ApiSubscription must not be null");
-            }
-            return new Subscription() {
-                Id = source.Id,
-                Name = source.Name,
-                Price = source.Price,
-                PriceIncVatAmount = source.PriceIncVatAmount,
-                CallMinutes = source.CallMinutes,
-                UrlFriendly = source.UrlFriendly
-            };
-        }
+        #region Extentions
 
         public static Subscription ToEntitySubscription(this CreateSubscriptionDTO sub)
         {
@@ -66,44 +51,7 @@ namespace DataService
             };
             return suben;
         }
-
-        public static Subscription ExToEntitySubscription(this ApiSubscription source)
-        {
-            if (source == null)
-            {
-                throw new ArgumentNullException("this", "ApiSubscription must not be null");
-            }
-            return new Subscription()
-            {
-                Id = source.Id,
-                Name = source.Name,
-                Price = source.Price,
-                PriceIncVatAmount = source.PriceIncVatAmount,
-                CallMinutes = source.CallMinutes,
-                UrlFriendly = source.UrlFriendly
-            };
-        }
-        public static ApiSubscription ToApiSubscription(Subscription source)
-        {
-            if (source == null)
-            {
-                return null;
-            }
-            return new ApiSubscription() {
-                Id = source.Id,
-                Name = source.Name,
-                Price = source.Price,
-                PriceIncVatAmount = source.PriceIncVatAmount,
-                CallMinutes = source.CallMinutes,
-                UrlFriendly = Utilities.ToUrlFriendlyIndentifier(source.Name)
-            };
-        }
-        /// <summary>
-        /// Todo
-        /// </summary>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        public static ApiSubscription ExToApiSubscription(this Subscription source)
+        public static ApiSubscription ToApiSubscription(this Subscription source)
         {
             if (source == null)
             {
@@ -119,7 +67,37 @@ namespace DataService
                 UrlFriendly = Utilities.ToUrlFriendlyIndentifier(source.Name)
             };
         }
+        public static Subscription ToEntitySubscription(this ApiSubscription source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("this", "ApiSubscription must not be null");
+            }
+            return new Subscription()
+            {
+                Id = source.Id,
+                Name = source.Name,
+                Price = source.Price,
+                PriceIncVatAmount = source.PriceIncVatAmount,
+                CallMinutes = source.CallMinutes,
+                UrlFriendly = source.UrlFriendly
+            };
+        }
 
+        public static ApiUser ToApiUser(this User source)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException("this", "User must not be null");
+            }
+            return new ApiUser()
+            {
+                Id = source.Id,
+                FirstName = source.FirstName,
+                LastName = source.LastName,
+                Email = source.Email
+            };
+        }
         public static User ToEntityUser(this CreateUserDTO user)
         {
             if (user == null)
@@ -133,49 +111,9 @@ namespace DataService
                 Email = user.Email
             };
         }
-        public static User ToEntityUser(ApiUser user)
-        {
-            if (user == null)
-            {
-                throw new ArgumentNullException("user", "ApiUser must not be null");
-            }
-            var entityUser = new User() { Id = user.Id, FirstName = user.FirstName, LastName = user.LastName, Email = user.Email };
-            foreach (var ApiSub in user.Subscriptions)
-            {
-                var sub = Utilities.ToEntitySubscription(ApiSub);
-                entityUser.Subscriptions.Add(sub);
-            }
-            return entityUser;
-        }
 
-        public static ApiUser ToApiUser(User entityUser)
-        {
-            if (entityUser == null)
-            {
-                return null;
-            }
-            var apiUser = new ApiUser()
-            {
-                Id = entityUser.Id,
-                FirstName = entityUser.FirstName,
-                LastName = entityUser.LastName,
-                Email = entityUser.Email,
-                Subscriptions = new HashSet<ApiSubscription>()
-
-            };
-            foreach (var sub in entityUser.Subscriptions)
-            {
-                apiUser.Subscriptions.Add(new ApiSubscription()
-                {
-                    Id = sub.Id,
-                    Name = sub.Name,
-                    Price = sub.Price,
-                    PriceIncVatAmount = sub.PriceIncVatAmount,
-                    CallMinutes = sub.CallMinutes,
-                    UrlFriendly = Utilities.ToUrlFriendlyIndentifier(sub.Name)
-                });
-            }
-            return apiUser;
-        }
+        #endregion
+             
+        
     }
 }

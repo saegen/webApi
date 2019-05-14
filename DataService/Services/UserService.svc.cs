@@ -58,7 +58,7 @@ namespace DataService
                 //entityUser.urlFriendly += count > 0 ? count.ToString() : "";
                 entityUser = container.Users.Add(entityUser);
                 container.SaveChanges();
-                return Utilities.ToApiUser(entityUser);
+                return entityUser.ToApiUser();
             }
         }
 
@@ -70,7 +70,7 @@ namespace DataService
             {
                 foreach (var user in container.Users.Include("Subscriptions"))
                 {
-                    ApiUser apiUser = Utilities.ToApiUser(user);
+                    ApiUser apiUser = user.ToApiUser();
                     log.Debug("User: {@user}", apiUser);
                     yield return apiUser;
                 }
@@ -88,7 +88,7 @@ namespace DataService
                     log.Info("Could not find user with Id: {id}", userId);
                     return null;
                 }
-                return Utilities.ToApiUser(user);
+                return user.ToApiUser();
             }
         }
 
@@ -157,7 +157,7 @@ namespace DataService
                 user.LastName = string.IsNullOrWhiteSpace(userValues.LastName) ? user.LastName : userValues.LastName;
                 user.Email = string.IsNullOrWhiteSpace(userValues.Email) ? user.Email : userValues.Email;
                 container.SaveChanges();
-                return Utilities.ToApiUser(user);
+                return user.ToApiUser();
             }
         }
     }
