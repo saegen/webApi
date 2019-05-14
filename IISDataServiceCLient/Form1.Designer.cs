@@ -89,7 +89,7 @@
             this.listBoxUsers.Name = "listBoxUsers";
             this.listBoxUsers.Size = new System.Drawing.Size(332, 180);
             this.listBoxUsers.TabIndex = 6;
-            this.listBoxUsers.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBoxUsers.SelectedIndexChanged += new System.EventHandler(this.ListBox1_SelectedIndexChanged);
             // 
             // EF
             // 
@@ -112,7 +112,7 @@
             this.listBoxSubs.Name = "listBoxSubs";
             this.listBoxSubs.Size = new System.Drawing.Size(476, 180);
             this.listBoxSubs.TabIndex = 8;
-            this.listBoxSubs.SelectedIndexChanged += new System.EventHandler(this.listBoxSubs_SelectedIndexChanged_1);
+            this.listBoxSubs.SelectedIndexChanged += new System.EventHandler(this.ListBoxSubs_SelectedIndexChanged_1);
             // 
             // label3
             // 
@@ -131,7 +131,7 @@
             this.getSubs.TabIndex = 10;
             this.getSubs.Text = "getSubs";
             this.getSubs.UseVisualStyleBackColor = true;
-            this.getSubs.Click += new System.EventHandler(this.getSubs_Click);
+            this.getSubs.Click += new System.EventHandler(this.GetSubs_Click);
             // 
             // selectedUser
             // 
@@ -159,7 +159,7 @@
             this.button2.TabIndex = 13;
             this.button2.Text = "Subscribe";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.subscribe_Click);
+            this.button2.Click += new System.EventHandler(this.Subscribe_Click);
             // 
             // Form1
             // 

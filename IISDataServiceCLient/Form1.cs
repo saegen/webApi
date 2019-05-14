@@ -49,7 +49,8 @@ namespace IISDataServiceCLient
             }
             finally
             {
-                ClientExtensions.DisposeService(client);
+                client.CloseOrAbortService();
+                //ClientExtensions.DisposeService(client);
             }
                         
             if (users == null)
@@ -79,19 +80,19 @@ namespace IISDataServiceCLient
             }
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
                 var userId = listBoxUsers.Items[listBoxUsers.SelectedIndex].ToString().Split(':')[0];
                 selectedUser.Text = userId.ToString();
         }
 
-        private void listBoxSubs_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void ListBoxSubs_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             string subId = listBoxSubs.Items[listBoxSubs.SelectedIndex].ToString().Split(':')[0];
             selectedSub.Text = subId.ToString();
         }
 
-        private void getSubs_Click(object sender, EventArgs e)
+        private void GetSubs_Click(object sender, EventArgs e)
         {
             listBoxSubs.Items.Clear();
             using (Rebtel db = new Rebtel())
@@ -103,7 +104,7 @@ namespace IISDataServiceCLient
             }
         }
 
-        private void subscribe_Click(object sender, EventArgs e)
+        private void Subscribe_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(selectedUser.Text) || string.IsNullOrEmpty(selectedSub.Text))
             {
@@ -130,7 +131,7 @@ namespace IISDataServiceCLient
         private void Form1_Load(object sender, EventArgs e)
         {
             GetUsers(this as object,null);
-            getSubs_Click(this as object, null);
+            GetSubs_Click(this as object, null);
 
         }
     }
