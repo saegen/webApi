@@ -23,6 +23,20 @@ namespace IISDataServiceCLient
                 }
             }
         }
+        public static void CloseOrAbortService(this ICommunicationObject service)
+        {
+            if (service != null)
+            {
+                try
+                {
+                    service.Close();
+                }
+                catch
+                {
+                    service.Abort();
+                }
+            }
+        }
         public static void DisposeService(ICommunicationObject service)
         {
 
