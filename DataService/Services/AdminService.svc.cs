@@ -10,30 +10,37 @@ namespace DataService
 {
     using DataService.Interfaces;
     using Common;
+    using NLog;
+
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "AdminService" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select AdminService.svc or AdminService.svc.cs at the Solution Explorer and start debugging.
     public class AdminService : IAdminService
     {
-        public void Subscribe(int userId, IEnumerable<ApiSubscription> subscriptions)
+        private Logger log = LogManager.GetCurrentClassLogger();
+        public void Subscribe(int userId, IEnumerable<Guid> subscriptionIds)
         {
-            if (subscriptions == null || !subscriptions.Any())
+            if (userId < 1)
             {
-                throw new ArgumentNullException("No subscriptions to add");
+                throw new ArgumentException("userId: " + userId + ". Is invalid");
             }
-
             using (rebtelEntities container = new rebtelEntities())
             {
-                var user = container.Users.Find(userId);
+                var user = container.Users.FirstOrDefault(x => x.Id == userId);
                 if (user == null)
                 {
-                    throw new ArgumentNullException("No such user");
+                    throw new KeyNotFoundException("No such user");
                 }
-                foreach (var sub in subscriptions)
+                foreach (var id in subscriptionIds)
                 {
-                    if (container.Subscriptions.Find(sub.Id) != null)
+                    try
                     {
-                        user.Subscriptions.Add(Utilities.ToEntitySubscription(sub));
-                    }//skulle kunna ha en continue om det skulle finnas en felaktig prenumeration, alternativt så ska det loggas att man skickar in felaktig data
+                        var sub = container.Subscriptions.FirstOrDefault(x => x.Id == id);
+                        user.Subscriptions.Add(sub);
+                    }
+                    catch (Exception)
+                    {
+                        continue;
+                    }
                 }
                 container.SaveChanges();
             }
@@ -43,7 +50,7 @@ namespace DataService
         {
             if (subscriptionId == null || subscriptionId == Guid.Empty)
             {
-                throw new ArgumentNullException("No subscriptions");
+                throw new ArgumentNullException("Missing subscriptionId=" + subscriptionId);
             }
             using (rebtelEntities container = new rebtelEntities())
             {
@@ -83,14 +90,30 @@ namespace DataService
                 }
                 foreach (var sub in user.Subscriptions)
                 {
-                    yield return sub.ExToApiSubscription(); //Utilities.ToApiSubscription(sub);
+                    yield return sub.ToApiSubscription(); 
                 }
             }
         }
 
         public IEnumerable<ApiUser> GetSubscriptionUsers(Guid subscriptionId)
         {
-            throw new NotImplementedException();
+            List<ApiUser> users = new List<ApiUser>();
+            using (rebtelEntities container = new rebtelEntities())
+            {
+                //Utilities.ToUrlFriendlyIndentifier(subscription.Name);
+                var sub = container.Subscriptions.Find(subscriptionId);
+                if (sub == null)
+                {
+                    log.Info("Kunde inte hitta prenumeration med id={subscriptionId}", subscriptionId);
+                    yield return null;
+                    
+                }
+                foreach (var user in sub.Users)
+                {
+                    yield return user.ToApiUser();
+                    
+                }
+            }
         }
 
 

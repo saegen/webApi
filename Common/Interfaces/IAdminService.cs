@@ -12,8 +12,8 @@ namespace DataService.Interfaces
     public interface IAdminService
     {
         [OperationContract]
-        void Subscribe(int userId, IEnumerable<ApiSubscription> subscriptions);
-
+        void Subscribe(int userId, IEnumerable<Guid> subscriptionIds);
+        
         [OperationContract]
         void Unsubscribe(int userId, Guid subscriptionId);
 
