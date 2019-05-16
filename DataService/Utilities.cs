@@ -34,7 +34,6 @@ namespace DataService
             return toFriendly;
         }
         #region Extentions
-
         public static Subscription ToEntitySubscription(this CreateSubscriptionDTO sub)
         {
             if (sub == null)
@@ -83,7 +82,6 @@ namespace DataService
                 UrlFriendly = source.UrlFriendly
             };
         }
-
         public static ApiUser ToApiUser(this User source)
         {
             if (source == null)
