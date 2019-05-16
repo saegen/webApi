@@ -9,25 +9,28 @@ using System.Web.Mvc;
 using WebApi.Models;
 using WebApi.UserService;
 using Common;
+using NLog;
 
 namespace WebApi.Controllers
 {
-// Get all users (GET -> /users)
-//Get current user (GET -> /users/some-url-friendly-identifier)
+// GetSubscriptionById all users (GET -> /users)
+//GetSubscriptionById current user (GET -> /users/some-url-friendly-identifier)
 //Create user (POST -> /users)
 //Add subscriptions to user (PUT -> /users/subscriptionId)
 //Delete user (DELETE -> /users/some-url-friendly-identifier)
 
     public class UsersController : ApiController
     {
+        private Logger log;
         private IUserRepo repo;
         public UsersController()
         {
             UserServiceClient client = new UserServiceClient();
             repo = new UserRepo(client);
+            log = LogManager.GetCurrentClassLogger();
         }
         //some-url-friendly-identifier = int 
-        //Get current user (GET -> /users/some-url-friendly-identifier)
+        //GetSubscriptionById current user (GET -> /users/some-url-friendly-identifier)
         public ApiUser Get(int id)
         {
             var user =  repo.GetUser(id);
@@ -39,9 +42,10 @@ namespace WebApi.Controllers
            
         }
            
-        //Get all users (GET -> /users)
+        //GetSubscriptionById all users (GET -> /users)
         public IEnumerable<ApiUser> Get()
         {
+            log.Debug("WebApi GetSubscriptionById()");
             return repo.GetUsers();
         }   
         
