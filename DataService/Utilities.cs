@@ -88,13 +88,18 @@ namespace DataService
             {
                 throw new ArgumentNullException("this", "User must not be null");
             }
-            return new ApiUser()
+            var user = new ApiUser()
             {
                 Id = source.Id,
                 FirstName = source.FirstName,
                 LastName = source.LastName,
                 Email = source.Email
             };
+            foreach (var sub in source.Subscriptions)
+            {
+                user.Subscriptions.Add(sub.ToApiSubscription());
+            }
+            return user;
         }
         public static User ToEntityUser(this CreateUserDTO user)
         {
