@@ -22,7 +22,7 @@ namespace Common
             FirstName = "DummyFirst";
             LastName = "DummyLast";
             Email = "DummyMail";
-            Subscriptions = new ApiSubscription[] { new ApiSubscription(), new ApiSubscription() };
+            Subscriptions = new List<ApiSubscription>(); 
         }
 
         [DataMember]
