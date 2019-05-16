@@ -23,7 +23,7 @@ namespace DataServiceTest.IntegrationsTester
         private CreateUserDTO testUser = new CreateUserDTO() { Email = "admin@service.se", FirstName = "TestUser", LastName = "AdminServiceTest" };
 
         /// <summary>
-        /// Skapar en testanvändare och hämtar upp alla Subscriptions. 
+        /// Skapar en testanvändare och hämtar upp alla Subscriptions Id till en array. 
         /// När testanvändaren tas bort i Cleanup så försvinner eventuella prenumerationer.
         /// </summary>
         [TestInitialize]
@@ -40,7 +40,7 @@ namespace DataServiceTest.IntegrationsTester
             Assert.IsTrue(_numSubs > 0, "TestInit: Finns inga subscriptions att testa med! Inga unittest kommer att fungera");
         }
         /// <summary>
-        /// Testanvändaren prenumererar på alla som finns. (Snabbhack)
+        /// Testanvändaren prenumererar på alla som finns.
         /// </summary>
         [TestMethod]
         public void TestSubscribe()
@@ -51,21 +51,35 @@ namespace DataServiceTest.IntegrationsTester
             _AdminClient.CloseOrAbortService();
             Assert.IsTrue(userSubNum == _numSubs, "userId=" + _userId + ", userSubNum =" + userSubNum + ", _numSubs =" + _numSubs);
         }
-
+        /// <summary>
+        /// Detta test tillsammans med Init testar: 
+        /// Subscribe(_userId,Guid[] SubIDs)
+        /// GetSubscriptionUsers(Guid subId)
+        /// GetUserSubscriptions(_userId)
+        /// Unsubscribe(_userId, unsubscribeId)
+        /// UnsubscribeAll(_userId)
+        /// </summary>
         [TestMethod]
         public void TestUnsubscribe()
         {
             this.TestSubscribe(); //lite fulhack men ...
             var unsubscribeId = existingSubIDs.First();
             _AdminClient = new AdminServiceClient();
+            var testuser = _AdminClient.GetSubscriptionUsers(unsubscribeId).FirstOrDefault(user => user.Id == _userId);
+            Assert.IsNotNull(testUser, "GetSubscriptionUsers: Testanvändaren ska vara prenumerant!");
             _AdminClient.Unsubscribe(_userId, unsubscribeId);
             var userSubNum = _AdminClient.GetUserSubscriptions(_userId);
-            _AdminClient.CloseOrAbortService();
             var nonExisting = userSubNum.Select(sub => sub.Id).ToList();
-            Assert.IsFalse(nonExisting.Contains(unsubscribeId),"Testaren har prenumerationen kvar");
+            Assert.IsFalse(nonExisting.Contains(unsubscribeId), "_AdminClient.Unsubscribe:Testaren har prenumerationen kvar");
             Assert.IsTrue(userSubNum.Count() == _numSubs - 1, "Testaren borde ha alla prenumerationen -minus den vi tog bort");
-
+            _AdminClient.UnsubscribeAll(_userId);
+            userSubNum = _AdminClient.GetUserSubscriptions(_userId);
+            _AdminClient.CloseOrAbortService();
+            Assert.IsTrue(userSubNum.Count() == 0, "Testaren borde ha 0 prenumerationen");
+            
         }
+       
+        
         /// <summary>
         /// Tar bort testanvändaren och hens prenumerationer
         /// </summary>
