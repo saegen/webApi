@@ -17,9 +17,17 @@ namespace WebApi.Models
         }
         ~SubscriptionRepo()
         {
-            if (_client != null && _client.State == System.ServiceModel.CommunicationState.Opened)
+            if (_client != null)
             {
-                _client.Close();
+                try
+                {
+                    _client.Close();
+                }
+                catch (Exception)
+                {
+                    _client.Abort();
+                }
+                
             }
         }
 
@@ -40,20 +48,9 @@ namespace WebApi.Models
             return _client.GetSubscription(subscriptionId); 
         }
 
-        public IEnumerable<ApiSubscription> GetSubscriptions(int id)
-        {
-            return _client.GetSubscriptions();
-        }
-
         public IEnumerable<ApiSubscription> GetSubscriptions()
         {
-            throw new NotImplementedException();
-        }
-
-        
-        public IEnumerable<ApiSubscription> GetUserSubscriptions(Guid subscriptionId)
-        {
-            throw new NotImplementedException();
+            return _client.GetSubscriptions();
         }
 
         public ApiSubscription UpdateSubscription(ApiSubscription sub)

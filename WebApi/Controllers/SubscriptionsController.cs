@@ -20,22 +20,25 @@ namespace WebApi.Controllers
             SubscriptionServiceClient client = new SubscriptionServiceClient();
             repo = new SubscriptionRepo(client);
         }
-        //Get all subscriptions (GET -> /subscriptions)
-        //todo: Gör om till Ayncron och Fixa den globala IExceptionHandler istället för try/catch
-        public IEnumerable<ApiSubscription> Get()
+        //GetSubscriptionById all subscriptions (GET -> /subscriptions)
+        [Route("Subscriptions")]
+        [HttpGet]
+        public IEnumerable<ApiSubscription> GetSubscriptions()
         {
             try
             {
                 return repo.GetSubscriptions();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+                throw new HttpResponseException(new HttpResponseMessage() { StatusCode = HttpStatusCode.InternalServerError, ReasonPhrase=ex.GetBaseException().Message});
             }      
         }
 
-        //Get current subscription (GET -> /subscriptions/some-url-friendly-identifier)ie userId, borde vara Name, tex spiderman
-        public ApiSubscription Get(Guid subscriptionId)
+        //GetSubscriptionById current subscription (GET -> /subscriptions/some-url-friendly-identifier)ie userId, borde vara Name, tex spiderman
+        [Route("Subscriptions/{subscriptionId}")]
+        [HttpGet]
+        public ApiSubscription GetSubscriptionById(Guid subscriptionId)
         {
             try
             {
@@ -54,7 +57,9 @@ namespace WebApi.Controllers
 
         //Create subscription (POST -> /subscriptions) -> Deprecated ;)
         //Create subscription (POST -> /subscriptions)
-        public HttpResponseMessage Post(ApiSubscription subdata)
+        [Route("Subscriptions")]
+        [HttpPost]
+        public HttpResponseMessage CreateSubscription(ApiSubscription subdata)
         {
             if (subdata == null)
             {
@@ -76,7 +81,9 @@ namespace WebApi.Controllers
 
         //Update subscription data such  (PUT -> /subscriptions/some-url-friendly-identifier)
         //id is redundant because I update the subscription directly from subdata
-        public HttpResponseMessage Put(ApiSubscription subdata)
+        [Route("Subscriptions")]
+        [HttpPut]
+        public HttpResponseMessage UpdateSubscription(ApiSubscription subdata)
         {
             if (subdata == null)
             {
@@ -97,14 +104,16 @@ namespace WebApi.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.GetBaseException());      
             }
         }
-        
+
         //Delete subscription (DELETE -> /subscriptions/some-url-friendly-identifier)
-        public HttpResponseMessage Delete(int id, ApiSubscription subdata)
+        [Route("Subscriptions")]
+        [HttpDelete]
+        public HttpResponseMessage DeleteSubscription(Guid subId)
         {
             try
             {
-                repo.DeleteSubscription(subdata.Id);
-                return Request.CreateResponse(HttpStatusCode.OK,subdata);
+                repo.DeleteSubscription(subId);
+                return Request.CreateResponse(HttpStatusCode.OK,subId);
             }
             catch (Exception ex)
             {
