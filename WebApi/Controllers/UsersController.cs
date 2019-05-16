@@ -51,7 +51,7 @@ namespace WebApi.Controllers
         }
         [Route("Users")]
         [HttpPost]
-        public HttpResponseMessage CreateUser([FromBody]ApiUser user)
+        public HttpResponseMessage CreateUser([FromBody]CreateUserDTO user)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace WebApi.Controllers
         //Add subscriptions to user (PUT -> /users/userId) (major violation of spec)
         [Route("Users")]
         [HttpPut]
-        public HttpResponseMessage UpdateUser(ApiUser user)
+        public HttpResponseMessage UpdateUser(UpdateUserDTO user)
         {
             try
             {
@@ -77,8 +77,8 @@ namespace WebApi.Controllers
                     return Request.CreateErrorResponse(HttpStatusCode.BadRequest, new ArgumentNullException("ApiUser"));
                 }
                 //get CurrentUser instead
-                user = repo.UpdateUser(user);
-                return Request.CreateResponse<ApiUser>(HttpStatusCode.OK, user);
+                var result = repo.UpdateUser(user);
+                return Request.CreateResponse<ApiUser>(HttpStatusCode.OK, result);
             }
             catch (Exception ex)
             {

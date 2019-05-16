@@ -29,7 +29,7 @@ namespace WebApi.Models
                 }                
             }
         }
-        public ApiUser CreateUser(ApiUser user)
+        public ApiUser CreateUser(CreateUserDTO user)
         {
             return _userClient.CreateUser(user);
         }
@@ -49,7 +49,7 @@ namespace WebApi.Models
             return _userClient.GetUsers();
         }
 
-        public ApiUser UpdateUser(ApiUser user)
+        public ApiUser UpdateUser(UpdateUserDTO user)
         {
             return _userClient.UpdateUser(user);
         }

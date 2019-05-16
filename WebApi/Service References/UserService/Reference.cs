@@ -16,10 +16,10 @@ namespace WebApi.UserService {
     public interface IUserService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/CreateUser", ReplyAction="http://dataservice/interfaces/user/IUserService/CreateUserResponse")]
-        Common.ApiUser CreateUser(Common.ApiUser user);
+        Common.ApiUser CreateUser(Common.CreateUserDTO user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/CreateUser", ReplyAction="http://dataservice/interfaces/user/IUserService/CreateUserResponse")]
-        System.Threading.Tasks.Task<Common.ApiUser> CreateUserAsync(Common.ApiUser user);
+        System.Threading.Tasks.Task<Common.ApiUser> CreateUserAsync(Common.CreateUserDTO user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/DeleteUser", ReplyAction="http://dataservice/interfaces/user/IUserService/DeleteUserResponse")]
         void DeleteUser(int userId);
@@ -40,10 +40,10 @@ namespace WebApi.UserService {
         System.Threading.Tasks.Task<Common.ApiUser[]> GetUsersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/UpdateUser", ReplyAction="http://dataservice/interfaces/user/IUserService/UpdateUserResponse")]
-        Common.ApiUser UpdateUser(Common.ApiUser user);
+        Common.ApiUser UpdateUser(Common.UpdateUserDTO user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/user/IUserService/UpdateUser", ReplyAction="http://dataservice/interfaces/user/IUserService/UpdateUserResponse")]
-        System.Threading.Tasks.Task<Common.ApiUser> UpdateUserAsync(Common.ApiUser user);
+        System.Threading.Tasks.Task<Common.ApiUser> UpdateUserAsync(Common.UpdateUserDTO user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -73,11 +73,11 @@ namespace WebApi.UserService {
                 base(binding, remoteAddress) {
         }
         
-        public Common.ApiUser CreateUser(Common.ApiUser user) {
+        public Common.ApiUser CreateUser(Common.CreateUserDTO user) {
             return base.Channel.CreateUser(user);
         }
         
-        public System.Threading.Tasks.Task<Common.ApiUser> CreateUserAsync(Common.ApiUser user) {
+        public System.Threading.Tasks.Task<Common.ApiUser> CreateUserAsync(Common.CreateUserDTO user) {
             return base.Channel.CreateUserAsync(user);
         }
         
@@ -105,11 +105,11 @@ namespace WebApi.UserService {
             return base.Channel.GetUsersAsync();
         }
         
-        public Common.ApiUser UpdateUser(Common.ApiUser user) {
+        public Common.ApiUser UpdateUser(Common.UpdateUserDTO user) {
             return base.Channel.UpdateUser(user);
         }
         
-        public System.Threading.Tasks.Task<Common.ApiUser> UpdateUserAsync(Common.ApiUser user) {
+        public System.Threading.Tasks.Task<Common.ApiUser> UpdateUserAsync(Common.UpdateUserDTO user) {
             return base.Channel.UpdateUserAsync(user);
         }
     }
