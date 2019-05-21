@@ -22,7 +22,7 @@ namespace Common
             FirstName = "DummyFirst";
             LastName = "DummyLast";
             Email = "DummyMail";
-            Subscriptions = new List<ApiSubscription>(); 
+            Subscriptions = new List<ApiSubscription>(); //genererar en []  istället för null i json
         }
 
         [DataMember]
