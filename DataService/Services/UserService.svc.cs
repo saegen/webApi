@@ -91,7 +91,10 @@ namespace DataService
                 return user.ToApiUser();
             }
         }
-
+        /// <summary>
+        /// Medvetet att inte kasta fel. Tar man bort en användare som inte finns är den borta ändå
+        /// </summary>
+        /// <param name="userId"></param>
         public void DeleteUser(int userId)
         {
             log.Debug("DeleteUser(userId = {id})", userId);
