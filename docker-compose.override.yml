@@ -4,7 +4,11 @@ services:
   dataservice:
     ports:
       - "80"
+  webapi:
+    ports:
+      - "80"
 networks:
   default:
     external:
       name: nat
+
