@@ -4,11 +4,13 @@ using System.Linq;
 using System.Web;
 using WebApi.UserService;
 using Common;
+using NLog;
 
 namespace WebApi.Models
 {
     public class UserRepo : IUserRepo
     {
+        private Logger log = LogManager.GetCurrentClassLogger();
         private UserServiceClient _userClient;
 
         public UserRepo(IUserService userServiceClient)
@@ -46,7 +48,16 @@ namespace WebApi.Models
 
         public IEnumerable<ApiUser> GetUsers()
         {
-            return _userClient.GetUsers();
+            ApiUser[] res = null;
+            try
+            {
+                return _userClient.GetUsers();
+            }
+            catch (Exception e)
+            {
+                log.Error("UserRepo:GetUsers()" + e.Message );
+            }
+            return res;
         }
 
         public ApiUser UpdateUser(UpdateUserDTO user)
