@@ -46,7 +46,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public IEnumerable<ApiUser> GetUsers()
         {
-            log.Debug("WebApi GetSubscriptionById()");
+            log.Debug("WebApi GetUsers()");
             return repo.GetUsers();
         }
         [Route("Users")]
