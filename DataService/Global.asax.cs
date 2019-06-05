@@ -1,12 +1,10 @@
 ﻿using NLog;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
-using System.Configuration;
 
 namespace DataService
 {
@@ -28,7 +26,7 @@ namespace DataService
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            TestDbConnection();
+
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
@@ -54,25 +52,6 @@ namespace DataService
         protected void Application_End(object sender, EventArgs e)
         {
 
-        }
-
-        private void TestDbConnection()
-        {
-            string shorty = ConfigurationManager.ConnectionStrings["short"].ToString();
-            SqlConnection con = null;
-            try
-            {
-                con = new SqlConnection(shorty);
-                con.Open();
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                //log.Error("Can't open connection to database: {0}", dockerConIP);
-
-                throw new Exception("Can't open/access database");
-                //throw new FaultException("Can't open connection to database");
-            }
         }
     }
 }
