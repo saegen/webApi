@@ -5,7 +5,7 @@
     <DockerTargetOS>Windows</DockerTargetOS>
     <ProjectGuid>0f6d4d35-e837-42aa-a465-5f804208c720</ProjectGuid>
     <DockerLaunchAction>LaunchWCFTestClient</DockerLaunchAction>
-    <DockerServiceUrl>http://{ServiceIPAddress}/AdminService.svc</DockerServiceUrl>
+    <DockerServiceUrl>http://{ServiceIPAddress}/Services/UserService.svc</DockerServiceUrl>
     <DockerServiceName>dataservice</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
