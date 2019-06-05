@@ -12,7 +12,7 @@ namespace WebApi.Models
         //Hämta 1
         ApiSubscription GetSubscription(Guid subscriptionId);
         IEnumerable<ApiSubscription> GetSubscriptions();
-        ApiSubscription CreateSubscription(ApiSubscription subscription);
+        ApiSubscription CreateSubscription(CreateSubscriptionDTO subscription);
         void DeleteSubscription(Guid subscriptionId);
         ApiSubscription UpdateSubscription(ApiSubscription sub);
     }

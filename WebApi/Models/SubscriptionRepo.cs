@@ -32,7 +32,7 @@ namespace WebApi.Models
         }
 
 
-        public ApiSubscription CreateSubscription(ApiSubscription subscription)
+        public ApiSubscription CreateSubscription(CreateSubscriptionDTO subscription)
         {
 
             return _client.CreateSubscription(subscription);
