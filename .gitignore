@@ -194,3 +194,4 @@ ModelManifest.xml
 /Docker/dockerDB.txt
 /DockerDBSebastian.ps1
 /DataService/Web - Copy.config
+/DataService/connectionstrings.config
