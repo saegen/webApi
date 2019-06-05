@@ -19,15 +19,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/DataService/Services/AdminService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://7a58a32f478f/Services/AdminService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AdminService.xsd" MetadataType="Schema" ID="8572456f-3357-48ae-addf-ce6d495bd76f" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/AdminService.svc?xsd=xsd0" />
-    <MetadataFile FileName="AdminService1.xsd" MetadataType="Schema" ID="5426324a-d6fe-42f0-888e-890967607634" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/AdminService.svc?xsd=xsd1" />
-    <MetadataFile FileName="AdminService.disco" MetadataType="Disco" ID="9206f56b-7730-413e-9ae1-53cff9291bce" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/AdminService.svc?disco" />
-    <MetadataFile FileName="AdminService.wsdl" MetadataType="Wsdl" ID="e41f658c-1343-48b5-b704-3c2f943703f5" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/AdminService.svc?wsdl=wsdl0" />
-    <MetadataFile FileName="AdminService2.xsd" MetadataType="Schema" ID="fb18731f-70a3-49cd-9398-faa91772e850" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/AdminService.svc?xsd=xsd2" />
-    <MetadataFile FileName="AdminService1.wsdl" MetadataType="Wsdl" ID="776b1024-3c8d-46eb-a877-a8a7d54d8b87" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/AdminService.svc?wsdl" />
+    <MetadataFile FileName="AdminService2.wsdl" MetadataType="Wsdl" ID="3bd84876-9bfa-4cc1-8833-aff7f3baa2d8" SourceId="1" SourceUrl="http://7a58a32f478f/Services/AdminService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="AdminService3.xsd" MetadataType="Schema" ID="78803f62-0c92-47bf-8e1c-ca94b8881c55" SourceId="1" SourceUrl="http://7a58a32f478f/Services/AdminService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AdminService31.xsd" MetadataType="Schema" ID="8af417e3-9532-45fa-a3cf-65d414fc9b74" SourceId="1" SourceUrl="http://7a58a32f478f/Services/AdminService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AdminService32.xsd" MetadataType="Schema" ID="526eb72e-43e3-427d-86a5-01c1ace6d9c7" SourceId="1" SourceUrl="http://7a58a32f478f/Services/AdminService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AdminService33.xsd" MetadataType="Schema" ID="d1894ca8-572a-4b85-8e28-6dc70d2ebe88" SourceId="1" SourceUrl="http://7a58a32f478f/Services/AdminService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AdminService1.disco" MetadataType="Disco" ID="ab4afa01-82cb-47ca-a483-33b7d247fd29" SourceId="1" SourceUrl="http://7a58a32f478f/Services/AdminService.svc?disco" />
+    <MetadataFile FileName="AdminService21.wsdl" MetadataType="Wsdl" ID="9689e1b7-2368-498d-ad31-398c52c5aebb" SourceId="1" SourceUrl="http://7a58a32f478f/Services/AdminService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

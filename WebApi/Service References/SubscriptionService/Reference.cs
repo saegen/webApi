@@ -54,12 +54,12 @@ namespace WebApi.SubscriptionService {
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/CreateSubscriptio" +
             "n", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/CreateSubscriptio" +
             "nResponse")]
-        Common.ApiSubscription CreateSubscription(Common.ApiSubscription subValues);
+        Common.ApiSubscription CreateSubscription(Common.CreateSubscriptionDTO subValues);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/CreateSubscriptio" +
             "n", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/CreateSubscriptio" +
             "nResponse")]
-        System.Threading.Tasks.Task<Common.ApiSubscription> CreateSubscriptionAsync(Common.ApiSubscription subValues);
+        System.Threading.Tasks.Task<Common.ApiSubscription> CreateSubscriptionAsync(Common.CreateSubscriptionDTO subValues);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -121,11 +121,11 @@ namespace WebApi.SubscriptionService {
             return base.Channel.UpdateSubscriptionAsync(subValues);
         }
         
-        public Common.ApiSubscription CreateSubscription(Common.ApiSubscription subValues) {
+        public Common.ApiSubscription CreateSubscription(Common.CreateSubscriptionDTO subValues) {
             return base.Channel.CreateSubscription(subValues);
         }
         
-        public System.Threading.Tasks.Task<Common.ApiSubscription> CreateSubscriptionAsync(Common.ApiSubscription subValues) {
+        public System.Threading.Tasks.Task<Common.ApiSubscription> CreateSubscriptionAsync(Common.CreateSubscriptionDTO subValues) {
             return base.Channel.CreateSubscriptionAsync(subValues);
         }
     }

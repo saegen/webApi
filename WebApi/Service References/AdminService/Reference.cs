@@ -16,10 +16,10 @@ namespace WebApi.AdminService {
     public interface IAdminService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/Subscribe", ReplyAction="http://dataservice/interfaces/admin/IAdminService/SubscribeResponse")]
-        void Subscribe(int userId, Common.ApiSubscription[] subscriptions);
+        void Subscribe(int userId, System.Guid[] subscriptionIds);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/Subscribe", ReplyAction="http://dataservice/interfaces/admin/IAdminService/SubscribeResponse")]
-        System.Threading.Tasks.Task SubscribeAsync(int userId, Common.ApiSubscription[] subscriptions);
+        System.Threading.Tasks.Task SubscribeAsync(int userId, System.Guid[] subscriptionIds);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/Unsubscribe", ReplyAction="http://dataservice/interfaces/admin/IAdminService/UnsubscribeResponse")]
         void Unsubscribe(int userId, System.Guid subscriptionId);
@@ -73,12 +73,12 @@ namespace WebApi.AdminService {
                 base(binding, remoteAddress) {
         }
         
-        public void Subscribe(int userId, Common.ApiSubscription[] subscriptions) {
-            base.Channel.Subscribe(userId, subscriptions);
+        public void Subscribe(int userId, System.Guid[] subscriptionIds) {
+            base.Channel.Subscribe(userId, subscriptionIds);
         }
         
-        public System.Threading.Tasks.Task SubscribeAsync(int userId, Common.ApiSubscription[] subscriptions) {
-            return base.Channel.SubscribeAsync(userId, subscriptions);
+        public System.Threading.Tasks.Task SubscribeAsync(int userId, System.Guid[] subscriptionIds) {
+            return base.Channel.SubscribeAsync(userId, subscriptionIds);
         }
         
         public void Unsubscribe(int userId, System.Guid subscriptionId) {
