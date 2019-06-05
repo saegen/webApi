@@ -24,11 +24,11 @@ namespace WebApi.Models
             }
         }
 
-        public void Subscribe(int userId, ApiSubscription[] subscriptions)
+        public void Subscribe(int userId, Guid[] subscriptionIds)
         {
-            foreach (var sub in subscriptions)
+            foreach (var sub in subscriptionIds)
             {
-                _adminClient.Subscribe(userId, subscriptions);
+                _adminClient.Subscribe(userId, subscriptionIds);
             }
         }
 
@@ -40,11 +40,6 @@ namespace WebApi.Models
         public IEnumerable<ApiSubscription> GetUserSubscriptions(int userId)
         {
             return _adminClient.GetUserSubscriptions(userId);
-        }
-
-        public void Subscribe(int userId, IEnumerable<ApiSubscription> subscriptions)
-        {
-            throw new NotImplementedException();
         }
 
         public void Unsubscribe(int userId, Guid subscriptionId)
