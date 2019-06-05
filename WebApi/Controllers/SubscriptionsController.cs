@@ -59,7 +59,7 @@ namespace WebApi.Controllers
         //Create subscription (POST -> /subscriptions)
         [Route("Subscriptions")]
         [HttpPost]
-        public HttpResponseMessage CreateSubscription(ApiSubscription subdata)
+        public HttpResponseMessage CreateSubscription(CreateSubscriptionDTO subdata)
         {
             if (subdata == null)
             {
