@@ -20,7 +20,7 @@
 
         //[DataMember(IsRequired = true)] denna plockades inte upp i SoapUI men wsdl:en har tagit bort minOcurrs
         [DataMember]
-        public System.Guid Id { get; set; }
+        public Guid Id { get; set; }
         [DataMember]
         [Required]
         public string Name { get; set; }
@@ -49,10 +49,11 @@
     public class UpdateSubscriptionDTO
     {
         [DataMember]
+        public Guid Id { get; set; }
+        [DataMember]
         public string Name { get; set; }
         [DataMember]
         public decimal Price { get; set; }
-
         [DataMember]
         public int CallMinutes { get; set; }
         [DataMember]
