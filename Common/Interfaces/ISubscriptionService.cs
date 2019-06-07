@@ -22,7 +22,7 @@ namespace DataService.Interfaces
         void DeleteSubscription(Guid subscriptionId);
 
         [OperationContract]
-        ApiSubscription UpdateSubscription(ApiSubscription subValues);
+        ApiSubscription UpdateSubscription(UpdateSubscriptionDTO subValues);
 
         [OperationContract]
         ApiSubscription CreateSubscription(CreateSubscriptionDTO subValues);
