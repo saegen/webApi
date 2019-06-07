@@ -70,7 +70,7 @@ namespace DataService
             }
         }
 
-        public ApiSubscription UpdateSubscription(ApiSubscription subValues)
+        public ApiSubscription UpdateSubscription(UpdateSubscriptionDTO subValues)
         {
             log.Debug("UpdateSubscription(ApiSubscription={@val})", subValues);
             if (subValues == null)
@@ -87,7 +87,8 @@ namespace DataService
                 sub.Name = string.IsNullOrWhiteSpace(subValues.Name) ? sub.Name : subValues.Name;
                 sub.Price = subValues.Price > 0 ? subValues.Price : sub.Price;
                 sub.PriceIncVatAmount = sub.Price * 1.25m;
-                sub.UrlFriendly = string.IsNullOrWhiteSpace(subValues.Name) ? sub.UrlFriendly : Utilities.ToUrlFriendlyIndentifier(subValues.Name);
+                sub.UrlFriendly = !string.IsNullOrWhiteSpace(subValues.Name) ? subValues.UrlFriendly : Utilities.ToUrlFriendlyIndentifier(subValues.Name);
+                sub.CallMinutes = subValues.CallMinutes > 0 ? subValues.CallMinutes : sub.CallMinutes;
                 container.SaveChanges();
                 return sub.ToApiSubscription();
             }

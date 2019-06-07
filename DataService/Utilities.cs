@@ -63,7 +63,7 @@ namespace DataService
                 Price = source.Price,
                 PriceIncVatAmount = source.PriceIncVatAmount,
                 CallMinutes = source.CallMinutes,
-                UrlFriendly = Utilities.ToUrlFriendlyIndentifier(source.Name)
+                UrlFriendly = string.IsNullOrEmpty(source.UrlFriendly) ? Utilities.ToUrlFriendlyIndentifier(source.Name) : source.UrlFriendly
             };
         }
         public static Subscription ToEntitySubscription(this ApiSubscription source)
