@@ -13,8 +13,8 @@ Todo:
       - [ ] ~~Experiment with dacpac~~
    - [x] Create and redesign of API calls
     - [ ] Change DataService according to new design
-          - [ ] Implement new methods to Subscribe, Unsubscribe, GetSubscriptionUsers
-          - [x] Implement and refactor Subscription and User methods to pure CRUD
+       - [ ] Implement new methods to Subscribe, Unsubscribe, GetSubscriptionUsers
+       - [x] Implement and refactor Subscription and User methods to pure CRUD
     - [ ] Refactor User and Sub controllers to use new Repo methods
     - [ ] Add AdminServcie for new subscribe/unsubscribe functionality
     - [ ] Add admin controller for new subscribe/unsubscribe functionality
