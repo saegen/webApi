@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.Entity.Core.EntityClient;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
@@ -12,13 +14,16 @@ namespace DataService
 {
     public class Global : System.Web.HttpApplication
     {
-
+        private Logger log; 
         protected void Application_Start(object sender, EventArgs e)
         {
             //Registrera GlobalExceptionHandler this.event += new Except nåt nåt
             //app domain exceptionhandler
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             LogManager.LoadConfiguration("nlog.config");
+            log = LogManager.GetCurrentClassLogger();
+            log.Info("Application_Start: Dataservice startar på IIS");
+            TestDbConnection();
         }
 
         void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -28,7 +33,7 @@ namespace DataService
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            TestDbConnection();
+            
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
@@ -53,22 +58,26 @@ namespace DataService
 
         protected void Application_End(object sender, EventArgs e)
         {
-
+            log.Info("Application_End: Dataservice stängs ner på IIS");
         }
         private void TestDbConnection()
         {
-            string shorty = ConfigurationManager.ConnectionStrings["short"].ToString();
+            string EFconString = ConfigurationManager.ConnectionStrings["rebtelEntities"].ToString();
+            EntityConnectionStringBuilder c = new EntityConnectionStringBuilder(EFconString);
+            
+            log = log ?? LogManager.GetCurrentClassLogger();
+            log.Info("Connectar: " + c.ProviderConnectionString);
             SqlConnection con = null;
             try
             {
-                con = new SqlConnection(shorty);
+                con = new SqlConnection(c.ProviderConnectionString);
                 con.Open();
                 con.Close();
+                log.Debug("Database connection is OK");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //log.Error("Can't open connection to database: {0}", dockerConIP);
-
+                log.Error("Can't open connection to database");
                 throw new Exception("Can't open/access database");
                 //throw new FaultException("Can't open connection to database");
             }
