@@ -28,28 +28,14 @@ namespace WebApi.Controllers
             _subRepo = new SubscriptionRepo(subClient);
             AdminServiceClient _adminClient = new AdminServiceClient();
             _adminRepo = new AdminRepo(_adminClient);
+        }
 
-    }
-
-    //public async Task<ActionResult<TodoItem>> GetTodoItem(long id)
-    //{
-    //    var todoItem = await _context.TodoItems.FindAsync(id);
-
-    //    if (todoItem == null)
-    //    {
-    //        return NotFound();
-    //    }
-
-    //    return todoItem;
-    //}
-    [Route("Admin/Subscriptions/{userId}")]
+  
+        [Route("Admin/Subscriptions/{userId}")]
         [HttpGet]
         public async Task<IEnumerable<ApiSubscription>> GetUserSubscriptionsAsync(int userId)
         {
             return await Task.Run(() => _adminRepo.GetUserSubscriptions(userId));
-            //return await new Task<_adminRepo.GetUserSubscriptions(userId)>;
-            //throw new NotImplementedException();
-            //return new List<Common.ApiSubscription>();
         }
         
         //IEnumerable<ApiUser> GetSubscriptionUsers(Guid subscriptionId);
@@ -57,9 +43,15 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<IEnumerable<ApiUser>> GetSubscriptionUsersAsync(Guid subscriptionId)
         {
-            return new List<Common.ApiUser>();
+            return await Task.Run(() => _adminRepo.GetSubscriptionUsers(subscriptionId));
         }
 
+        [Route("Admin")]
+        [HttpDelete]
+        public async Task UnsubscribeAsync(int userId, Guid subscriptionId)
+        {
+             await Task.Run(() => _adminRepo.Unsubscribe(userId,subscriptionId));
+        }
         //void Unsubscribe(int userId, Guid subscriptionId);
         //void Subscribe(int userId, Guid[] subscriptionIds);
         //void UpdateUserSubscription(int userId, ApiSubscription subscriptionData);
