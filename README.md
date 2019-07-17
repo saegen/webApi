@@ -19,7 +19,7 @@ Todo:
     - [ ] Add AdminServcie for new subscribe/unsubscribe functionality
     - [ ] Add admin controller for new subscribe/unsubscribe functionality
    - [ ] Add AdminRepo for new subscribe/unsubscribe functionality
-- [ ] Put everything in Docker
+- [ ] ~~Put everything in Docker~~
 - [ ] Put everything in Azure
 - [ ] Make Controllers Async
 - [ ] Look at service bus. "Needed" after many to many change when bypassing Admin 
