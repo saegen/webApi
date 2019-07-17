@@ -44,12 +44,12 @@ namespace WebApi.SubscriptionService {
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/UpdateSubscriptio" +
             "n", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/UpdateSubscriptio" +
             "nResponse")]
-        Common.ApiSubscription UpdateSubscription(Common.ApiSubscription subValues);
+        Common.ApiSubscription UpdateSubscription(Common.UpdateSubscriptionDTO subValues);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/UpdateSubscriptio" +
             "n", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/UpdateSubscriptio" +
             "nResponse")]
-        System.Threading.Tasks.Task<Common.ApiSubscription> UpdateSubscriptionAsync(Common.ApiSubscription subValues);
+        System.Threading.Tasks.Task<Common.ApiSubscription> UpdateSubscriptionAsync(Common.UpdateSubscriptionDTO subValues);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/subscription/ISubscriptionService/CreateSubscriptio" +
             "n", ReplyAction="http://dataservice/interfaces/subscription/ISubscriptionService/CreateSubscriptio" +
@@ -113,11 +113,11 @@ namespace WebApi.SubscriptionService {
             return base.Channel.DeleteSubscriptionAsync(subscriptionId);
         }
         
-        public Common.ApiSubscription UpdateSubscription(Common.ApiSubscription subValues) {
+        public Common.ApiSubscription UpdateSubscription(Common.UpdateSubscriptionDTO subValues) {
             return base.Channel.UpdateSubscription(subValues);
         }
         
-        public System.Threading.Tasks.Task<Common.ApiSubscription> UpdateSubscriptionAsync(Common.ApiSubscription subValues) {
+        public System.Threading.Tasks.Task<Common.ApiSubscription> UpdateSubscriptionAsync(Common.UpdateSubscriptionDTO subValues) {
             return base.Channel.UpdateSubscriptionAsync(subValues);
         }
         

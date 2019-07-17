@@ -7,7 +7,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsdl:import namespace="http://dataservice/interfaces/subscription" location="http://7a58a32f478f/Services/SubscriptionService.svc?wsdl=wsdl0" />
+  <wsdl:import namespace="http://dataservice/interfaces/subscription" location="http://desktop-ecrdoum/DataService/Services/SubscriptionService.svc?wsdl=wsdl0" />
   <wsdl:types />
   <wsdl:binding name="WSHttpBinding_ISubscriptionService" type="i0:ISubscriptionService">
     <wsp:PolicyReference URI="#WSHttpBinding_ISubscriptionService_policy" />
@@ -60,9 +60,9 @@
   </wsdl:binding>
   <wsdl:service name="SubscriptionService">
     <wsdl:port name="WSHttpBinding_ISubscriptionService" binding="tns:WSHttpBinding_ISubscriptionService">
-      <soap12:address location="http://7a58a32f478f/Services/SubscriptionService.svc" />
+      <soap12:address location="http://desktop-ecrdoum/DataService/Services/SubscriptionService.svc" />
       <wsa10:EndpointReference>
-        <wsa10:Address>http://7a58a32f478f/Services/SubscriptionService.svc</wsa10:Address>
+        <wsa10:Address>http://desktop-ecrdoum/DataService/Services/SubscriptionService.svc</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

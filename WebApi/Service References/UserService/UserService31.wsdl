@@ -7,7 +7,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsdl:import namespace="http://dataservice/interfaces/user" location="http://7a58a32f478f/Services/UserService.svc?wsdl=wsdl0" />
+  <wsdl:import namespace="http://dataservice/interfaces/user" location="http://desktop-ecrdoum/DataService/Services/UserService.svc?wsdl=wsdl0" />
   <wsdl:types />
   <wsdl:binding name="WSHttpBinding_IUserService" type="i0:IUserService">
     <wsp:PolicyReference URI="#WSHttpBinding_IUserService_policy" />
