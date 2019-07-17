@@ -15,19 +15,19 @@ Todo:
     - [ ] Change DataService according to new design
        - [ ] Implement new methods to Subscribe, Unsubscribe, GetSubscriptionUsers
        - [x] Implement and refactor Subscription and User methods to pure CRUD
-    - [ ] Refactor User and Sub controllers to use new Repo methods
-    - [ ] Add AdminServcie for new subscribe/unsubscribe functionality
+    - [x] Refactor User and Sub controllers to use new Repo methods
+    - [x] Add AdminServcie for new subscribe/unsubscribe functionality
     - [ ] Add admin controller for new subscribe/unsubscribe functionality
-   - [ ] Add AdminRepo for new subscribe/unsubscribe functionality
+   - [x] Add AdminRepo for new subscribe/unsubscribe functionality
 - [ ] ~~Put everything in Docker~~
 - [ ] Put everything in Azure
 - [ ] Make Controllers Async
 - [ ] Look at service bus. "Needed" after many to many change when bypassing Admin 
 - [ ] Introduce error handling per level.
    - [ ] Design error handling mechanism
-   - [ ] Implement logging with Log4Net at DataService Level
+   - [x] Implement logging with ~~Log4Net~~ NLog at DataService Level
    - [ ] Implement logging at WebApi Level
-- [ ] Hide internal id's from WebApi. i.e Refactor ResultDTOs 
+- [ ] Hide internal id's from WebApi. i.e Refactor ResultDTOs, etc. 
 - [ ] Make Angular 2+ front
     
 
