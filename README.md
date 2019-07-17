@@ -12,8 +12,8 @@ Todo:
       - [ ] ~~Get database under version control, i.e .mdf file, Use DACPAC instead~~
       - [ ] ~~Experiment with dacpac~~
    - [x] Create and redesign of API calls
-    - [ ] Change DataService according to new design
-       - [ ] Implement new methods to Subscribe, Unsubscribe, GetSubscriptionUsers
+    - [x] Change DataService according to new design
+       - [x] Implement new methods to Subscribe, Unsubscribe, GetSubscriptionUsers
        - [x] Implement and refactor Subscription and User methods to pure CRUD
     - [x] Refactor User and Sub controllers to use new Repo methods
     - [x] Add AdminServcie for new subscribe/unsubscribe functionality
