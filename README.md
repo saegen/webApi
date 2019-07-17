@@ -24,9 +24,9 @@ Todo:
 - [ ] Make Controllers Async
 - [ ] Look at service bus. "Needed" after many to many change when bypassing Admin 
 - [ ] Introduce error handling per level.
-         - [ ] Design error handling mechanism
-         - [ ] Implement logging with Log4Net at DataService Level
-         - [ ] Implement logging at WebApi Level
+   - [ ] Design error handling mechanism
+   - [ ] Implement logging with Log4Net at DataService Level
+   - [ ] Implement logging at WebApi Level
 - [ ] Hide internal id's from WebApi. i.e Refactor ResultDTOs 
 - [ ] Make Angular 2+ front
     
