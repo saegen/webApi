@@ -83,7 +83,7 @@ namespace WebApi.Controllers
         //id is redundant because I update the subscription directly from subdata
         [Route("Subscriptions")]
         [HttpPut]
-        public HttpResponseMessage UpdateSubscription(ApiSubscription subdata)
+        public HttpResponseMessage UpdateSubscription(UpdateSubscriptionDTO subdata)
         {
             if (subdata == null)
             {

@@ -14,6 +14,6 @@ namespace WebApi.Models
         IEnumerable<ApiSubscription> GetSubscriptions();
         ApiSubscription CreateSubscription(CreateSubscriptionDTO subscription);
         void DeleteSubscription(Guid subscriptionId);
-        ApiSubscription UpdateSubscription(ApiSubscription sub);
+        ApiSubscription UpdateSubscription(UpdateSubscriptionDTO sub);
     }
 }

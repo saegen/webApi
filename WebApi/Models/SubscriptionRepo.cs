@@ -53,7 +53,7 @@ namespace WebApi.Models
             return _client.GetSubscriptions();
         }
 
-        public ApiSubscription UpdateSubscription(ApiSubscription sub)
+        public ApiSubscription UpdateSubscription(UpdateSubscriptionDTO sub)
         {
             return _client.UpdateSubscription(sub);
         }
