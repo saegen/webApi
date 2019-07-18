@@ -45,14 +45,6 @@ namespace WebApi.Controllers
         public async Task SubscribeAsync(int userId, Guid[] subscriptionIds)
         {
             await Task.Run(() => _adminRepo.Subscribe(userId, subscriptionIds));
-        }
-
-        [Route("Admin")]
-        [HttpPut]
-        public async Task UpdateUserSubscriptionAsync(int userId, ApiSubscription subscriptionData)
-        {
-            await Task.Run(() => _adminRepo.UpdateUserSubscription(userId, subscriptionData));
-        }
-
+        }       
     }
 }
