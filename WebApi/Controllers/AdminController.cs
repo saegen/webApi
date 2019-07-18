@@ -42,7 +42,7 @@ namespace WebApi.Controllers
 
         [Route("Admin")]
         [HttpPost]
-        public async Task SubscribeAsync(int userId, Guid[] subscriptionIds)
+        public async Task SubscribeAsync(int userId, [FromUri] Guid[] subscriptionIds)
         {
             await Task.Run(() => _adminRepo.Subscribe(userId, subscriptionIds));
         }       
