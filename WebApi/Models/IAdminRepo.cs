@@ -13,6 +13,5 @@ namespace WebApi.Models
         IEnumerable<ApiUser> GetSubscriptionUsers(Guid subscriptionId);
         void Unsubscribe(int userId, Guid subscriptionId);
         void Subscribe(int userId, Guid[] subscriptionIds);
-        void UpdateUserSubscription(int userId, ApiSubscription subscriptionData);
     }
 }

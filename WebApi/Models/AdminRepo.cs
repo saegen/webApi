@@ -34,7 +34,7 @@ namespace WebApi.Models
 
         public IEnumerable<ApiUser> GetSubscriptionUsers(Guid subscriptionId)
         {
-            throw new NotImplementedException();
+          return  _adminClient.GetSubscriptionUsers(subscriptionId);
         }
 
         public IEnumerable<ApiSubscription> GetUserSubscriptions(int userId)
@@ -44,12 +44,8 @@ namespace WebApi.Models
 
         public void Unsubscribe(int userId, Guid subscriptionId)
         {
-            throw new NotImplementedException();
+            _adminClient.Unsubscribe( userId,  subscriptionId);
         }
 
-        public void UpdateUserSubscription(int userId, ApiSubscription subscriptionData)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
