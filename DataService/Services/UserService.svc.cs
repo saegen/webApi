@@ -109,33 +109,7 @@ namespace DataService
             }
         }
 
-        public IEnumerable<ApiSubscription> GetUserSubscriptions(int userId)
-        {
-
-            //throw new NotImplementedException();
-            using (rebtelEntities container = new rebtelEntities())
-            {
-                var user = container.Users.Find(userId);
-                if (user == null)
-                {
-                    throw new FaultException("No such user");
-                }
-                foreach (var sub in user.Subscriptions)
-                {
-                    yield return new ApiSubscription()
-                    {
-                        Id = sub.Id,
-                        Name = sub.Name,
-                        Price = sub.Price,
-                        PriceIncVatAmount = sub.PriceIncVatAmount,
-                        CallMinutes = sub.CallMinutes,
-                        UrlFriendly = Utilities.ToUrlFriendlyIndentifier(sub.Name)
-                    };
-                }
-            }
-        }
-
-        //public IEnumerable<ApiSubscription> GetSubscriptions()
+       //public IEnumerable<ApiSubscription> GetSubscriptions()
         //{
         //    using (rebtelEntities container = new rebtelEntities())
         //    {
