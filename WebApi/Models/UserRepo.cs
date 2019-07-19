@@ -38,12 +38,31 @@ namespace WebApi.Models
 
         public void DeleteUser(int userId)
         {
-            _userClient.DeleteUser(userId);
+            try
+            {
+                _userClient.DeleteUser(userId);
+            }
+            catch (Exception ex)
+            {
+                log.Error("UserRepo: DeleteUser: " + userId + ": " + ex.Message);
+                throw;
+            }
         }
 
         public ApiUser GetUser(int userId)
         {
-            return _userClient.GetUser(userId);
+            ApiUser user;
+            try
+            {
+                user = _userClient.GetUser(userId);
+            }
+            catch (Exception ex)
+            {
+                log.Error("UserRepo: GetUser: " + userId + ": " + ex.Message);
+                throw;
+            }
+            return user;
+            
         }
 
         public IEnumerable<ApiUser> GetUsers()
@@ -51,18 +70,29 @@ namespace WebApi.Models
             ApiUser[] res = null;
             try
             {
-                return _userClient.GetUsers();
+                res = _userClient.GetUsers();
             }
             catch (Exception e)
             {
                 log.Error("UserRepo:GetUsers()" + e.Message );
+                throw;
             }
             return res;
         }
 
         public ApiUser UpdateUser(UpdateUserDTO user)
         {
-            return _userClient.UpdateUser(user);
+            ApiUser updUser = null;
+            try
+            {
+                updUser = _userClient.UpdateUser(user);
+            }
+            catch (Exception ex)
+            {
+                log.Error("UserRepo: UpdateUser: " + user.Id + " : " + ex.Message);
+                throw;
+            }
+            return updUser;
         }
     }
 }

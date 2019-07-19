@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Common;
+using NLog;
 using WebApi.SubscriptionService;
 
 namespace WebApi.Models
@@ -10,6 +11,7 @@ namespace WebApi.Models
     public class SubscriptionRepo : ISubscriptionRepo
     {
         private SubscriptionServiceClient _client;
+        private Logger log = LogManager.GetCurrentClassLogger();
 
         public SubscriptionRepo(SubscriptionServiceClient client)
         {
@@ -45,12 +47,32 @@ namespace WebApi.Models
 
         public ApiSubscription GetSubscription(Guid subscriptionId)
         {
-            return _client.GetSubscription(subscriptionId); 
+            ApiSubscription sub;
+            try
+            {
+                sub = _client.GetSubscription(subscriptionId);
+            }
+            catch (Exception ex)
+            {
+                log.Error("SubscriptionRepo: GetSubscription: " + subscriptionId + ": " + ex.Message);
+                throw;
+            }
+            return sub;
         }
 
         public IEnumerable<ApiSubscription> GetSubscriptions()
         {
-            return _client.GetSubscriptions();
+            ApiSubscription[] subs;
+            try
+            {
+                subs = _client.GetSubscriptions();
+            }
+            catch (Exception ex)
+            {
+                log.Error("SubscriptionRepo: GetSubscriptions: " + ex.Message);
+                throw;
+            }
+            return subs;
         }
 
         public ApiSubscription UpdateSubscription(UpdateSubscriptionDTO sub)
