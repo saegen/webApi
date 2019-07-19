@@ -3,9 +3,10 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://dataservice/interfaces/admin/Imports">
       <xsd:import schemaLocation="http://desktop-ecrdoum/DataService/Services/AdminService.svc?xsd=xsd0" namespace="http://dataservice/interfaces/admin" />
+      <xsd:import schemaLocation="http://desktop-ecrdoum/DataService/Services/AdminService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
       <xsd:import schemaLocation="http://desktop-ecrdoum/DataService/Services/AdminService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://desktop-ecrdoum/DataService/Services/AdminService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://desktop-ecrdoum/DataService/Services/AdminService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Common" />
+      <xsd:import schemaLocation="http://desktop-ecrdoum/DataService/Services/AdminService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Common" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAdminService_Subscribe_InputMessage">
@@ -14,11 +15,17 @@
   <wsdl:message name="IAdminService_Subscribe_OutputMessage">
     <wsdl:part name="parameters" element="tns:SubscribeResponse" />
   </wsdl:message>
+  <wsdl:message name="IAdminService_Subscribe_ExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System" name="detail" element="q1:Exception" />
+  </wsdl:message>
   <wsdl:message name="IAdminService_Unsubscribe_InputMessage">
     <wsdl:part name="parameters" element="tns:Unsubscribe" />
   </wsdl:message>
   <wsdl:message name="IAdminService_Unsubscribe_OutputMessage">
     <wsdl:part name="parameters" element="tns:UnsubscribeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_Unsubscribe_ExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/System" name="detail" element="q2:Exception" />
   </wsdl:message>
   <wsdl:message name="IAdminService_UnsubscribeAll_InputMessage">
     <wsdl:part name="parameters" element="tns:UnsubscribeAll" />
@@ -26,11 +33,17 @@
   <wsdl:message name="IAdminService_UnsubscribeAll_OutputMessage">
     <wsdl:part name="parameters" element="tns:UnsubscribeAllResponse" />
   </wsdl:message>
+  <wsdl:message name="IAdminService_UnsubscribeAll_ExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/System" name="detail" element="q3:Exception" />
+  </wsdl:message>
   <wsdl:message name="IAdminService_GetUserSubscriptions_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserSubscriptions" />
   </wsdl:message>
   <wsdl:message name="IAdminService_GetUserSubscriptions_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserSubscriptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetUserSubscriptions_ExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/System" name="detail" element="q4:Exception" />
   </wsdl:message>
   <wsdl:message name="IAdminService_GetSubscriptionUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSubscriptionUsers" />
@@ -38,26 +51,34 @@
   <wsdl:message name="IAdminService_GetSubscriptionUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSubscriptionUsersResponse" />
   </wsdl:message>
+  <wsdl:message name="IAdminService_GetSubscriptionUsers_ExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/System" name="detail" element="q5:Exception" />
+  </wsdl:message>
   <wsdl:portType name="IAdminService">
     <wsdl:operation name="Subscribe">
       <wsdl:input wsaw:Action="http://dataservice/interfaces/admin/IAdminService/Subscribe" message="tns:IAdminService_Subscribe_InputMessage" />
       <wsdl:output wsaw:Action="http://dataservice/interfaces/admin/IAdminService/SubscribeResponse" message="tns:IAdminService_Subscribe_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://dataservice/interfaces/admin/IAdminService/SubscribeExceptionFault" name="ExceptionFault" message="tns:IAdminService_Subscribe_ExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="Unsubscribe">
       <wsdl:input wsaw:Action="http://dataservice/interfaces/admin/IAdminService/Unsubscribe" message="tns:IAdminService_Unsubscribe_InputMessage" />
       <wsdl:output wsaw:Action="http://dataservice/interfaces/admin/IAdminService/UnsubscribeResponse" message="tns:IAdminService_Unsubscribe_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://dataservice/interfaces/admin/IAdminService/UnsubscribeExceptionFault" name="ExceptionFault" message="tns:IAdminService_Unsubscribe_ExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UnsubscribeAll">
       <wsdl:input wsaw:Action="http://dataservice/interfaces/admin/IAdminService/UnsubscribeAll" message="tns:IAdminService_UnsubscribeAll_InputMessage" />
       <wsdl:output wsaw:Action="http://dataservice/interfaces/admin/IAdminService/UnsubscribeAllResponse" message="tns:IAdminService_UnsubscribeAll_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://dataservice/interfaces/admin/IAdminService/UnsubscribeAllExceptionFault" name="ExceptionFault" message="tns:IAdminService_UnsubscribeAll_ExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUserSubscriptions">
       <wsdl:input wsaw:Action="http://dataservice/interfaces/admin/IAdminService/GetUserSubscriptions" message="tns:IAdminService_GetUserSubscriptions_InputMessage" />
       <wsdl:output wsaw:Action="http://dataservice/interfaces/admin/IAdminService/GetUserSubscriptionsResponse" message="tns:IAdminService_GetUserSubscriptions_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://dataservice/interfaces/admin/IAdminService/GetUserSubscriptionsExceptionFault" name="ExceptionFault" message="tns:IAdminService_GetUserSubscriptions_ExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetSubscriptionUsers">
       <wsdl:input wsaw:Action="http://dataservice/interfaces/admin/IAdminService/GetSubscriptionUsers" message="tns:IAdminService_GetSubscriptionUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://dataservice/interfaces/admin/IAdminService/GetSubscriptionUsersResponse" message="tns:IAdminService_GetSubscriptionUsers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://dataservice/interfaces/admin/IAdminService/GetSubscriptionUsersExceptionFault" name="ExceptionFault" message="tns:IAdminService_GetSubscriptionUsers_ExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

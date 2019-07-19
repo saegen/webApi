@@ -24,6 +24,7 @@
   <Metadata>
     <MetadataFile FileName="AdminService.xsd" MetadataType="Schema" ID="04f96fce-cd58-48eb-a120-0f5dcae1c4e7" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/AdminService.svc?xsd=xsd0" />
     <MetadataFile FileName="AdminService1.xsd" MetadataType="Schema" ID="f85071fb-735a-4f9e-8310-a49af0a769f9" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/AdminService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AdminService4.xsd" MetadataType="Schema" ID="bafa4320-37ab-483a-96b8-28eadb620645" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/AdminService.svc?xsd=xsd4" />
     <MetadataFile FileName="AdminService.disco" MetadataType="Disco" ID="1fa3a405-0648-44cd-bb9c-762f8f75783b" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/AdminService.svc?disco" />
     <MetadataFile FileName="AdminService2.xsd" MetadataType="Schema" ID="6c653213-c749-4529-8eb4-5b37bd023445" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/AdminService.svc?xsd=xsd3" />
     <MetadataFile FileName="AdminService.wsdl" MetadataType="Wsdl" ID="ac65e833-bc99-42df-b11f-6875d83e07e4" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/AdminService.svc?wsdl=wsdl0" />

@@ -12,6 +12,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="ExceptionFault">
+        <soap:fault use="literal" name="ExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="Unsubscribe">
       <soap:operation soapAction="http://dataservice/interfaces/admin/IAdminService/Unsubscribe" style="document" />
@@ -21,6 +24,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="ExceptionFault">
+        <soap:fault use="literal" name="ExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UnsubscribeAll">
       <soap:operation soapAction="http://dataservice/interfaces/admin/IAdminService/UnsubscribeAll" style="document" />
@@ -30,6 +36,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="ExceptionFault">
+        <soap:fault use="literal" name="ExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetUserSubscriptions">
       <soap:operation soapAction="http://dataservice/interfaces/admin/IAdminService/GetUserSubscriptions" style="document" />
@@ -39,6 +48,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="ExceptionFault">
+        <soap:fault use="literal" name="ExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetSubscriptionUsers">
       <soap:operation soapAction="http://dataservice/interfaces/admin/IAdminService/GetSubscriptionUsers" style="document" />
@@ -48,6 +60,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="ExceptionFault">
+        <soap:fault use="literal" name="ExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="AdminService">

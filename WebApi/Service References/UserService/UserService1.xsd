@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://dataservice/interfaces/user" elementFormDefault="qualified" targetNamespace="http://dataservice/interfaces/user" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://desktop-ecrdoum/DataService/Services/UserService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+  <xs:import schemaLocation="http://localhost/DataService/Services/UserService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
   <xs:element name="CreateUser">
     <xs:complexType>
       <xs:sequence>

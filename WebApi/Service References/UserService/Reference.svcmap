@@ -22,13 +22,12 @@
     <MetadataSource Address="http://localhost/DataService/Services/UserService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="UserService3.wsdl" MetadataType="Wsdl" ID="39085295-7292-480f-b5d4-aabced635a3c" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/UserService.svc?wsdl=wsdl0" />
-    <MetadataFile FileName="UserService31.wsdl" MetadataType="Wsdl" ID="e71c7d45-fd55-49e1-a3c0-1a57d9e9b883" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/UserService.svc?wsdl=wsdl1" />
-    <MetadataFile FileName="UserService32.wsdl" MetadataType="Wsdl" ID="f759662c-7220-413d-ae49-9b66d29e0409" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/UserService.svc?wsdl" />
-    <MetadataFile FileName="UserService3.xsd" MetadataType="Schema" ID="61fe3a2b-83f7-4b0b-a440-9b342dadb9a3" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/UserService.svc?xsd=xsd1" />
-    <MetadataFile FileName="UserService31.xsd" MetadataType="Schema" ID="9f4269c3-bbfa-45f6-b4d6-81c67df2cc8c" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/UserService.svc?xsd=xsd2" />
-    <MetadataFile FileName="UserService32.xsd" MetadataType="Schema" ID="87035f1b-81f4-4caf-bbd0-1dd3bb0a0f8a" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/UserService.svc?xsd=xsd0" />
-    <MetadataFile FileName="UserService1.disco" MetadataType="Disco" ID="b1bc431b-77ba-43ec-a52c-6dafb2c7f49f" SourceId="1" SourceUrl="http://desktop-ecrdoum/DataService/Services/UserService.svc?disco" />
+    <MetadataFile FileName="UserService.wsdl" MetadataType="Wsdl" ID="d20aa075-d3eb-4211-9b20-1820ef41cab7" SourceId="1" SourceUrl="http://localhost/DataService/Services/UserService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="UserService.xsd" MetadataType="Schema" ID="44295616-fafc-4e58-b8b9-9c192ecce88c" SourceId="1" SourceUrl="http://localhost/DataService/Services/UserService.svc?xsd=xsd1" />
+    <MetadataFile FileName="UserService1.xsd" MetadataType="Schema" ID="c127cb73-0ba9-4d33-8566-da625c797134" SourceId="1" SourceUrl="http://localhost/DataService/Services/UserService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UserService2.xsd" MetadataType="Schema" ID="3788ea13-2e2a-4031-8dff-2c742c59bc8c" SourceId="1" SourceUrl="http://localhost/DataService/Services/UserService.svc?xsd=xsd2" />
+    <MetadataFile FileName="UserService1.wsdl" MetadataType="Wsdl" ID="6dc2f477-ada5-4d28-918c-412581fb7c1b" SourceId="1" SourceUrl="http://localhost/DataService/Services/UserService.svc?wsdl" />
+    <MetadataFile FileName="UserService.disco" MetadataType="Disco" ID="a45fceaf-da37-48ac-aa40-7a9a4570e98a" SourceId="1" SourceUrl="http://localhost/DataService/Services/UserService.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
