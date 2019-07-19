@@ -89,7 +89,7 @@ namespace WebApi.Models
             }
             catch (Exception ex)
             {
-                log.Error("UserRepo: UpdateUser: " + user.Id + " : " + ex.Message);
+                log.Error("UserRepo: UpdateUser: {@user} : {msg} ", user, ex.Message);
                 throw;
             }
             return updUser;
