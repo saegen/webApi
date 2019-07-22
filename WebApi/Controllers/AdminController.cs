@@ -10,7 +10,7 @@ namespace WebApi.Controllers
 {
     public class AdminController : ApiController
     {
-        private Logger log;
+        private readonly Logger log;
         private IAdminRepo _adminRepo;
         public AdminController()
         {
@@ -24,6 +24,7 @@ namespace WebApi.Controllers
         public async Task<IEnumerable<ApiSubscription>> GetUserSubscriptionsAsync(int userId)
         {
             return await Task.Run(() => _adminRepo.GetUserSubscriptions(userId));
+            
         }
 
         [Route("Admin/Users/{subscriptionId}")]
