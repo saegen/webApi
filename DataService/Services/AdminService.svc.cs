@@ -21,14 +21,14 @@ namespace DataService
         {
             if (userId < 1)
             {
-                throw new ArgumentException("userId: " + userId + ". Is invalid");
+                throw new FaultException("userId: " + userId + ". Is invalid");
             }
             using (rebtelEntities container = new rebtelEntities())
             {
                 var user = container.Users.FirstOrDefault(x => x.Id == userId);
                 if (user == null)
                 {
-                    throw new KeyNotFoundException("No such user");
+                    throw new FaultException("No such user");
                 }
                 foreach (var id in subscriptionIds)
                 {
@@ -37,8 +37,9 @@ namespace DataService
                         var sub = container.Subscriptions.FirstOrDefault(x => x.Id == id);
                         user.Subscriptions.Add(sub);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        log.Error("AdminService Subscribe : {@user}, {id} : {msg}", user, id, ex.Message);
                         continue;
                     }
                 }
@@ -50,14 +51,14 @@ namespace DataService
         {
             if (subscriptionId == null || subscriptionId == Guid.Empty)
             {
-                throw new ArgumentNullException("Missing subscriptionId=" + subscriptionId);
+                throw new FaultException("Missing subscriptionId=" + subscriptionId);
             }
             using (rebtelEntities container = new rebtelEntities())
             {
                 var user = container.Users.Find(userId);
                 if (user == null)
                 {
-                    throw new ArgumentNullException("No such user");
+                    throw new FaultException("No such user");
                 }
                 var sub = user.Subscriptions.Single(x => x.Id == subscriptionId);
                 if (sub == null)
@@ -81,17 +82,19 @@ namespace DataService
 
         public IEnumerable<ApiSubscription> GetUserSubscriptions(int userId)
         {
+            List<ApiSubscription> subs = new List<ApiSubscription>();
             using (rebtelEntities container = new rebtelEntities())
             {
                 var user = container.Users.Find(userId);
                 if (user == null)
                 {
-                    throw new FaultException("No such user");
+                    throw new FaultException("No user with id: " + userId.ToString());
                 }
                 foreach (var sub in user.Subscriptions)
                 {
-                    yield return sub.ToApiSubscription(); 
+                    subs.Add(sub.ToApiSubscription());
                 }
+                return subs;
             }
         }
 
@@ -105,47 +108,17 @@ namespace DataService
                 if (sub == null)
                 {
                     log.Info("Kunde inte hitta prenumeration med id={subscriptionId}", subscriptionId);
-                    yield return null;
-                    
+                    throw new FaultException("No subscription with id: " + subscriptionId.ToString());
+
                 }
                 foreach (var user in sub.Users)
                 {
-                    yield return user.ToApiUser();
+                    users.Add(user.ToApiUser());
                     
                 }
+                return users;
             }
         }
-
-
-
-        /*
-        public ApiSubscription AddSubscriptions(int userId, IEnumerable<ApiSubscription> subs)
-        {
-            if (subs == null || !subs.Any())
-            {
-                throw new ArgumentNullException("subs", "No subscriptions to add");
-            }
-            using (rebtelEntities container = new rebtelEntities())
-            {
-                //Utilities.ToUrlFriendlyIndentifier(subscription.Name);
-                var user = container.Users.Find(userId);
-
-                if (user == null)
-                {
-                    throw new ArgumentNullException("userId", "No such user");
-                }
-                foreach (var sub in subs)
-                {
-                    sub.UrlFriendly = Utilities.ToUrlFriendlyIndentifier(sub.Name);
-                    Utilities.ToEntitySubscription(sub);
-                    user.Subscriptions.Add(Utilities.ToEntitySubscription(sub));
-                }
-                container.SaveChanges();
-                return subs.First();
-            }
-        }
-
-        */
 
     }
 

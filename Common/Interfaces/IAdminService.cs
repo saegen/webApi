@@ -23,6 +23,6 @@ namespace DataService.Interfaces
         IEnumerable<ApiSubscription> GetUserSubscriptions(int userId);
         [OperationContract]
         IEnumerable<ApiUser> GetSubscriptionUsers(Guid subscriptionId);
-
+        
     }
 }

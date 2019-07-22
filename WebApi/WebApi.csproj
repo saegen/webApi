@@ -249,21 +249,18 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-    <None Include="Service References\AdminService\AdminService.wsdl" />
-    <None Include="Service References\AdminService\AdminService.xsd">
+    <None Include="Service References\AdminService\AdminService2.wsdl" />
+    <None Include="Service References\AdminService\AdminService21.wsdl" />
+    <None Include="Service References\AdminService\AdminService5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\AdminService\AdminService1.wsdl" />
-    <None Include="Service References\AdminService\AdminService1.xsd">
+    <None Include="Service References\AdminService\AdminService51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\AdminService\AdminService2.xsd">
+    <None Include="Service References\AdminService\AdminService52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\AdminService\AdminService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AdminService\AdminService4.xsd">
+    <None Include="Service References\AdminService\AdminService53.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\SubscriptionService\configuration91.svcinfo" />
@@ -300,9 +297,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <None Include="Service References\AdminService\AdminService.disco" />
     <None Include="Service References\SubscriptionService\SubscriptionService.disco" />
     <None Include="Service References\UserService\UserService.disco" />
+    <None Include="Service References\AdminService\AdminService1.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

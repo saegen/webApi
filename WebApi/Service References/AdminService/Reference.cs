@@ -16,37 +16,30 @@ namespace WebApi.AdminService {
     public interface IAdminService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/Subscribe", ReplyAction="http://dataservice/interfaces/admin/IAdminService/SubscribeResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.Exception), Action="http://dataservice/interfaces/admin/IAdminService/SubscribeExceptionFault", Name="Exception", Namespace="http://schemas.datacontract.org/2004/07/System")]
         void Subscribe(int userId, System.Guid[] subscriptionIds);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/Subscribe", ReplyAction="http://dataservice/interfaces/admin/IAdminService/SubscribeResponse")]
         System.Threading.Tasks.Task SubscribeAsync(int userId, System.Guid[] subscriptionIds);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/Unsubscribe", ReplyAction="http://dataservice/interfaces/admin/IAdminService/UnsubscribeResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.Exception), Action="http://dataservice/interfaces/admin/IAdminService/UnsubscribeExceptionFault", Name="Exception", Namespace="http://schemas.datacontract.org/2004/07/System")]
         void Unsubscribe(int userId, System.Guid subscriptionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/Unsubscribe", ReplyAction="http://dataservice/interfaces/admin/IAdminService/UnsubscribeResponse")]
         System.Threading.Tasks.Task UnsubscribeAsync(int userId, System.Guid subscriptionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/UnsubscribeAll", ReplyAction="http://dataservice/interfaces/admin/IAdminService/UnsubscribeAllResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.Exception), Action="http://dataservice/interfaces/admin/IAdminService/UnsubscribeAllExceptionFault", Name="Exception", Namespace="http://schemas.datacontract.org/2004/07/System")]
         void UnsubscribeAll(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/UnsubscribeAll", ReplyAction="http://dataservice/interfaces/admin/IAdminService/UnsubscribeAllResponse")]
         System.Threading.Tasks.Task UnsubscribeAllAsync(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/GetUserSubscriptions", ReplyAction="http://dataservice/interfaces/admin/IAdminService/GetUserSubscriptionsResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.Exception), Action="http://dataservice/interfaces/admin/IAdminService/GetUserSubscriptionsExceptionFa" +
-            "ult", Name="Exception", Namespace="http://schemas.datacontract.org/2004/07/System")]
         Common.ApiSubscription[] GetUserSubscriptions(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/GetUserSubscriptions", ReplyAction="http://dataservice/interfaces/admin/IAdminService/GetUserSubscriptionsResponse")]
         System.Threading.Tasks.Task<Common.ApiSubscription[]> GetUserSubscriptionsAsync(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/GetSubscriptionUsers", ReplyAction="http://dataservice/interfaces/admin/IAdminService/GetSubscriptionUsersResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(System.Exception), Action="http://dataservice/interfaces/admin/IAdminService/GetSubscriptionUsersExceptionFa" +
-            "ult", Name="Exception", Namespace="http://schemas.datacontract.org/2004/07/System")]
         Common.ApiUser[] GetSubscriptionUsers(System.Guid subscriptionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://dataservice/interfaces/admin/IAdminService/GetSubscriptionUsers", ReplyAction="http://dataservice/interfaces/admin/IAdminService/GetSubscriptionUsersResponse")]
