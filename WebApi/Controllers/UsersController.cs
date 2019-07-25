@@ -7,6 +7,7 @@ using WebApi.Models;
 using WebApi.UserService;
 using Common;
 using NLog;
+using Swashbuckle.Swagger.Annotations;
 
 namespace WebApi.Controllers
 {
@@ -26,8 +27,10 @@ namespace WebApi.Controllers
             repo = new UserRepo(client);
             log = LogManager.GetCurrentClassLogger();
         }
-        //some-url-friendly-identifier = int 
-        //GetSubscriptionById current user (GET -> /users/some-url-friendly-identifier)
+
+        [SwaggerOperation("GetById")]
+        [SwaggerResponse(HttpStatusCode.OK)]
+        [SwaggerResponse(HttpStatusCode.NotFound)]
         [Route("Users/{id}")]
         [HttpGet]
         public ApiUser GetUserById(int id)
@@ -43,6 +46,7 @@ namespace WebApi.Controllers
 
         //GetSubscriptionById all users (GET -> /users)
         [Route("Users")]
+        [SwaggerOperation("GetAllUsers")]
         [HttpGet]
         public IEnumerable<ApiUser> GetUsers()
         {
