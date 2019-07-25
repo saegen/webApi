@@ -155,6 +155,8 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <Content Include="Properties\PublishProfiles\az-dataservice.PublishSettings" />
+    <None Include="Properties\PublishProfiles\az-dataservice - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -186,7 +188,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64849</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/DataService</IISUrl>
+          <IISUrl>http://localhost/DataService/Services</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
