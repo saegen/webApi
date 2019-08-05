@@ -195,4 +195,10 @@ ModelManifest.xml
 /DockerDBSebastian.ps1
 /DataService/Web - Copy.config
 /DataService/connectionstrings.config
-/Common/connectionstrings.*
+
+/Common/connectionstrings.Azure.config
+/Common/connectionstrings.Debug.config
+/Common/connectionstrings.Release.config
+/DataService/Web.Azure.config
+/DataService/Web.Debug.config
+/DataService/Web.Release.config
