@@ -199,6 +199,7 @@ ModelManifest.xml
 /Common/connectionstrings.Azure.config
 /Common/connectionstrings.Debug.config
 /Common/connectionstrings.Release.config
+/DataService/Web.*
 /DataService/Web.Azure.config
 /DataService/Web.Debug.config
 /DataService/Web.Release.config
