@@ -7,7 +7,7 @@ Hard parts: Web API, WCF, Entity Frame work, Swagger, SQL, Git
 Softish parts: Architecture i.e. design, refactoring, REST(ful), IDE and tooling, GitHub
 
 Todo:
-- [ ] Change User and Subscriptions relation from 1->* to \*->\* i.e. many to many relationship
+- [x] Change User and Subscriptions relation from 1->* to \*->\* i.e. many to many relationship
    - [x] Change database model
       - [ ] ~~Get database under version control, i.e .mdf file, Use DACPAC instead~~
       - [ ] ~~Experiment with dacpac~~
@@ -17,18 +17,21 @@ Todo:
        - [x] Implement and refactor Subscription and User methods to pure CRUD
     - [x] Refactor User and Sub controllers to use new Repo methods
     - [x] Add AdminServcie for new subscribe/unsubscribe functionality
-    - [ ] Add admin controller for new subscribe/unsubscribe functionality
+    - [x] Add admin controller for new subscribe/unsubscribe functionality
    - [x] Add AdminRepo for new subscribe/unsubscribe functionality
 - [ ] ~~Put everything in Docker~~
-- [ ] Put everything in Azure
+- [x] Put everything in Azure
 - [ ] Make Controllers Async
 - [ ] Look at service bus. "Needed" after many to many change when bypassing Admin 
 - [ ] Introduce error handling per level.
    - [ ] Design error handling mechanism
    - [x] Implement logging with ~~Log4Net~~ NLog at DataService Level
-   - [ ] Implement logging at WebApi Level
+   - [x] Implement logging at WebApi Level
+   - [ ] Implement logging in Azure
 - [ ] Hide internal id's from WebApi. i.e Refactor ResultDTOs, etc. 
 - [ ] Make Angular 2+ front
+- [ ] Make React front
+- [ ] Make .net CORE front
     
 
 Short descpription of the architecture. Currently 3 layers, (with front-end clients it will be 4). 
