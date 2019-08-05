@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 
 namespace WebApi.Controllers
@@ -14,7 +15,15 @@ namespace WebApi.Controllers
 
             return View();
         }
-
+        //public IHttpActionResult GetProduct(int id)
+        //{
+        //    var product = products.FirstOrDefault((p) => p.Id == id);
+        //    if (product == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return Ok(product);
+        //}
         public ActionResult Swagger()
         {
             return new RedirectResult("~/swagger/ui/index");
