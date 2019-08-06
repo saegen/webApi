@@ -4,7 +4,6 @@ var fs = require('fs');
 const port = 8082
 var server = http.createServer(function(request, response) {
     var path = url.parse(request.url).pathname;
-
     switch (path.toLowerCase()) {
         case '/':
             response.writeHead(200, {
@@ -13,7 +12,22 @@ var server = http.createServer(function(request, response) {
             response.write("This is Test Message from SimpleMockServer.");
             response.end();
             break;
-        case '/usermock':
+        case '/css/mockcss.css':
+                fs.readFile(__dirname + path, function(error, data) {
+                    if (error) {
+                        response.writeHead(404);
+                        response.write(error);
+                        response.end();
+                    } else {
+                        response.writeHead(200, {
+                            'Content-Type': 'text/css'
+                        });
+                        response.write(data);
+                        response.end();
+                    }
+                });
+                break;
+            case '/usermock':
             fs.readFile(__dirname + path + '.html', function(error, data) {
                 if (error) {
                     response.writeHead(404);
@@ -70,6 +84,7 @@ server.listen(port, (err) => {
     if (err) {
       return console.log('SimpleMockServer: something bad happened', err)
     }
+    console.log(__dirname + '\\mockcss.css');
 
     console.log(`SimpleMockServer is listening on ${port}`)
   })
