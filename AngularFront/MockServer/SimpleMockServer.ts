@@ -76,6 +76,7 @@ var server = http.createServer(function(request, response) {
         default:
             response.writeHead(404);
             response.write("SimpleMockServer: opps this doesn't exist - 404");
+            response.write("Dir: " + __dirname + ' ,Path ' + path)
             response.end();
             break;
     }
