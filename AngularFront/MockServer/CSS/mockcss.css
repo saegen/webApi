@@ -1,51 +1,5 @@
 @charset "UTF-8";
-/***********************************
-Font-sizes for Typographic Hierarchy
-5.063rem
-3.375rem
-2.25rem
-1.5rem
-1.0rem
-***********************************/
-/***********************************
-    Imports
-***********************************/
-@import 'https://fonts.googleapis.com/css?family=Raleway|Montserrat';
-
-/***********************************
-    Defaults
-***********************************/
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-html{
-    font-family: Raleway, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-}
-h1{
-    font-size: 5.063rem;
-    font-family: 'Monserrat', Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-    padding: 1rem 0;
-}
-h2{
-    font-size: 3.375rem;
-    font-family: 'Monserrat', Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-    line-height: 4rem;
-    padding: 1rem 0;
-}
-h3{
-    font-size: 2.25rem;
-    font-family: 'Monserrat', Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-    line-height: 4rem;
-    padding: 1rem 0;
-}
-p{
-    font-size: 1.5rem;
-    padding: 1rem 0;
-}
+/*
 footer p{
     font-size: 1.0rem;
     line-height: 1.6rem;
@@ -69,7 +23,7 @@ footer a:hover{
     Navigation
 ***********************************/
 nav{
-
+    background-color: blue;
 }
 ul.mainnav{
     width: 100%;
@@ -103,7 +57,7 @@ ul.mainnav{
 /***********************************
     Layout
 ***********************************/
-.wrapper{
+.container{
     width: 90%;
     margin:0 auto;
 }
@@ -116,7 +70,7 @@ header{
 nav{
     width: 100%;
 }
-main{
+main.container{
     width: 100%;
     padding: 0 0 1rem 0;
 }
@@ -144,12 +98,18 @@ footer{
         font-size: 100%;
         line-height: 1.3;
     }
+    .jumbotron{
+        background-color: aquamarine;
+    }
 }
 @media only screen and (min-width: 38em) {
     /* medium */
     html {
         font-size: 110%;
         line-height: 1.4;
+    }
+    .jumbotron{
+        background-color: blue;
     }
 }
 @media only screen and (min-width: 60em) {
@@ -158,11 +118,17 @@ footer{
         font-size: 120%;
         line-height: 1.5;
     }
+    .jumbotron{
+        background-color: red;
+    }
 }
 @media only screen and (min-width: 90em) {
     /* extra large */
     html {
         font-size: 130%;
+    }
+    .jumbotron{
+        background-color: seagreen;
     }
 
 }
