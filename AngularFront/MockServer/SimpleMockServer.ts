@@ -12,7 +12,23 @@ var server = http.createServer(function(request, response) {
             response.write("This is Test Message from SimpleMockServer.");
             response.end();
             break;
-        case '/css/mockcss.css':
+            case '/js/userjs.js':
+                fs.readFile(__dirname + path, function(error, data) {
+                    if (error) {
+                        response.writeHead(404);
+                        response.write(error);
+                        response.end();
+                    } else {
+                        response.writeHead(200, {
+                            'Content-Type': 'text/javascript'
+                        });
+                        response.write(data);
+                        response.end();
+                    }
+                });
+                break;
+
+            case '/css/mockcss.css':
                 fs.readFile(__dirname + path, function(error, data) {
                     if (error) {
                         response.writeHead(404);
