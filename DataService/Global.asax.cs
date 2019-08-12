@@ -67,11 +67,10 @@ namespace DataService
             string EFconString = ConfigurationManager.ConnectionStrings["rebtelEntities"].ToString();
             if (string.IsNullOrEmpty(EFconString))
             {
-                log.Error("Connetionstring is empty");
-                throw new Exception("Connetionstring is empty/missing!");
+                log.Error("Connectionstring is empty/missing!");
+                throw new Exception("Connectionstring is empty/missing!");
             }
             EntityConnectionStringBuilder c = new EntityConnectionStringBuilder(EFconString);
-            
             
             log.Info("Connectar: " + c.ProviderConnectionString);
             SqlConnection con = null;
