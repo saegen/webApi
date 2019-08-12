@@ -59,6 +59,7 @@ namespace DataService
         protected void Application_End(object sender, EventArgs e)
         {
             log.Info("Application_End: Dataservice stängs ner på IIS");
+            NLog.LogManager.Shutdown();
         }
         private void TestDbConnection()
         {
