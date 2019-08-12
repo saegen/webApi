@@ -30,6 +30,7 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using DataService.Interfaces;
 using NLog;
+using System.Diagnostics;
 
 namespace DataService
 {
@@ -42,7 +43,8 @@ namespace DataService
         private Logger log = LogManager.GetCurrentClassLogger();
         public ApiUser CreateUser(CreateUserDTO user)
         {
-            log.Debug("CreateUser(CreateUserDTO={@userDTO})", user);
+            log.Trace("Trace: CreateUser(CreateUserDTO ={ @userDTO})", user);
+            log.Debug("Debug: CreateUser(CreateUserDTO={@userDTO})", user);
             if (user == null)
             {
                 throw new ArgumentNullException("user");
@@ -64,8 +66,9 @@ namespace DataService
 
         public IEnumerable<ApiUser> GetUsers()
         {
-            log.Debug("GetUsers()");
-
+            log.Debug("Debbuging GetUsers()");
+            log.Trace("NLOG.Trace  GetUsers(...................) Finns jag");
+            Trace.WriteLine(" Finns jag   Trace.WriteLine vad är detta ");
             using (rebtelEntities container = new rebtelEntities())
             {
                 foreach (var user in container.Users.Include("Subscriptions"))

@@ -62,10 +62,16 @@ namespace DataService
         }
         private void TestDbConnection()
         {
+            log = log ?? LogManager.GetCurrentClassLogger();
             string EFconString = ConfigurationManager.ConnectionStrings["rebtelEntities"].ToString();
+            if (string.IsNullOrEmpty(EFconString))
+            {
+                log.Error("Connetionstring is empty");
+                throw new Exception("Connetionstring is empty/missing!");
+            }
             EntityConnectionStringBuilder c = new EntityConnectionStringBuilder(EFconString);
             
-            log = log ?? LogManager.GetCurrentClassLogger();
+            
             log.Info("Connectar: " + c.ProviderConnectionString);
             SqlConnection con = null;
             try
