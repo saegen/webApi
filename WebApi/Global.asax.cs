@@ -12,14 +12,18 @@ namespace WebApi
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        private static Logger log = LogManager.GetCurrentClassLogger();
         protected void Application_Start()
         {
             LogManager.LoadConfiguration("nlog.config");
+            log.Info("WebApi startar..");
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            log.Info("WebApi startad");
+
         }
     }
 }
