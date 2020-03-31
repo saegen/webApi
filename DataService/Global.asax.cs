@@ -12,6 +12,7 @@ using System.Web.SessionState;
 
 namespace DataService
 {
+    using NLog;
     public class Global : System.Web.HttpApplication
     {
         private Logger log; 
@@ -22,13 +23,12 @@ namespace DataService
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             LogManager.LoadConfiguration("nlog.config");
             log = LogManager.GetCurrentClassLogger();
-            log.Info("Application_Start: Dataservice startar på IIS");
             TestDbConnection();
         }
 
         void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            //Tools.LogException(e.ExceptionObject);
+            log.Error($"Ett ohanterat fel av typen: {e.ExceptionObject.GetType()} uppstod! i {e.ExceptionObject}");
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -65,6 +65,8 @@ namespace DataService
         {
             log = log ?? LogManager.GetCurrentClassLogger();
             string EFconString = ConfigurationManager.ConnectionStrings["rebtelEntities"].ToString();
+            var userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+
             if (string.IsNullOrEmpty(EFconString))
             {
                 log.Error("Connectionstring is empty/missing!");
@@ -81,9 +83,9 @@ namespace DataService
                 con.Close();
                 log.Debug("Database connection is OK");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                log.Error("Can't open connection to database");
+                log.Error($"{userName} can't open connection to database");
                 throw new Exception("Can't open/access database");
                 //throw new FaultException("Can't open connection to database");
             }
