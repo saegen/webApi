@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataService", "DataService\DataService.csproj", "{641D9691-5D4D-4D88-9359-226C9FF40639}"
 EndProject
@@ -18,6 +18,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IISDataServiceCLient", "IIS
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataServiceTest", "DataServiceTest\DataServiceTest.csproj", "{05006A7C-1607-45D0-BBF0-69433D5FB88F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{641D9691-5D4D-4D88-9359-226C9FF40639} = {641D9691-5D4D-4D88-9359-226C9FF40639}
+	EndProjectSection
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0F6D4D35-E837-42AA-A465-5F804208C720}"
 EndProject
